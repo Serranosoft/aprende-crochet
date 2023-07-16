@@ -1,16 +1,17 @@
 {
   "expo": {
-    "name": "crochet",
+    "name": "Crochet paso a paso en español",
     "slug": "crochet",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo-croche.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-image.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5193F0"
     },
+    "scheme": "crochet",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -19,12 +20,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/logo-croche.png",
+        "backgroundColor": "#5193F0"
+      },
+      "versionCode": 2,
+      "package": "com.paulaymanu113.crochet"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "333c8019-02ec-446a-a364-a21a4fb283df"
+      }
     }
   }
 }
