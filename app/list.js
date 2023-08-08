@@ -5,6 +5,7 @@ import LottieView from 'lottie-react-native';
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../src/utils/supabase";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
+import { bannerId } from "../src/utils/constants";
 
 export default function List() {
 
@@ -23,7 +24,7 @@ export default function List() {
             <View style={styles.title}>
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
-            <BannerAd unitId={TestIds.BANNER/* bannerId */} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -54,7 +55,7 @@ export default function List() {
                     :
                     <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
             }
-            <BannerAd unitId={TestIds.BANNER/* bannerId */} size={BannerAdSize.LARGE_BANNER} requestOptions={{}} />
+            <BannerAd unitId={bannerId} size={BannerAdSize.LARGE_BANNER} requestOptions={{}} />
         </View>
     )
 }

@@ -133,9 +133,9 @@ export default function Category() {
                 {steps ?
                     <Animated.View style={[animatedStyle, styles.wrapper]}>
                         <Text style={ui.h2}>{name}</Text>
-                        <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                        <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                         {image ? <Image style={styles.image} source={{ uri: image }} /> : <Text></Text>}
-                        <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                        <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                         {steps.length > 0 &&
                             <View style={styles.card}>
                                 <Text style={ui.text}>{steps[current - 1]}</Text>
