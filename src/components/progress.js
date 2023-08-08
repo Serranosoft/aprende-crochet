@@ -8,16 +8,16 @@ import { Link } from "expo-router";
 export default function Progress({ current, qty }) {
 
     const animatedStyle = useAnimatedStyle(() => ({
-        width: `${((current + 1) * 100) / qty}%`
+        width: `${((current) * 100) / qty}%`
     }));
 
     return (
         <View style={{ marginBottom: 8, gap: 3 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Text style={[ui.text, { fontWeight: "bold" }]}>{current + 1} / {qty} </Text>
+                <Text style={[ui.text, { fontWeight: "bold" }]}>{current} / {qty} </Text>
                 {
-                    current === (qty - 1) ?
-                        <Link href="/"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
+                    current === (qty) ?
+                        <Link href="/list"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
                         :
                         <Text style={[ui.text, { fontSize: 16 }]}>Desliza para ver el siguiente paso</Text>
                 }

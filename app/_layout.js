@@ -1,15 +1,16 @@
 import { Slot, SplashScreen } from "expo-router";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, StyleSheet, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
-// import { StatusBar } from 'expo-status-bar';
+import { MobileAds } from 'react-native-google-mobile-ads';
+
 export default function Layout() {
 
     // Carga de fuentes.
     const [fontsLoaded] = useFonts({
-        "SourceSansRegular": require("../assets/fonts/SourceSansPro/SourceSans3-Regular.ttf"),
-        "SourceSansMedium": require("../assets/fonts/SourceSansPro/SourceSans3-Medium.ttf"),
+        "Changa": require("../assets/fonts/Changa/Changa.ttf"),
+        "Slabo": require("../assets/fonts/Slabo/Slabo.ttf")
     });
     const [isReady, setReady] = useState(false);
 
@@ -19,16 +20,37 @@ export default function Layout() {
         }
     }, [fontsLoaded]);
 
+    MobileAds()
+        .initialize()
+        .then(adapterStatuses => {
+            // Initialization complete!
+        });
 
     return (
         !isReady ?
             <SplashScreen />
             :
-            <View style={{ flex: 1, marginTop: StatusBar.currentHeight, paddingHorizontal: 5, backgroundColor: "#5193F0" }}>
-                <GestureHandlerRootView style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <GestureHandlerRootView style={styles.wrapper}>
                     <Slot />
                 </GestureHandlerRootView>
                 <StatusBar style="light" />
             </View >
     )
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        // marginTop: StatusBar.currentHeight, 
+        // position: "relative",
+        // justifyContent: "center"
+    },
+    wrapper: {
+        flex: 1, 
+        // width: "100%",
+        // alignSelf: "center", 
+        // justifyContent: "center", 
+        // paddingHorizontal: 20
+    },
+
+})

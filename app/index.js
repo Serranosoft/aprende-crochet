@@ -1,61 +1,63 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Link, Stack } from "expo-router";
-import { ui } from "../src/utils/styles";
-import { useEffect, useState } from "react";
-import { supabase } from "../src/supabaseClient";
-import LottieView from 'lottie-react-native';
-import { Image } from 'expo-image';
+import Video from 'react-native-video';
+import { Link, Stack } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ui } from '../src/utils/styles';
 
 export default function App() {
 
-    const [categories, setCategories] = useState([]);
-
-    async function fetchName() {
-        const { data } = await supabase.from("Categories").select("id, name, steps, bucket, image");
-        setCategories(data);
-    }
-
-    useEffect(() => {
-        fetchName();
-    }, [])
-
-
     return (
-        <View style={{ flex: 1, backgroundColor: "#5193F0" }}>
+        <View style={styles.container}>
             <Stack.Screen options={{ headerShown: false }} />
-            <Text style={[ui.title, { marginTop: 40, textAlign: "center", lineHeight: 45 }]}>Aprende crochet paso a paso</Text>
+            <Video resizeMode='cover' repeat source={{ uri: "https://lprvpqlrafnadcofezxc.supabase.co/storage/v1/object/public/resources/pexels-miriam-alonso-7577400%20(720p).mp4" }} style={styles.lottie} />
 
-            {
-                categories.length > 0 ?
-                    <View style={{flex: 1, gap: 100 }}>
-                        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 60, }}>
-                            <LottieView source={require("../assets/lottie/crochet.json")} loop={true} autoPlay={true} style={{ width: "100%", aspectRatio: 1 }} />
-                        </View>
-                        <FlatList
-                            data={categories}
-                            numColumns={2}
-                            renderItem={({ item, i }) => {
-                                return (
-                                    <TouchableOpacity style={ui.categoryTouch} key={i}>
-                                        <Link href={{ pathname: "/category", params: { id: item.id, bucket: item.bucket, name: item.name } }}>
-                                            <View>
-                                                <Image
-                                                    style={{aspectRatio: 1, width: 100, height: 100,}}
-                                                    source={item.image}
-                                                />
-                                                <Text style={ui.text}>{item.name}</Text>
-                                                <Text style={ui.muted}>{item.steps} pasos</Text>
-                                            </View>
-                                        </Link>
-                                    </TouchableOpacity>
-                                )
-                            }}
 
-                        />
-                    </View>
-                    :
-                    <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
-            }
+            <View style={styles.shadow}>
+                <View style={styles.wrapper}>
+                    <Text style={[ui.h1, { color: "white" }]}>
+                        Aprende crochet fácil y gratis
+                    </Text>
+
+
+                    <Link href="/list" style={ui.button} asChild>
+                        <Pressable>
+                            <Text style={[ui.h3, { fontFamily: "Changa", color: "white" }]}>Empezar ahora</Text>
+                        </Pressable>
+                    </Link>
+
+                </View>
+            </View>
+
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: "flex-end",
+        alignItems: "center",
+        flex: 1,
+    },
+
+    shadow: {
+        width: "100%",
+        backgroundColor: "rgba(0,0,0,0.55)",
+        paddingVertical: 28,
+        borderTopLeftRadius: 50,
+        borderTopRightRadius: 50,
+    },
+
+    wrapper: {
+        width: "90%",
+        alignItems: "flex-start",
+        alignSelf: "center",
+        gap: 40,
+    },
+
+    lottie: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+    }
+});
