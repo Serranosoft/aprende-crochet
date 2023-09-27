@@ -34,7 +34,7 @@ export default function List() {
                             renderItem={({ item, i }) => {
                                 return (
                                     <TouchableOpacity key={i} style={styles.itemWrapper}>
-                                        <Link href={{ pathname: "/category", params: { id: item.id, bucket: item.bucket, name: item.name } }}>
+                                        <Link href={{ pathname: "/category", params: { bucket: item.bucket, name: item.name } }}>
                                             <View style={styles.item}>
                                                 <Image
                                                     style={styles.image}
