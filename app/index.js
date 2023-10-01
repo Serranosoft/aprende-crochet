@@ -1,6 +1,6 @@
 import Video from 'react-native-video';
 import { Link, Stack } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { ui } from '../src/utils/styles';
 
 export default function App() {

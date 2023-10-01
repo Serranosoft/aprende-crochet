@@ -1,47 +1,38 @@
-import { StyleSheet, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { createRef, useEffect, useState } from "react";
-import { supabase } from "../src/supabaseClient";
-
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
 import { fetchData } from "../src/utils/data";
 import Card from "../src/components/Card";
+import { ui } from "../src/utils/styles";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { bannerId } from "../src/utils/constants";
 
 export default function Category() {
 
     const params = useLocalSearchParams();
-    const { bucket, name } = params;
-
+    const { name } = params;
+    
     const [steps, setSteps] = useState(null);
-    const [image, setImage] = useState(null);
-    const [routes, setRoutes] = useState([]);
+    const [images, setImages] = useState(null);
 
-    const [current, setCurrent] = useState(1);
+    const [current, setCurrent] = useState(0);
 
     const [triggerAd, setTriggerAd] = useState(0);
     const adsHandlerRef = createRef();
 
-    // Obtener pasos y rutas de las imagenes
-    useEffect(async () => {
-        const steps = fetchData(name);
+    // Obtener pasos
+    useEffect(() => {
+        const steps = fetchData(name).steps;
         setSteps(steps);
-
-        await supabase.storage.from("images").list(bucket, {}).then((res) => {
-            const arr = res.data.map(item => item.name && item.name);
-            setRoutes(arr);
-        })
     }, [])
 
     // Obtener la imagen que debe mostrarse en este instante.
     useEffect(() => {
-        const { data } = supabase.storage.from("images").getPublicUrl(`${bucket}/guia-${bucket}-${current}.jpg`);
-        if (routes.includes(`guia-${bucket}-${current}.jpg`)) {
-            setImage(data.publicUrl);
-        } else {
-            setImage(null);
-        }
-    }, [current, routes])
+        const images = fetchData(name).images;
+        setImages(images);
+    }, [current])
 
     // Gestión de anuncios
     useEffect(() => {
@@ -53,22 +44,27 @@ export default function Category() {
 
 
     return (
-        <View style={styles.container}>
-            <AdsHandler ref={adsHandlerRef} adType={[0]} />
+        <>
             <Stack.Screen options={{ headerShown: false }} />
-            <Card name={name} steps={steps} image={image} setTriggerAd={setTriggerAd} setCurrent={setCurrent} />
-            {steps && <Progress current={current} qty={steps.length} />}
-        </View>
+            <AdsHandler ref={adsHandlerRef} adType={[0]} />
+            <View style={styles.container}>
+                <Text style={ui.h2}>{name}</Text>
+                <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} />
+                {steps && <Progress current={(current+1)} qty={steps.length} />}
+            </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: "white",
-        width: "90%",
+        flex: 0.95,
+        width: "100%",
         alignSelf: "center",
-        paddingTop: 24,
-        paddingBottom: 12,
+        justifyContent: "center",
+        paddingTop: StatusBar.currentHeight + 24,
+        paddingHorizontal: 24,
+        
     }
 })

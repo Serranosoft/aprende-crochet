@@ -40,16 +40,16 @@ export default function Layout() {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        // marginTop: StatusBar.currentHeight, 
-        // position: "relative",
-        // justifyContent: "center"
+        flex: 1,
+        // marginTop: StatusBar.currentHeight,
+        position: "relative",
+        justifyContent: "center"
     },
     wrapper: {
-        flex: 1, 
-        // width: "100%",
-        // alignSelf: "center", 
-        // justifyContent: "center", 
+        flex: 1,
+        width: "100%",
+        alignSelf: "center",
+        justifyContent: "center",
         // paddingHorizontal: 20
     },
 

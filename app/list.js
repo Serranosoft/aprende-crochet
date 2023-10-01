@@ -1,11 +1,11 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image, StatusBar } from "react-native";
 import { Link, Stack } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useEffect, useState } from "react";
-import { fetchCategories } from "../src/utils/supabase";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
+import { categories_raw } from "../src/utils/data";
 
 export default function List() {
 
@@ -13,7 +13,8 @@ export default function List() {
 
     useEffect(() => {
         if (categories.length < 1) {
-            fetchCategories(setCategories)
+            const categories_aux = categories_raw;
+            setCategories(categories_aux);
         }
     }, [categories])
 
@@ -34,12 +35,9 @@ export default function List() {
                             renderItem={({ item, i }) => {
                                 return (
                                     <TouchableOpacity key={i} style={styles.itemWrapper}>
-                                        <Link href={{ pathname: "/category", params: { bucket: item.bucket, name: item.name } }}>
+                                        <Link href={{ pathname: "/category", params: { name: item.name } }}>
                                             <View style={styles.item}>
-                                                <Image
-                                                    style={styles.image}
-                                                    source={{ uri: item.image+"?cache=1" }}
-                                                />
+                                                { item.image && item.image.length > 0 && <Image style={styles.image} source={{ uri: item.image  }} /> }
                                                 <View style={styles.info}>
                                                     <Text style={[ui.h3, ui.bold]}>{item.name}</Text>
                                                     <Text style={ui.text}>{item.steps} pasos</Text>
@@ -55,21 +53,19 @@ export default function List() {
                     :
                     <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
             }
-            <BannerAd unitId={bannerId} size={BannerAdSize.LARGE_BANNER} requestOptions={{}} />
+            {/* <BannerAd unitId={bannerId} size={BannerAdSize.LARGE_BANNER} requestOptions={{}} /> */}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.95,
         gap: 32,
-        width: "90%",
-        alignSelf: "center",
         alignItems: "center",
-        paddingTop: 48,
-        paddingBottom: 16,
         backgroundColor: "white",
+        marginTop: StatusBar.currentHeight + 24,
+        paddingHorizontal: 20,
     },
 
     title: {

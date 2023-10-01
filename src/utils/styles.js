@@ -21,6 +21,7 @@ export const ui = {
         fontFamily: "Changa",
         color: "black",
         fontSize: 32,
+        textAlign: "center",
     },
     h3: {
         fontFamily: "Changa",
