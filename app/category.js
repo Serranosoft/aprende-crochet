@@ -3,10 +3,10 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { createRef, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
-import { fetchData } from "../src/utils/data";
+import { fetchData, fetchImages, getAllImages } from "../src/utils/data";
 import Card from "../src/components/Card";
 import { ui } from "../src/utils/styles";
-import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
 
 export default function Category() {
@@ -14,25 +14,24 @@ export default function Category() {
     const params = useLocalSearchParams();
     const { name } = params;
     
-    const [steps, setSteps] = useState(null);
-    const [images, setImages] = useState(null);
+    const [steps, setSteps] = useState([]);
+    const [images, setImages] = useState([]);
 
     const [current, setCurrent] = useState(0);
 
     const [triggerAd, setTriggerAd] = useState(0);
     const adsHandlerRef = createRef();
 
-    // Obtener pasos
     useEffect(() => {
-        const steps = fetchData(name).steps;
-        setSteps(steps);
-    }, [])
+        if (images.length < 1 && steps.length < 1) {
+            // Pasos
+            const steps = fetchData(name);
+            setSteps(steps);
 
-    // Obtener la imagen que debe mostrarse en este instante.
-    useEffect(() => {
-        const images = fetchData(name).images;
-        setImages(images);
-    }, [current])
+            // Imagenes
+            fetchImages(name).then((result) => setImages(result));
+        }
+    }, [])
 
     // Gestión de anuncios
     useEffect(() => {
@@ -48,10 +47,10 @@ export default function Category() {
             <Stack.Screen options={{ headerShown: false }} />
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={styles.container}>
-                <Text style={ui.h2}>{name}</Text>
-                <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                <Text style={[ui.h2, {marginBottom: 8}]}>{name}</Text>
+                <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} />
-                {steps && <Progress current={(current+1)} qty={steps.length} />}
+                {images && images.length > 0 && <Progress current={(current+1)} qty={steps.length} />}
             </View>
         </>
     )
@@ -59,12 +58,11 @@ export default function Category() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.95,
+        flex: 0.97,
         width: "100%",
         alignSelf: "center",
-        justifyContent: "center",
-        paddingTop: StatusBar.currentHeight + 24,
-        paddingHorizontal: 24,
-        
+        justifyContent: "space-around",
+        gap: 12,
+        paddingTop: StatusBar.currentHeight + 16,
     }
 })

@@ -12,9 +12,9 @@ export default function Progress({ current, qty }) {
     }));
 
     return (
-        <View style={{ marginBottom: 8, gap: 3 }}>
+        <View style={{ gap: 3, marginHorizontal: 16 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Text style={[ui.text, { fontWeight: "bold" }]}>{current} / {qty} </Text>
+                <Text style={[ui.text, { fontWeight: "bold", marginLeft: 3 }]}>{current} / {qty} </Text>
                 {
                     current === (qty) ?
                         <Link href="/list"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>

@@ -6,7 +6,7 @@ export const ui = {
     text: {
         fontFamily: "Slabo",
         color: "black",
-        fontSize: 20,
+        fontSize: 18.5,
     },
     muted: {
         fontFamily: "SourceSansRegular",

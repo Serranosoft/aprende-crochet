@@ -1,7 +1,6 @@
-import { Dimensions, StyleSheet, Text } from "react-native";
+import { Dimensions, Image, StyleSheet, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { ui } from "../../src/utils/styles";
-import { Image } from 'expo-image';
 import { bannerId } from "../../src/utils/constants";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import LottieView from 'lottie-react-native';
@@ -12,10 +11,6 @@ import { View } from "react-native";
 
 export default function Card({steps, images, setTriggerAd, setCurrent, current}) {
 
-    useEffect(() => {
-        console.log(steps);
-    }, [])
-
     const position = useSharedValue(0);
 
     const tap = Gesture.Pan().runOnJS(true)
@@ -25,13 +20,13 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
         })
         .onEnd((e) => {
             if (e.translationX < -60) {
-                if (current < steps.length) {
+                if ((current + 1) < steps.length) {
                     position.value = withTiming(position.value * 10, { duration: 400, easing: Easing.ease });
                     if (e.translationX < 60 && e.translationX > -60) {
                         position.value = withTiming(0, { duration: 400, easing: Easing.ease });
                     }
                     setTimeout(() => {
-                        setCurrent(current + 1);
+                        setCurrent((current) => current + 1);
                         position.value = Dimensions.get("window").width;
                         position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
                         setTriggerAd((triggerAd) => triggerAd + 1);
@@ -47,7 +42,7 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
                         position.value = withTiming(0, { duration: 400, easing: Easing.ease });
                     }
                     setTimeout(() => {
-                        setCurrent(current - 1);
+                        setCurrent((current) => current - 1);
                         position.value = -Dimensions.get("window").width;
                         position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
                         setTriggerAd((triggerAd) => triggerAd + 1);
@@ -66,12 +61,12 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
 
     return (
         <GestureDetector gesture={tap}>
-            {steps ?
+            {steps.length > 0 ?
                 <Animated.View style={[animatedStyle, styles.wrapper]}>
-                    {/* {image ? <Image style={styles.image} source={{ uri: image }} /> : <Text></Text>} */}
+                    {images[current] && <Image style={styles.image} source={{ uri: images[current] }} resizeMode="contain" />}
                     {steps.length > 0 &&
                         <View style={styles.card}>
-                            <Text style={ui.text}>{steps[current]}</Text>
+                            <Text style={[ui.text, { textAlign: "center", lineHeight: 21}]}>{steps[current]}</Text>
                         </View>
                     }
                 </Animated.View>
@@ -86,22 +81,17 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center",
-        gap: 8,
+        marginHorizontal: 20,
     },
     card: {
         width: "100%",
-        paddingHorizontal: 24,
-        paddingVertical: 24,
-        borderRadius: 12,
-        borderWidth: 2,
-        borderColor: "#5193F1",
-        borderRadius: 16,
+        paddingHorizontal: 18,
+        paddingVertical: 8,
     },
     image: {
-        width: "90%",
-        aspectRatio: 1,
-        contentFit: "contain",
+        width: "100%",
+        height: 230,
     }
 })
