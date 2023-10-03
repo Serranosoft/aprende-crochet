@@ -1,15 +1,17 @@
 import { Dimensions, Image, StyleSheet, Text } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { withSpring } from "react-native-reanimated";
 import { ui } from "../../src/utils/styles";
 import { bannerId } from "../../src/utils/constants";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import LottieView from 'lottie-react-native';
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function Card({steps, images, setTriggerAd, setCurrent, current}) {
+export default function Card({ steps, images, setTriggerAd, setCurrent, current, stepsLength }) {
+
+    const [hasImage, setHasImage] = useState(true);
 
     const position = useSharedValue(0);
 
@@ -20,7 +22,7 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
         })
         .onEnd((e) => {
             if (e.translationX < -60) {
-                if ((current + 1) < steps.length) {
+                if ((current + 1) < stepsLength) {
                     position.value = withTiming(position.value * 10, { duration: 400, easing: Easing.ease });
                     if (e.translationX < 60 && e.translationX > -60) {
                         position.value = withTiming(0, { duration: 400, easing: Easing.ease });
@@ -59,17 +61,47 @@ export default function Card({steps, images, setTriggerAd, setCurrent, current})
         transform: [{ translateX: position.value }],
     }));
 
+
+    const height = useSharedValue(230);
+    const animatedHeight = useAnimatedStyle(() => ({
+        width: "100%",
+        height: height.value,
+    }))
+
+
+    useEffect(() => {
+        console.log("On error ?!");
+        if (!hasImage) {
+            height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1),});
+        } else {
+            height.value = withSpring(230);
+        }
+    }, [hasImage])
+
     return (
         <GestureDetector gesture={tap}>
-            {steps.length > 0 ?
+            {steps || images ?
+
                 <Animated.View style={[animatedStyle, styles.wrapper]}>
-                    {images[current] && <Image style={styles.image} source={{ uri: images[current] }} resizeMode="contain" />}
+
                     {steps.length > 0 &&
                         <View style={styles.card}>
-                            <Text style={[ui.text, { textAlign: "center", lineHeight: 21}]}>{steps[current]}</Text>
+                            <Animated.View style={animatedHeight}>
+                                {images[current] &&
+                                    <Image
+                                        style={styles.image}
+                                        source={{ uri: images[current] }}
+                                        resizeMode="contain"
+                                        onError={() => setHasImage(false)}
+                                        onLoad={() => setHasImage(true)}
+                                    />
+                                }
+                            </Animated.View>
+                            <Text style={[ui.text, { textAlign: "center", lineHeight: 21 }]}>{steps[current]}</Text>
                         </View>
                     }
                 </Animated.View>
+
                 :
                 <LottieView source={require("../../assets/lottie/loading-animation.json")} style={styles.lottie} loop={true} autoPlay={true} />
             }
@@ -89,9 +121,10 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingHorizontal: 18,
         paddingVertical: 8,
+        gap: 24, 
     },
     image: {
         width: "100%",
-        height: 230,
+        height: "100%",
     }
 })

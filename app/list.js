@@ -25,7 +25,7 @@ export default function List() {
             <View style={styles.title}>
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -35,7 +35,7 @@ export default function List() {
                             renderItem={({ item, i }) => {
                                 return (
                                     <TouchableOpacity key={i} style={styles.itemWrapper}>
-                                        <Link href={{ pathname: "/category", params: { name: item.name } }}>
+                                        <Link href={{ pathname: "/category", params: { name: item.name, stepsLength: item.steps } }}>
                                             <View style={styles.item}>
                                                 { item.image && item.image.length > 0 && <Image style={styles.image} source={{ uri: item.image  }} /> }
                                                 <View style={styles.info}>

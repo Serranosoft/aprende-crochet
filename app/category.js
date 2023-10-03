@@ -12,7 +12,7 @@ import { bannerId } from "../src/utils/constants";
 export default function Category() {
 
     const params = useLocalSearchParams();
-    const { name } = params;
+    const { name, stepsLength } = params;
     
     const [steps, setSteps] = useState([]);
     const [images, setImages] = useState([]);
@@ -29,7 +29,7 @@ export default function Category() {
             setSteps(steps);
 
             // Imagenes
-            fetchImages(name).then((result) => setImages(result));
+            fetchImages(name, stepsLength).then((result) => setImages(result));
         }
     }, [])
 
@@ -49,8 +49,8 @@ export default function Category() {
             <View style={styles.container}>
                 <Text style={[ui.h2, {marginBottom: 8}]}>{name}</Text>
                 <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
-                <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} />
-                {images && images.length > 0 && <Progress current={(current+1)} qty={steps.length} />}
+                <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
+                <Progress current={(current+1)} qty={stepsLength} />
             </View>
         </>
     )
