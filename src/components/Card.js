@@ -1,5 +1,5 @@
-import { Dimensions, Image, StyleSheet, Text } from "react-native";
-import Animated, { withSpring } from "react-native-reanimated";
+import { Dimensions, StyleSheet, Text, Image } from "react-native";
+import Animated, { FadeInDown, FadeInRight, withSpring } from "react-native-reanimated";
 import { ui } from "../../src/utils/styles";
 import { bannerId } from "../../src/utils/constants";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
@@ -70,7 +70,6 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
 
 
     useEffect(() => {
-        console.log("On error ?!");
         if (!hasImage) {
             height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1),});
         } else {

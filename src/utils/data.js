@@ -2,52 +2,52 @@ export const categories_raw = [
     {
         name: "Punto cadena",
         steps: 6,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-cadena.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-cadena.jpg",
     },
     {
         name: "Punto enano",
         steps: 5,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-enano.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-enano.jpg",
     },
     {
         name: "Punto medio alto",
         steps: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-medio.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-medio.jpg",
     },
     {
         name: "Punto alto",
         steps: 11,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-alto.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto.jpg",
     },
     {
         name: "Punto bajo",
         steps: 8,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-bajo.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-bajo.jpg",
     },
     {
         name: "Punto alto doble",
         steps: 14,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/punto-alto-doble.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto-doble.jpg",
     },
     {
         name: "Anillo base",
         steps: 3,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/anillo-base.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/anillo-base.jpg",
     },
     {
         name: "Bolso Cruzado",
         steps: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/bolso-cruzado.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/bolso-cruzado.jpg",
     },
     {
         name: "Bolso redondo",
         steps: 12,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/bolso-redondo.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/bolso-redondo.jpg",
     },
     {
         name: "Manta bebe oveja",
         steps: 31,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/09/manta-oveja-bebe.jpg",
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/manta-oveja-bebe.jpg",
     },
     {
         name: "Vestido niña",

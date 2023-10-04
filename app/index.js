@@ -6,7 +6,7 @@ import { ui } from '../src/utils/styles';
 export default function App() {
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} sharedTransitionTag="first">
             <Stack.Screen options={{ headerShown: false }} />
             <Video resizeMode='cover' repeat source={{ uri: "https://lprvpqlrafnadcofezxc.supabase.co/storage/v1/object/public/resources/pexels-miriam-alonso-7577400%20(720p).mp4" }} style={styles.lottie} />
 

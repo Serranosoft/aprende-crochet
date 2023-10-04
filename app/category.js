@@ -43,26 +43,32 @@ export default function Category() {
 
 
     return (
-        <>
+        <View sharedTransitionTag="second" style={styles.container}>
             <Stack.Screen options={{ headerShown: false }} />
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
-            <View style={styles.container}>
+            <View style={styles.wrapper}>
                 <Text style={[ui.h2, {marginBottom: 8}]}>{name}</Text>
                 <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
                 <Progress current={(current+1)} qty={stepsLength} />
             </View>
-        </>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
+
     container: {
-        flex: 0.97,
+        flex: 1,
         width: "100%",
-        alignSelf: "center",
+        backgroundColor: "#fff",
+        paddingTop: StatusBar.currentHeight + 16,
+        justifyContent: "center",
+    },
+
+    wrapper: {
+        flex: 0.97,
         justifyContent: "space-around",
         gap: 12,
-        paddingTop: StatusBar.currentHeight + 16,
     }
 })

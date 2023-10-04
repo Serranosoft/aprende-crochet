@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { Text, View } from "react-native";
-import { useAnimatedStyle } from "react-native-reanimated";
+import { FadeInDown, useAnimatedStyle } from "react-native-reanimated";
 import Animated from 'react-native-reanimated';
 import { ui } from "../utils/styles";
 import { Link } from "expo-router";
@@ -12,7 +11,7 @@ export default function Progress({ current, qty }) {
     }));
 
     return (
-        <View style={{ gap: 3, marginHorizontal: 16 }}>
+        <Animated.View style={{ gap: 3, marginHorizontal: 16 }} entering={FadeInDown}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                 <Text style={[ui.text, { fontWeight: "bold", marginLeft: 3 }]}>{current} / {qty} </Text>
                 {
@@ -25,6 +24,6 @@ export default function Progress({ current, qty }) {
             <View style={{ backgroundColor: "rgba(0,0,0,0.5)", height: 16, borderRadius: 16, width: "100%" }}>
                 <Animated.View style={[animatedStyle, { backgroundColor: "#92C742", height: 16, borderRadius: 16 }]}></Animated.View>
             </View>
-        </View>
+        </Animated.View>
     )
 }

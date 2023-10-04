@@ -26,7 +26,7 @@ export const ui = {
     h3: {
         fontFamily: "Changa",
         color: "black",
-        fontSize: 22,
+        fontSize: 20,
     },
     button: {
         paddingVertical: 12,

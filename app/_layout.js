@@ -1,4 +1,4 @@
-import { Slot, SplashScreen } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { View, StatusBar, StyleSheet, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ export default function Layout() {
             :
             <View style={styles.container}>
                 <GestureHandlerRootView style={styles.wrapper}>
-                    <Slot />
+                    <Stack screenOptions={{ headerStyle: { backgroundColor: '#fff', color: "#fff" }, }}/>
                 </GestureHandlerRootView>
                 <StatusBar style="light" />
             </View >
