@@ -1,20 +1,19 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View, StatusBar } from "react-native";
+import { FlatList, StyleSheet, Text, View, StatusBar } from "react-native";
 import { Link, Stack } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
-import { useEffect, useMemo, useState } from "react";
-import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
+import { useMemo, useState } from "react";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
 import { categories_raw } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
-import Animated, { BounceInRight, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 export default function List() {
 
     const [categories, setCategories] = useState([])
     useMemo(() => setCategories(categories_raw), [categories]);
-
 
     return (
         <View style={styles.container} sharedTransitionTag="first">
@@ -22,7 +21,7 @@ export default function List() {
             <View style={styles.title}>
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
-            <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -49,12 +48,9 @@ export default function List() {
                             }}
                         />
                     </View>
-
-                   
                     :
                     <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
             }
-            {/* <BannerAd unitId={bannerId} size={BannerAdSize.LARGE_BANNER} requestOptions={{}} /> */}
         </View>
     )
 }

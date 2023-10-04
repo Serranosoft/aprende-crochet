@@ -16,10 +16,10 @@ const AdsHandler = forwardRef((props, ref) => {
 
     useImperativeHandle(ref, () => ({
         loadIntersitialAd() {
-            // loadIntersitial();
+            loadIntersitial();
         },
         showIntersitialAd() {
-            // showIntersitialAd();
+            showIntersitialAd();
         },
         isClosedIntersitial() {
             return isClosedIntersitial;

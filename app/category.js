@@ -3,10 +3,10 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { createRef, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
-import { fetchData, fetchImages, getAllImages } from "../src/utils/data";
+import { fetchData, fetchImages } from "../src/utils/data";
 import Card from "../src/components/Card";
 import { ui } from "../src/utils/styles";
-import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
 
 export default function Category() {
@@ -48,7 +48,7 @@ export default function Category() {
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={styles.wrapper}>
                 <Text style={[ui.h2, {marginBottom: 8}]}>{name}</Text>
-                <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
                 <Progress current={(current+1)} qty={stepsLength} />
             </View>
