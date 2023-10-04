@@ -63,17 +63,25 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
 
 
     const height = useSharedValue(230);
+    const fontSize = useSharedValue(19);
+
     const animatedHeight = useAnimatedStyle(() => ({
         width: "100%",
-        height: height.value,
+        height: height.value
+    }))
+    const animatedText = useAnimatedStyle(() => ({
+        fontSize: fontSize.value
     }))
 
 
     useEffect(() => {
         if (!hasImage) {
-            height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1),});
+            height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
+            fontSize.value = withTiming(22, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
         } else {
             height.value = withSpring(230);
+            fontSize.value = withTiming(19, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
+
         }
     }, [hasImage])
 
@@ -82,23 +90,20 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
             {steps || images ?
 
                 <Animated.View style={[animatedStyle, styles.wrapper]}>
-
-                    {steps.length > 0 &&
-                        <View style={styles.card}>
-                            <Animated.View style={animatedHeight}>
-                                {images[current] &&
-                                    <Image
-                                        style={styles.image}
-                                        source={{ uri: images[current] }}
-                                        resizeMode="contain"
-                                        onError={() => setHasImage(false)}
-                                        onLoad={() => setHasImage(true)}
-                                    />
-                                }
-                            </Animated.View>
-                            <Text style={[ui.text, { textAlign: "center", lineHeight: 21 }]}>{steps[current]}</Text>
-                        </View>
-                    }
+                    <View style={styles.card}>
+                        <Animated.View style={animatedHeight}>
+                            {images[current] &&
+                                <Image
+                                    style={styles.image}
+                                    source={{ uri: images[current] }}
+                                    resizeMode="contain"
+                                    onError={() => setHasImage(false)}
+                                    onLoad={() => setHasImage(true)}
+                                />
+                            }
+                        </Animated.View>
+                        <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{steps[current]}</Animated.Text>
+                    </View>
                 </Animated.View>
 
                 :
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingHorizontal: 18,
         paddingVertical: 8,
-        gap: 24, 
+        gap: 24,
     },
     image: {
         width: "100%",
