@@ -23,7 +23,7 @@
                 "foregroundImage": "./assets/logo-croche.png",
                 "backgroundColor": "#5193F0"
             },
-            "versionCode": 4,
+            "versionCode": 5,
             "package": "com.paulaymanu113.crochet"
         },
         "web": {
