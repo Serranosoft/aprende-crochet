@@ -27,6 +27,7 @@ export const ui = {
         fontFamily: "Changa",
         color: "black",
         fontSize: 20,
+        textAlign: "center",
     },
     button: {
         paddingVertical: 12,

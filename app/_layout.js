@@ -4,6 +4,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import { MobileAds } from 'react-native-google-mobile-ads';
+import * as Notifications from 'expo-notifications';
 
 export default function Layout() {
 
@@ -26,13 +27,23 @@ export default function Layout() {
             // Initialization complete!
         });
 
+
+    useEffect(() => {
+        Notifications.setNotificationHandler({
+            handleNotification: async () => ({
+                shouldShowAlert: true,
+                shouldPlaySound: false,
+                shouldSetBadge: false,
+            }),
+        });
+    }, [])
     return (
         !isReady ?
             <SplashScreen />
             :
             <View style={styles.container}>
                 <GestureHandlerRootView style={styles.wrapper}>
-                    <Stack screenOptions={{ headerStyle: { backgroundColor: '#fff', color: "#fff" }, }}/>
+                    <Stack screenOptions={{ headerStyle: { backgroundColor: '#fff', color: "#fff" }, }} />
                 </GestureHandlerRootView>
                 <StatusBar style="light" />
             </View >

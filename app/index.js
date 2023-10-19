@@ -1,9 +1,15 @@
 import Video from 'react-native-video';
 import { Link, Stack } from 'expo-router';
-import { Pressable, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { ui } from '../src/utils/styles';
+import { scheduleWeeklyNotification } from '../src/utils/notifications';
+import { useEffect } from 'react';
 
 export default function App() {
+
+    useEffect(() => {
+        scheduleWeeklyNotification();
+    }, [])
 
     return (
         <View style={styles.container} sharedTransitionTag="first">

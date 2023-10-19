@@ -3,7 +3,7 @@ import { Link, Stack } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useMemo, useState } from "react";
-import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId } from "../src/utils/constants";
 import { categories_raw } from "../src/utils/data";
 import { Pressable } from "react-native";
@@ -21,7 +21,8 @@ export default function List() {
             <View style={styles.title}>
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            <Text style={[ui.h3, styles.subtitle]}>¡Tenemos nuevas guías abajo del todo!</Text>
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -67,9 +68,18 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        flexDirection: "row",
         alignItems: "center",
         gap: 6,
+    },
+
+    subtitle: {
+        maxWidth: 300, 
+        padding: 16, 
+        backgroundColor: "#5193F1", 
+        color: "#fff", 
+        borderRadius: 8, 
+        transform: [{ rotate: "-7deg" }], 
+        marginVertical: 6,
     },
 
     lottie: {
