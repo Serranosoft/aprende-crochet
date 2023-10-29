@@ -43,7 +43,7 @@ export async function scheduleWeeklyNotification() {
         const notificacionesProgramadas = await Notifications.getAllScheduledNotificationsAsync();
 
         const existeNotificacionProgramada = notificacionesProgramadas.some((notificacion) => {
-            return notificacion.identifier === 'notificacion-semanal';
+            return notificacion.identifier === 'notificacion-semanal-miercoles';
         });
 
         // Si ya hay una notificación programada, no hagas nada
@@ -53,7 +53,7 @@ export async function scheduleWeeklyNotification() {
         }
 
         const notificacion = {
-            identifier: 'notificacion-semanal',
+            identifier: 'notificacion-semanal-miercoles',
             content: {
                 title: '¿Has practicado hoy crochet?',
                 body: '¡Empieza a elaborar los puntos mas comunes!',
@@ -67,30 +67,29 @@ export async function scheduleWeeklyNotification() {
         // Programa la notificación
         await Notifications.scheduleNotificationAsync(notificacion);
 
-        console.log('Notificación programada para el próximo sábado a las 19:00');
+        console.log('Notificación programada para el próximo miercoles a las 16:00');
     } catch (error) {
         console.error('Error al programar la notificación:', error);
     }
 };
 
 export function getLeftTimeToNextSaturday() {
-    const hoy = new Date();
-    const diaDeLaSemana = hoy.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+    const today = new Date();
+    const currentDay = today.getDay();
 
-    // Calcula cuántos días faltan hasta el próximo sábado
-    const diasHastaSabado = 6 - diaDeLaSemana;
+    const daysUntilWednesday = 3 - currentDay;
+    const nextWednesday = new Date(today);
+    nextWednesday.setDate(today.getDate() + daysUntilWednesday);
+    nextWednesday.setHours(16, 0, 0, 0);
+    
+    if (today > nextWednesday) {
+        nextWednesday.setDate(nextWednesday.getDate() + 7); // Añade 7 días para el próximo miercoles
+    }
 
-    // Crea una nueva fecha para el próximo sábado
-    const proximoSabado = new Date(hoy);
-    proximoSabado.setDate(hoy.getDate() + diasHastaSabado);
+    // Calcula la diferencia en segundos entre la fecha actual y el próximo miercoles a las 16:00
+    const diff = Math.floor((nextWednesday - today) / 1000);
 
-    // Establece la hora a las 19:00:00 para el próximo sábado
-    proximoSabado.setHours(19, 0, 0, 0);
-
-    // Calcula la diferencia en segundos entre la fecha actual y el próximo sábado a las 19:00
-    const diferenciaEnSegundos = Math.floor((proximoSabado - hoy) / 1000);
-
-    return diferenciaEnSegundos;
+    return diff;
 }
 
 

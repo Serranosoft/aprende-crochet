@@ -3,7 +3,6 @@ import { View, StatusBar, StyleSheet, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
-import { MobileAds } from 'react-native-google-mobile-ads';
 import * as Notifications from 'expo-notifications';
 
 export default function Layout() {
@@ -20,13 +19,6 @@ export default function Layout() {
             setReady(true);
         }
     }, [fontsLoaded]);
-
-    MobileAds()
-        .initialize()
-        .then(adapterStatuses => {
-            // Initialization complete!
-        });
-
 
     useEffect(() => {
         Notifications.setNotificationHandler({
