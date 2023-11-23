@@ -63,6 +63,16 @@ export const categories_raw = [
         name: "Cesta trapillo",
         steps: 5,
         image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/cesta-trapillo.jpg",
+    },
+    {
+        name: "Bola navidad",
+        steps: 10,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/bola-navidad.jpg",
+    },
+    {
+        name: "Boina",
+        steps: 10,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/boina.jpg",
     }
 ]
 
@@ -78,6 +88,8 @@ const Manta_bebe_oveja = ["Necesitamos Hilo de algodón color Natural, Ganchillo
 const Vestido_nina = ["Necesitamos lana de 3,5 mm y un ganchillo de 3 mm. Hacemos 96 cadenetas.", "Hacer un punto deslizado en la primera cadeneta del inicio para cerrar el círculo. Hacer 96 cadenetas.", "Repetir  3 varetas", "Nos saltamos una cadeneta", "En el mismo espacio realizamos 1 punto piña de 2 varetas, 1 cadeneta, 1 punto piña de dos varetas)1 cadeneta, nos saltamos una cadeneta. Hasta el final de la vuelta", "Cuando cerramos la vuelta 3, hacemos 3 cadenetas y repetimos * 1 aumento", "Hacemos varetas hasta llegar a la última vareta de la vuelta anterior, ahí nos saltamos una cadeneta", "En el mismo espacio (1 punto piña de 2 varetas, 1 cadeneta, 1 punto piña de dos varetas), 1 cadeneta, nos saltamos una cadeneta*. Hasta el final de la vuelta", "Hacer un punto deslizado en la primera vareta de la cuarta repetición", "Repetimos el proceso de tejido. Hacemos 3 cadenetas y comenzamos con 1 aumento, varetas hasta llegar a la última vareta de la vuelta anterior, nos saltamos una cadeneta, en el mismo espacio (1 punto piña de 2 varetas, 1 cadeneta, 1 punto piña de dos varetas), 1 cadeneta, nos saltamos una cadeneta*. Hasta el final de la vuelta", "Ubicar la otra manga en el otro lado del vestido (dejar tres repeticiones para la otra manga)", "Repetir;* 1 aumento, varetas hasta llegar a la última vareta de la vuelta anterior, nos saltamos una cadeneta, en el mismo espacio (1 punto piña de 2 varetas, 1 cadeneta, 1 punto piña de dos varetas), 1 cadeneta, nos saltamos una cadeneta*. Hasta el final de la vuelta", "Vueltas 12 a 14: Repetir * 1 aumento, varetas hasta llegar a la última vareta de la vuelta anterior, nos saltamos una cadeneta, en el mismo espacio (1 punto piña de 2 varetas, 1 cadeneta, 1 punto piña de dos varetas), 1 cadeneta, nos saltamos una cadeneta*. Hasta el final de la vuelta", "Vuelta 15: Repetir *1 vareta en todos las varetas de la vuelta anterior, repetir los puntos piña*. Hasta el final de la vuelta.", "Vuelta 16: Repetir * 1 aumento, varetas hasta llegar a la última vareta de la vuelta anterior, repetir los puntos piña*. Repetir hasta el final de la vuelta. Repetir vueltas 15 y 16 hasta la vuelta 28", "Vueltas 29 a 32: Repetir *1 vareta en todos las varetas de la vuelta anterior, repetir los puntos piña*. Hasta el final de la vuelta", "Vuelta 33: Repetir * 1 aumento, varetas hasta llegar a la última vareta de la vuelta anterior, repetir los puntos piña*. Repetir hasta el final de la vuelta", "Vueltas 34 a 37: Repetir *1 vareta en todos las varetas de la vuelta anterior, repetir los puntos piña*. Hasta el final de la vuelta"];
 const Pulsera_trapillo = ["Nos guiaremos por este esquema (aunque no igual). Mide tu muñeca con un metro y corta 6 trozos de trapillo del mismo largo. Que tengan 1 cm de ancho.", "Coloca las 6 tiras de trapillo sobre una superficie y aguántalas con un objeto que pese en un extremo para que no se muevan. Pasa el trapillo 6 por debajo del 5 y por encima del 4.", "Coloca la tira 1 por debajo de la 2 y por encima de la 3. En el centro, pasa la tira 1 por debajo de la tira 6 que habíamos movido antes.", "Repite el proceso y ve apretando los nudos como cuando haces una trenza.", "Cuando quede poco para el final, haz un nudo. Antes del nudo añade un poco de silicona caliente y deja que se sque. Después corta justo entre el nudo y la silicona.", "Añade silicona caliente en ambos extremos de la pulsera y unelas para que se peguen. Deja que se seque unos miutos mientras la sostienes así.", "Recorta un trozo de tela del grosor de la pulsera y pegala o cosela por la parte exterior de la pulsera para que no se vea la unión."];
 const Cesta_trapillo = ["Necesitamos un trapillo de 4 mm (puede ser uno o varios colores) y una aguja de crochet de 12 mm", "Para la base comenzamos con 15 cadenetas. En la 2 vuelta, hacemos 1 cadeneta y 15 puntos bajos.", "En los laterales, trabajamos en punto bajo todas las vueltas. Terminamos con un punto raso y empezando con una cadena.", "Hacemos las asas, que estarán en los 2 laterales más estrechos. En la 7 vuelta, tejemos 4 puntos bajos, 4 puntos rasos y 3 puntos bajos. Se puede ver mejor en el diagrama.", "Para la vuelta 8 en las asas, hacemos 3 puntos bajos, 4 cadenetas y 3 puntos bajos."];
+const Bola_navidad = ["Necesitamos 3 madejas de hilo metalizado para crochet (azul claro:A, rosa:B y blanco:C), ganchillo de 2,5mm, relleno sintético y aguja lanera. Utilizaremos punto bajo (Pb), disminución (D), aumento (A). Indicaremos los puntos de cada vuelta con P.", "Las piezas se van a tejer en puntos bajos, en redondo. Voy a usar un marcador de puntos en el último punto de cada vuelta.", "Color A: Comenzamos con un anillo mágico de 6 Pb (6P).", "Hacemos un A en cada punto (12P).", "Seguimos con 4 Pb, 1 A (36P).", "Continuamos con 5 Pb, 1 A (42P).", "Hacemos 1 Pb en cada punto por dos vueltas (42P).", "Con el color B: Hacemos 1 Pb en cada punto. Con el color A: Hacemos 1 Pb en cada punto por dos vueltas.", "Con el color B: Hacemos 1 Pb en cada punto. Con el color A: Hacemos 1 Pb en cada punto por dos vueltas", "Para colgar el adorno, puedes tejer una cadeneta y coserla en el extremo de la bola navideña."]
+const Boina = ["Necesitamos 2 ovillos de lana del mismo color y un ganchillo de 12 mm. La boina se teje en espiral. Utilizaremos punto alto (Pa), punto bajo (Pb), disminución (Dism) y punto enanos (P.e)", "Comenzamos con un anillo mágico de 6 puntos bajos.", "En la 1 vuelta: Repetimos 6 veces un Pb y Pa en el mismo punto.", "En la vuelta 2: Repetimos 12 veces un Pb y Pa en el mismo punto.", "En la vuelta 3: Repetimos 12 veces un Pb y Pa en el mismo punto.", "En la vuelta 4: Repetimos 24 veces un Pb y Pa en el mismo punto.", "En las vueltas desde la 5 hasta la 9: Repetimos 12 veces un Pb y Pa en el mismo punto.", "En la vuelta 10: Repetimos 12 veces 2 puntos bajos y 1 disminución en el mismo punto.", "En la vuelta 11: Hacemos un punto enano en cada punto.", "Quedaría recortar y ya estaría la boina lista. Quedaría con un diámetro de 58 cm. Para un diámetro menor, puedes usar unas agujas de 9 mm."]
 
 export function fetchData(category) {
     switch (category.replace(/\s/g, "_")) {
@@ -103,6 +115,10 @@ export function fetchData(category) {
             return Pulsera_trapillo;
         case "Cesta_trapillo":
             return Cesta_trapillo;
+        case "Bola_navidad":
+            return Bola_navidad;
+        case "Boina":
+            return Boina;
         default:
             return [];
     }

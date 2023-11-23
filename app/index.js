@@ -28,7 +28,7 @@ export default function Home() {
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
             <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
-            <Text style={[ui.h3, styles.subtitle]}>¡Tenemos nuevas guías abajo del todo!</Text>
+            <Text style={[ui.h3, styles.subtitle]}>¡Nuevas guías de navidad abajo del todo!</Text>
             {
                 categories.length > 0 ?
                     <View style={styles.list}>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#5193F1", 
         color: "#fff", 
         borderRadius: 8, 
-        transform: [{ rotate: "-7deg" }], 
+        transform: [{ rotate: "3deg" }], 
         marginVertical: 6,
     },
 

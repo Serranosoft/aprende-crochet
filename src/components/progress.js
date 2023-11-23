@@ -16,7 +16,7 @@ export default function Progress({ current, qty }) {
                 <Text style={[ui.text, { fontWeight: "bold", marginLeft: 3 }]}>{current} / {qty} </Text>
                 {
                     current == qty ?
-                        <Link href="/list"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
+                        <Link href="/"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
                         :
                         <Text style={[ui.text, { fontSize: 16 }]}>Desliza para ver el siguiente paso</Text>
                 }
