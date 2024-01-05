@@ -23,7 +23,7 @@
                 "foregroundImage": "./assets/logo-croche.png",
                 "backgroundColor": "#5193F0"
             },
-            "versionCode": 7,
+            "versionCode": 8,
             "package": "com.paulaymanu113.crochet"
         },
         "web": {
@@ -36,7 +36,7 @@
         }
     },
     "react-native-google-mobile-ads": {
-        "android_app_id": "ca-app-pub-3963345159052388~7225201242",
-        "ios_app_id": "ca-app-pub-3963345159052388~7225201242"
+        "android_app_id": "ca-app-pub-3738413299329691~5567274990",
+        "ios_app_id": "ca-app-pub-3738413299329691~5567274990"
     }
 }
