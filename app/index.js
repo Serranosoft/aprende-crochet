@@ -24,10 +24,10 @@ export default function Home() {
     return (
         <View style={styles.container} sharedTransitionTag="first">
             <Stack.Screen options={{ headerShown: false }} />
+            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             <View style={styles.title}>
                 <Text style={ui.h2}>Listado de patrones</Text>
             </View>
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             {
                 categories.length > 0 ?
                     <View style={styles.list}>

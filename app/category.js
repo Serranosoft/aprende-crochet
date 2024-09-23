@@ -35,7 +35,7 @@ export default function Category() {
 
     // Gestión de anuncios
     useEffect(() => {
-        if (triggerAd === 4) {
+        if (triggerAd === 5) {
             adsHandlerRef.current.showIntersitialAd();
             setTriggerAd(0)
         }
@@ -48,9 +48,9 @@ export default function Category() {
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={styles.wrapper}>
                 <Text style={[ui.h2, {marginBottom: 8}]}>{name}</Text>
-                <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
                 <Progress current={(current+1)} qty={stepsLength} />
+                <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             </View>
         </View>
     )
