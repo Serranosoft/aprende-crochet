@@ -1,7 +1,7 @@
 import { SplashScreen, Stack } from "expo-router";
-import { View, StatusBar, StyleSheet, Text } from "react-native";
+import { View, StatusBar, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import * as Notifications from 'expo-notifications';
 
@@ -10,8 +10,9 @@ export default function Layout() {
 
     // Carga de fuentes.
     const [fontsLoaded] = useFonts({
-        "Changa": require("../assets/fonts/Changa/Changa.ttf"),
-        "Slabo": require("../assets/fonts/Slabo/Slabo.ttf")
+        "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
+        "poppins-medium": require("../assets/fonts/Poppins-Medium.ttf"),
+        "poppins-bold": require("../assets/fonts/Poppins-Bold.ttf")
     });
 
     useEffect(() => {

@@ -4,30 +4,39 @@ export const ui = {
         width: 35,
     },
     text: {
-        fontFamily: "Slabo",
-        color: "black",
-        fontSize: 19,
+        fontFamily: "poppins-regular",
+        color: "#000",
+        fontSize: 18,
     },
     muted: {
-        fontFamily: "SourceSansRegular",
-        color: "black",
-        fontSize: 15,
+        fontFamily: "poppins-medium",
+        color: "#404040",
+        fontSize: 13,
+        lineHeight: 16,
+    },
+    bold: {
+        fontFamily: "poppins-bold"
     },
     h1: {
         fontSize: 60,
-        fontFamily: "Changa",
+        fontFamily: "poppins-bold",
+        color: "#000",
+        lineHeight: 70,
     },
     h2: {
-        fontFamily: "Changa",
-        color: "black",
+        fontFamily: "poppins-bold",
+        color: "#000",
         fontSize: 32,
-        textAlign: "center",
     },
     h3: {
-        fontFamily: "Changa",
-        color: "black",
+        fontFamily: "poppins-medium",
+        color: "#000",
+        fontSize: 24,
+    },
+    h4: {
+        fontFamily: "poppins-medium",
+        color: "#000",
         fontSize: 20,
-        textAlign: "center",
     },
     button: {
         paddingVertical: 12,

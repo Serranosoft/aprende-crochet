@@ -1,19 +1,20 @@
-import { FlatList, StyleSheet, Text, View, StatusBar } from "react-native";
-import { Link, Stack } from "expo-router";
+import { FlatList, StyleSheet, Text, View, StatusBar, TouchableOpacity } from "react-native";
+import { Link, Stack, useRouter } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useEffect, useMemo, useState } from "react";
-import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
-import { bannerId } from "../src/utils/constants";
-import { categories_raw } from "../src/utils/data";
+import { categories_raw, clothes } from "../src/utils/data";
 import { Pressable } from "react-native";
 import { Image } from "expo-image";
-import Animated from "react-native-reanimated";
 import { scheduleWeeklyNotification } from "../src/utils/notifications";
+import Button from "../src/components/button";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Bubble from "../src/components/bubble";
 
 export default function Home() {
 
     const [categories, setCategories] = useState([])
+    const router = useRouter();
     useMemo(() => setCategories(categories_raw), [categories]);
     useEffect(() => scheduleNotification(), []);
 
@@ -22,108 +23,173 @@ export default function Home() {
     }
 
     return (
-        <View style={styles.container} sharedTransitionTag="first">
+        <>
             <Stack.Screen options={{ headerShown: false }} />
-            <BannerAd unitId={bannerId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
-            <View style={styles.title}>
-                <Text style={ui.h2}>Listado de patrones</Text>
-            </View>
-            {
-                categories.length > 0 ?
-                    <View style={styles.list}>
-                        <FlatList
-                            data={categories}
-                            numColumns={1}
-                            initialNumToRender={6}
-                            renderItem={({ item, i }) => {
-                                return (
-                                    <Animated.View key={i} style={styles.itemWrapper} sharedTransitionTag="second">
-                                        <Link asChild href={{ pathname: "/category", params: { name: item.name, stepsLength: item.steps } }}>
-                                            <Pressable>
-                                                <View style={styles.item}>
-                                                    <Image transition={1000} style={styles.image} source={item.image} placeholder={"LZLruhayXot8W?fQs*jt~8fQ=?js"} />
-                                                    <View style={styles.info}>
-                                                        <Text style={[ui.h3, ui.bold]}>{item.name}</Text>
-                                                        <Text style={ui.text}>{item.steps} pasos</Text>
-                                                    </View>
-                                                </View>
-                                            </Pressable>
-                                        </Link>
-                                    </Animated.View>
-                                )
-                            }}
-                        />
+            <View style={styles.container}>
+
+                <Bubble style={{ position: "absolute", top: -200, left: -100, width: 300, height: 300, opacity: 0.75 }} />
+
+                <View>
+                    <Text style={ui.h1}>¡Hola!</Text>
+                    <Text style={ui.muted}>Diseños de crochet que tenemos disponibles</Text>
+                </View>
+
+                <View style={styles.grid}>
+                    <Link style={[styles.box, { backgroundColor: "#00b6ff" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 1].name, stepsLength: clothes[clothes.length - 1].steps } }} asChild>
+                        <TouchableOpacity>
+                            <Image source={{ uri: clothes[clothes.length - 1].image }} style={styles.icon} />
+                            <View style={styles.boxContent}>
+                                <Text style={[ui.h3, ui.bold]}>{clothes[clothes.length - 1].name}</Text>
+                                <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </Link>
+
+                    <View style={styles.group}>
+                        <Link style={[styles.box, { backgroundColor: "#00d2eb" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 2].name, stepsLength: clothes[clothes.length - 2].steps } }} asChild>
+                            <TouchableOpacity>
+                                <View style={styles.pill}>
+                                    <Text style={[ui.muted, { color: "#fff" }]}>¡Tendencia!</Text>
+                                </View>
+                                <Image source={{ uri: clothes[clothes.length - 2].image }} style={styles.smallIcon} />
+                                <View style={styles.boxContent}>
+                                    <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 2].name}</Text>
+                                    <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </Link>
+
+                        <Link style={[styles.box, { backgroundColor: "#00e7be" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 3].name, stepsLength: clothes[clothes.length - 3].steps } }} asChild>
+                            <TouchableOpacity>
+                                <Image source={{ uri: clothes[clothes.length - 3].image }} style={styles.smallIcon} />
+                                <View style={styles.boxContent}>
+                                    <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 3].name}</Text>
+                                    <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </Link>
                     </View>
-                    :
-                    <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
-            }
-        </View>
+                </View>
+
+                <Button
+                    onClick={() => router.navigate("/designs")}
+                    icon={<MaterialIcons name="menu-book" size={24} color="#fff" />}
+                    text={"Ver todos los diseños"}
+                />
+
+                <Text style={[ui.h3, { marginTop: 16 }]}>Aprende todos los puntos</Text>
+                {
+                    categories.length > 0 ?
+                        <View style={styles.list}>
+                            <FlatList
+                                data={categories}
+                                numColumns={1}
+                                initialNumToRender={6}
+                                renderItem={({ item, i }) => {
+                                    return (
+                                        <View key={i} style={styles.row}>
+                                            <Link asChild href={{ pathname: "/category", params: { name: item.name, stepsLength: item.steps } }}>
+                                                <Pressable>
+                                                    <View style={styles.item}>
+                                                        <Image transition={1000} style={styles.rowImage} source={item.image} placeholder={"LZLruhayXot8W?fQs*jt~8fQ=?js"} />
+                                                        <Text style={[ui.h4, ui.bold, styles.rowTitle]}>{item.name}</Text>
+                                                        <Text style={[ui.muted, { marginLeft: "auto" }]}>{item.steps} pasos</Text>
+                                                    </View>
+                                                </Pressable>
+                                            </Link>
+                                        </View>
+                                    )
+                                }}
+                            />
+                        </View>
+                        :
+                        <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
+                }
+            </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        gap: 24,
-        alignItems: "center",
-        backgroundColor: "white",
-        paddingTop: StatusBar.currentHeight + 24,
+        gap: 12,
+        paddingTop: StatusBar.currentHeight + 32,
         paddingHorizontal: 20,
         backgroundColor: "#fff",
+        alignItems: "flex-start"
     },
 
-    title: {
-        alignItems: "center",
-        gap: 6,
+    grid: {
+        flexDirection: "row",
+        gap: 8,
+        height: 250,
     },
 
-    subtitle: {
-        maxWidth: 300, 
-        padding: 16, 
-        backgroundColor: "#5193F1", 
-        color: "#fff", 
-        borderRadius: 8, 
-        transform: [{ rotate: "3deg" }], 
-        marginVertical: 6,
+    box: {
+        flex: 1,
+        borderRadius: 16,
+        paddingHorizontal: 8,
+        paddingVertical: 12,
+        justifyContent: "space-between"
     },
 
-    lottie: {
-        width: "100%",
-        aspectRatio: 1
+    boxContent: {
+        alignItems: "flex-start",
+    },
+
+    icon: {
+        width: 48,
+        height: 48,
+        borderRadius: 100,
+    },
+
+    smallIcon: {
+        width: 32,
+        height: 32,
+        borderRadius: 100,
+    },
+
+    group: {
+        flex: 1,
+        gap: 8,
     },
 
     list: {
-        flex: 1,
         width: "100%",
+        flex: 1,
     },
 
-    itemWrapper: {
-        width: "100%",
-        flex: 1,
-        padding: 8,
-        marginVertical: 16,
-        elevation: 10,
-        shadowColor: "#5193F1",
-        borderWidth: 2,
-        borderColor: "#5193F1",
-        borderRadius: 16,
-        backgroundColor: "white",
+    row: {
+        marginVertical: 6,
+        backgroundColor: "#e3f0ff",
+        borderRadius: 100,
+        paddingRight: 16
     },
 
     item: {
-        width: "100%",
-        flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        gap: 22,
+        gap: 8,
     },
 
-    image: {
-        aspectRatio: 1,
-        width: 120,
+    rowImage: {
+        width: 56,
+        height: 56,
+        borderRadius: 100,
     },
 
-    info: {
-        gap: 5,
+    rowTitle: {
+        paddingVertical: 12,
+    },
+
+    pill: {
+        paddingHorizontal: 12,
+        paddingVertical: 4,
+        backgroundColor: "#FF7373",
+        position: "absolute",
+        top: -10,
+        right: 10,
+        borderRadius: 8,
     }
 })

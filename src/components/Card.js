@@ -1,8 +1,6 @@
-import { Dimensions, StyleSheet, Text, Image } from "react-native";
-import Animated, { FadeInDown, FadeInRight, withSpring } from "react-native-reanimated";
+import { Dimensions, StyleSheet, Image } from "react-native";
+import Animated, { withSpring } from "react-native-reanimated";
 import { ui } from "../../src/utils/styles";
-import { bannerId } from "../../src/utils/constants";
-import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import LottieView from 'lottie-react-native';
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";

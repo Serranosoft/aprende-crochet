@@ -1,34 +1,4 @@
-export const categories_raw = [
-    {
-        name: "Punto cadena",
-        steps: 6,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-cadena.jpg",
-    },
-    {
-        name: "Punto enano",
-        steps: 5,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-enano.jpg",
-    },
-    {
-        name: "Punto medio alto",
-        steps: 9,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-medio.jpg",
-    },
-    {
-        name: "Punto alto",
-        steps: 11,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto.jpg",
-    },
-    {
-        name: "Punto bajo",
-        steps: 8,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-bajo.jpg",
-    },
-    {
-        name: "Punto alto doble",
-        steps: 14,
-        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto-doble.jpg",
-    },
+export const clothes = [
     {
         name: "Anillo base",
         steps: 3,
@@ -73,6 +43,41 @@ export const categories_raw = [
         name: "Boina",
         steps: 10,
         image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/11/boina.jpg",
+    }
+]
+
+
+
+export const categories_raw = [
+    {
+        name: "Punto cadena",
+        steps: 6,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-cadena.jpg",
+    },
+    {
+        name: "Punto enano",
+        steps: 5,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-enano.jpg",
+    },
+    {
+        name: "Punto medio alto",
+        steps: 9,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-medio.jpg",
+    },
+    {
+        name: "Punto alto",
+        steps: 11,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto.jpg",
+    },
+    {
+        name: "Punto bajo",
+        steps: 8,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-bajo.jpg",
+    },
+    {
+        name: "Punto alto doble",
+        steps: 14,
+        image: "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/punto-alto-doble.jpg",
     }
 ]
 

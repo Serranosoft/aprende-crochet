@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { FadeInDown, useAnimatedStyle } from "react-native-reanimated";
+import { useAnimatedStyle } from "react-native-reanimated";
 import Animated from 'react-native-reanimated';
 import { ui } from "../utils/styles";
 import { Link } from "expo-router";
@@ -11,19 +11,19 @@ export default function Progress({ current, qty }) {
     }));
 
     return (
-        <Animated.View style={{ gap: 3, marginHorizontal: 16 }} entering={FadeInDown}>
+        <View style={{ gap: 3, marginHorizontal: 16 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Text style={[ui.text, { fontWeight: "bold", marginLeft: 3 }]}>{current} / {qty} </Text>
+                <Text style={[ui.text, ui.bold, {  marginLeft: 3 }]}>{current} / {qty} </Text>
                 {
                     current == qty ?
-                        <Link href="/"><Text style={[ui.text, { fontSize: 16, fontWeight: "bold" }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
+                        <Link href="/"><Text style={[ui.text, ui.bold, { fontSize: 13 }]}>¡Listo! Toca aquí para ver otra guía</Text></Link>
                         :
-                        <Text style={[ui.text, { fontSize: 16 }]}>Desliza para ver el siguiente paso</Text>
+                        <Text style={[ui.text, ui.bold, { fontSize: 13 }]}>Desliza para ver el siguiente paso</Text>
                 }
             </View>
-            <View style={{ backgroundColor: "rgba(0,0,0,0.5)", height: 16, borderRadius: 16, width: "100%" }}>
+            <View style={{ backgroundColor: "rgba(0,0,0,0.35)", height: 16, borderRadius: 16 }}>
                 <Animated.View style={[animatedStyle, { backgroundColor: "#92C742", height: 16, borderRadius: 16 }]}></Animated.View>
             </View>
-        </Animated.View>
+        </View>
     )
 }
