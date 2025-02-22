@@ -4,6 +4,7 @@ import { ui } from "../src/utils/styles"
 import { useMemo, useState } from "react"
 import { clothes } from "../src/utils/data"
 import Bubble from "../src/components/bubble"
+import Constants from "expo-constants";
 
 export default function Designs() {
 
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: 36,
-        paddingTop: StatusBar.currentHeight + 32,
+        paddingTop: Constants.statusBarHeight + 32,
         paddingHorizontal: 20,
         backgroundColor: "#fff",
         alignItems: "flex-start"

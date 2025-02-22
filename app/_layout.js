@@ -22,13 +22,13 @@ export default function Layout() {
     }, [fontsLoaded]);
 
     useEffect(() => {
-        Notifications.setNotificationHandler({
+        /* Notifications.setNotificationHandler({
             handleNotification: async () => ({
                 shouldShowAlert: true,
                 shouldPlaySound: false,
                 shouldSetBadge: false,
             }),
-        });
+        }); */
     }, [])
 
     if (!fontsLoaded) {

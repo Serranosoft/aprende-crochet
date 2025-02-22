@@ -10,6 +10,7 @@ import { scheduleWeeklyNotification } from "../src/utils/notifications";
 import Button from "../src/components/button";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Bubble from "../src/components/bubble";
+import Constants from "expo-constants";
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
     useEffect(() => scheduleNotification(), []);
 
     function scheduleNotification() {
-        scheduleWeeklyNotification();
+        // scheduleWeeklyNotification();
     }
 
     return (
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: 12,
-        paddingTop: StatusBar.currentHeight + 32,
+        paddingTop: Constants.statusBarHeight + 32,
         paddingHorizontal: 20,
         backgroundColor: "#fff",
         alignItems: "flex-start"

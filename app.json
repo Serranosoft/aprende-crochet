@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.paulaymanu113.crochet"
     },
     "android": {
       "adaptiveIcon": {
@@ -39,8 +40,8 @@
       [
         "react-native-google-mobile-ads",
         {
-            "androidAppId": "ca-app-pub-3738413299329691~5567274990",
-            "iosAppId": "ca-app-pub-3738413299329691~5567274990"
+          "androidAppId": "ca-app-pub-3738413299329691~5567274990",
+          "iosAppId": "ca-app-pub-3738413299329691~5567274990"
         }
       ]
     ]
