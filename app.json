@@ -17,7 +17,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.paulaymanu113.crochet"
+      "bundleIdentifier": "com.paulaymanu113.crochet",
+      "icon": {
+        "dark": "./assets/logo-croche.png",
+        "light": "./assets/logo-croche.png",
+        "tinted": "./assets/logo-croche.png"
+      }
     },
     "android": {
       "adaptiveIcon": {
