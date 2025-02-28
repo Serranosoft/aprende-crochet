@@ -16,12 +16,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.paulaymanu113.crochet",
-      "icon": {
-        "dark": "./assets/logo-croche.png",
-        "light": "./assets/logo-croche.png",
-        "tinted": "./assets/logo-croche.png"
+      "icon": "./assets/logo-croche.png",
+      "buildNumber": "2",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {

@@ -1,12 +1,10 @@
-import { FlatList, StyleSheet, Text, View, StatusBar, TouchableOpacity } from "react-native";
+import { FlatList, StyleSheet, Text, View, StatusBar, TouchableOpacity, Image } from "react-native";
 import { Link, Stack, useRouter } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useEffect, useMemo, useState } from "react";
 import { categories_raw, clothes } from "../src/utils/data";
 import { Pressable } from "react-native";
-import { Image } from "expo-image";
-import { scheduleWeeklyNotification } from "../src/utils/notifications";
 import Button from "../src/components/button";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Bubble from "../src/components/bubble";
