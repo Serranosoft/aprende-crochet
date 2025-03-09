@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { Platform, StatusBar, StyleSheet, Text, View } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { createRef, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
@@ -7,7 +7,7 @@ import { fetchData, fetchImages } from "../src/utils/data";
 import Card from "../src/components/Card";
 import { ui } from "../src/utils/styles";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
-import { bannerId } from "../src/utils/constants";
+import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import Bubble from "../src/components/bubble";
 
 export default function Category() {
@@ -48,7 +48,7 @@ export default function Category() {
             <Stack.Screen options={{ headerShown: false }} />
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={{ alignItems: "center" }}>
-                <BannerAd unitId={bannerId} size={BannerAdSize.BANNER} requestOptions={{}} />
+                <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.BANNER} requestOptions={{}} />
             </View>
             <Bubble style={{ position: "absolute", top: -200, left: -100, width: 300, height: 300, opacity: 0.75 }} />
             <View style={styles.wrapper}>

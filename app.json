@@ -19,7 +19,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.paulaymanu113.crochet",
       "icon": "./assets/logo-croche.png",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -46,7 +46,7 @@
         "react-native-google-mobile-ads",
         {
           "androidAppId": "ca-app-pub-3738413299329691~5567274990",
-          "iosAppId": "ca-app-pub-3738413299329691~5567274990"
+          "iosAppId": "ca-app-pub-3738413299329691~6458754686"
         }
       ]
     ]

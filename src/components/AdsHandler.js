@@ -1,6 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from "react"
 import { useInterstitialAd } from "react-native-google-mobile-ads";
-import { intersitialId } from "../utils/constants";
+import { intersitialId, intersitialIdIOS } from "../utils/constants";
+import { Platform } from "react-native";
 
 const AdsHandler = forwardRef((props, ref) => {
 
@@ -8,7 +9,7 @@ const AdsHandler = forwardRef((props, ref) => {
         isLoaded: isLoadedIntersitial,
         isClosed: isClosedIntersitial,
         load: loadIntersitial,
-        show: showIntersitial } = useInterstitialAd(intersitialId);
+        show: showIntersitial } = useInterstitialAd(Platform.OS === "android" ? intersitialId : intersitialIdIOS);
 
     useEffect(() => {
         loadIntersitial();
