@@ -2,7 +2,7 @@
   "expo": {
     "name": "Crochet paso a paso",
     "slug": "crochet",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/logo-croche.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.paulaymanu113.crochet",
       "icon": "./assets/logo-croche.png",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }

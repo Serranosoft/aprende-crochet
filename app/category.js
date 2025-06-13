@@ -9,6 +9,7 @@ import { ui } from "../src/utils/styles";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import Bubble from "../src/components/bubble";
+import Header from "../src/layout/header";
 
 export default function Category() {
 
@@ -37,7 +38,7 @@ export default function Category() {
     // Gestión de anuncios
     useEffect(() => {
         if (triggerAd === 5) {
-            adsHandlerRef.current.showIntersitialAd();
+            // adsHandlerRef.current.showIntersitialAd();
             setTriggerAd(0)
         }
     }, [triggerAd])
@@ -45,14 +46,14 @@ export default function Category() {
 
     return (
         <View style={styles.container}>
-            <Stack.Screen options={{ headerShown: false }} />
+            <Stack.Screen options={{ header: () => <Header title={name} back={true} /> }} />
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={{ alignItems: "center" }}>
-                <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.BANNER} requestOptions={{}} />
+                <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             </View>
-            <Bubble style={{ position: "absolute", top: -200, left: -100, width: 300, height: 300, opacity: 0.75 }} />
+            <Bubble style={{ position: "absolute", top: 150, left: -100, width: 300, height: 300, opacity: 0.75 }} />
             <View style={styles.wrapper}>
-                <Text style={[ui.h2, { marginBottom: 8 }]}>{name}</Text>
+                {/* <Text style={[ui.h2, { marginBottom: 8 }]}>{name}</Text> */}
                 <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
                 <Progress current={(current + 1)} qty={stepsLength} />
             </View>

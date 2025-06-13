@@ -4,37 +4,37 @@ export const ui = {
         width: 35,
     },
     text: {
-        fontFamily: "poppins-regular",
+        fontFamily: "ancizar-regular",
         color: "#000",
         fontSize: 18,
     },
     muted: {
-        fontFamily: "poppins-medium",
+        fontFamily: "ancizar-medium",
         color: "#404040",
-        fontSize: 13,
+        fontSize: 16,
         lineHeight: 16,
     },
     bold: {
-        fontFamily: "poppins-bold"
+        fontFamily: "ancizar-bold"
     },
     h1: {
         fontSize: 60,
-        fontFamily: "poppins-bold",
+        fontFamily: "ancizar-bold",
         color: "#000",
         lineHeight: 70,
     },
     h2: {
-        fontFamily: "poppins-bold",
+        fontFamily: "ancizar-bold",
         color: "#000",
         fontSize: 32,
     },
     h3: {
-        fontFamily: "poppins-medium",
+        fontFamily: "ancizar-medium",
         color: "#000",
         fontSize: 24,
     },
     h4: {
-        fontFamily: "poppins-medium",
+        fontFamily: "ancizar-medium",
         color: "#000",
         fontSize: 20,
     },
