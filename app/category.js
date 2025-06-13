@@ -1,6 +1,6 @@
 import { Platform, StatusBar, StyleSheet, Text, View } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { createRef, useEffect, useState } from "react";
+import { createRef, useContext, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
 import { fetchData, fetchImages } from "../src/utils/data";
@@ -10,11 +10,15 @@ import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import Bubble from "../src/components/bubble";
 import Header from "../src/layout/header";
+import { LangContext } from "../src/utils/Context";
 
 export default function Category() {
 
     const params = useLocalSearchParams();
-    const { name, stepsLength } = params;
+    const { title, name, stepsLength } = params;
+    
+    const { language } = useContext(LangContext);
+    
 
     const [steps, setSteps] = useState([]);
     const [images, setImages] = useState([]);
@@ -27,7 +31,7 @@ export default function Category() {
     useEffect(() => {
         if (images.length < 1 && steps.length < 1) {
             // Pasos
-            const steps = fetchData(name);
+            const steps = fetchData(name, language._locale);
             setSteps(steps);
 
             // Imagenes
@@ -46,15 +50,14 @@ export default function Category() {
 
     return (
         <View style={styles.container}>
-            <Stack.Screen options={{ header: () => <Header title={name} back={true} /> }} />
+            <Stack.Screen options={{ header: () => <Header title={title} back={true} /> }} />
             <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={{ alignItems: "center" }}>
                 <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             </View>
             <Bubble style={{ position: "absolute", top: 150, left: -100, width: 300, height: 300, opacity: 0.75 }} />
             <View style={styles.wrapper}>
-                {/* <Text style={[ui.h2, { marginBottom: 8 }]}>{name}</Text> */}
-                <Card name={name} steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
+                <Card steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
                 <Progress current={(current + 1)} qty={stepsLength} />
             </View>
         </View>
@@ -66,7 +69,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: 12,
-        paddingTop: StatusBar.currentHeight + 32,
         paddingHorizontal: 20,
         paddingBottom: 16,
         backgroundColor: "#fff",

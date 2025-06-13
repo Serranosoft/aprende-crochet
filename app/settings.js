@@ -36,15 +36,14 @@ export default function Settings() {
     return (
         <>
             <Stack.Screen options={{ header: () => <Header title={"Ajustes"} back={true} settings={false} /> }} />
-            <View style={styles.container} /* style={[layout.flex, layout.backgroundLight, padding.bigHorizontal]} */>
+            <View style={styles.container}>
                 <View style={styles.box}>
                     <Text style={[ui.h2]}>{language.t("_settingsApp")}</Text>
                     <Text style={[ui.h4]}>{language.t("_settingsLang")}</Text>
                     <View style={styles.scrollContainer}>
-                        <ScrollView style={styles.scroll} /* nestedScrollEnabled={true} */>
+                        <ScrollView style={styles.scroll}>
                             {
                                 languages.map((language, index) => {
-                                    console.log(language);
                                     return (
                                         <TouchableOpacity key={index} onPress={() => handlePress(language.acronym)} style={[styles.option, selected === language.acronym && styles.selected]}>
                                             <Text style={[ui.text, { color: selected === language.acronym ? "#fff" : "#000"}]}>{language.title}</Text>

@@ -21,7 +21,7 @@ export const ui = {
         fontSize: 60,
         fontFamily: "ancizar-bold",
         color: "#000",
-        lineHeight: 70,
+        lineHeight: 60,
     },
     h2: {
         fontFamily: "ancizar-bold",

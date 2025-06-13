@@ -1,26 +1,33 @@
 import { Link, Stack } from "expo-router"
 import { FlatList, Image, Pressable, StatusBar, StyleSheet, Text, View } from "react-native"
 import { ui } from "../src/utils/styles"
-import { useMemo, useState } from "react"
-import { clothes } from "../src/utils/data"
+import { useContext, useEffect, useMemo, useState } from "react"
+import { clothes, fetchDesigns } from "../src/utils/data"
 import Bubble from "../src/components/bubble"
 import Constants from "expo-constants";
+import { LangContext } from "../src/utils/Context"
+import Header from "../src/layout/header"
 
 export default function Designs() {
 
     const [designs, setDesigns] = useState([])
-    useMemo(() => setDesigns(clothes), [designs]);
+    const { language } = useContext(LangContext);
+
+    useEffect(() => {
+        const categories = fetchDesigns(language._locale);
+        setDesigns(categories);
+    } , []);
 
     return (
         <>
-            <Stack.Screen options={{ headerShown: false }} />
+            <Stack.Screen options={{ header: () => <Header back={true} settings={true} /> }} />
             <View style={styles.container}>
                 <View style={styles.hero}>
-                    <Text style={ui.h1}>¡Diseños de crochet!</Text>
-                    <Text style={ui.muted}>Listado completo de nuestros diseños</Text>
+                    <Text style={ui.h1}>{language.t("_designsTitle")}</Text>
+                    <Text style={ui.h4}>{language.t("_designsSubtitle")}</Text>
                 </View>
 
-                <Bubble style={{ position: "absolute", top: -200, left: -100, width: 300, height: 300, opacity: 0.75 }} />
+                <Bubble style={{ position: "absolute", top: 85, left: -100, width: 300, height: 300, opacity: 0.75 }} />
 
                 <View style={styles.list}>
                     <FlatList
@@ -34,8 +41,8 @@ export default function Designs() {
                                         <Pressable>
                                             <View style={styles.item}>
                                                 <Image style={styles.rowImage} source={{ uri: item.image }} />
-                                                <Text style={[ui.h4, ui.bold, styles.rowTitle]}>{item.name}</Text>
-                                                <Text style={[ui.muted, { marginLeft: "auto" }]}>{item.steps} pasos</Text>
+                                                <Text style={[ui.h4, ui.bold, styles.rowTitle]}>{item.title}</Text>
+                                                <Text style={[ui.muted, { marginLeft: "auto" }]}>{item.steps} {language.t("_homeSteps")}</Text>
                                             </View>
                                         </Pressable>
                                     </Link>
@@ -53,10 +60,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: 36,
-        paddingTop: Constants.statusBarHeight + 32,
         paddingHorizontal: 20,
         backgroundColor: "#fff",
         alignItems: "flex-start"
+    },
+
+    hero: {
+        zIndex: 1,
     },
 
     list: {

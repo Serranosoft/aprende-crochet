@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet, Text, View, StatusBar, TouchableOpacity, Image, ScrollView, Platform } from "react-native";
-import { Link, Stack, useRouter } from "expo-router";
+import { Link, Stack, useFocusEffect, useRouter } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
-import { useEffect, useMemo, useState } from "react";
-import { categories_raw, clothes } from "../src/utils/data";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { categories_raw, clothes, fetchCategories, fetchDesigns, fetchTutorials } from "../src/utils/data";
 import { Pressable } from "react-native";
 import Button from "../src/components/button";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -12,17 +12,24 @@ import Constants from "expo-constants";
 import Header from "../src/layout/header";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
+import { LangContext } from "../src/utils/Context";
 
 export default function Home() {
 
     const [categories, setCategories] = useState([])
+    const { language } = useContext(LangContext);
+    const [clothes, setClothes] = useState([]);
     const router = useRouter();
-    useMemo(() => setCategories(categories_raw), [categories]);
-    useEffect(() => scheduleNotification(), []);
 
-    function scheduleNotification() {
-        // scheduleWeeklyNotification();
-    }
+    useFocusEffect(
+        useCallback(() => {
+            const tutorials = fetchTutorials(language._locale);
+            setCategories(tutorials);
+            const aux = fetchDesigns(language._locale);
+            setClothes(aux);
+        }, [language])
+    );
+
 
     return (
         <>
@@ -33,54 +40,57 @@ export default function Home() {
                 <ScrollView style={{ flex: 1, width: "100%" }} contentContainerStyle={{ alignItems: "flex-start", gap: 12 }} >
 
                     <View style={styles.paddingHorizontal}>
-                        <Text style={ui.h1}>¡Hola!</Text>
-                        <Text style={ui.muted}>Diseños de crochet que tenemos disponibles</Text>
+                        <Text style={ui.h1}>{language.t("_homeHeroH1")}</Text>
+                        <Text style={ui.muted}>{language.t("_homeHeroH2")}</Text>
                     </View>
 
-                    <View style={styles.grid}>
-                        <Link style={[styles.box, { backgroundColor: "#00b6ff" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 1].name, stepsLength: clothes[clothes.length - 1].steps } }} asChild>
-                            <TouchableOpacity>
-                                <Image source={{ uri: clothes[clothes.length - 1].image }} style={styles.icon} />
-                                <View style={styles.boxContent}>
-                                    <Text style={[ui.h3, ui.bold]}>{clothes[clothes.length - 1].name}</Text>
-                                    <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </Link>
-
-                        <View style={styles.group}>
-                            <Link style={[styles.box, { backgroundColor: "#00d2eb" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 2].name, stepsLength: clothes[clothes.length - 2].steps } }} asChild>
+                    {
+                        clothes.length > 0 &&
+                        <View style={styles.grid}>
+                            <Link style={[styles.box, { backgroundColor: "#00b6ff" }]} href={{ pathname: "/category", params: { title: clothes[clothes.length - 1].title, name: clothes[clothes.length - 1].name, stepsLength: clothes[clothes.length - 1].steps } }} asChild>
                                 <TouchableOpacity>
-                                    <View style={styles.pill}>
-                                        <Text style={[ui.muted, { color: "#fff" }]}>¡Tendencia!</Text>
-                                    </View>
-                                    <Image source={{ uri: clothes[clothes.length - 2].image }} style={styles.smallIcon} />
+                                    <Image source={{ uri: clothes[clothes.length - 1].image }} style={styles.icon} />
                                     <View style={styles.boxContent}>
-                                        <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 2].name}</Text>
-                                        <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
+                                        <Text style={[ui.h3, ui.bold]}>{clothes[clothes.length - 1].title}</Text>
+                                        <Text style={ui.muted}>{clothes[clothes.length - 1].steps} {language.t("_homeStepsToFollow")}</Text>
                                     </View>
                                 </TouchableOpacity>
                             </Link>
 
-                            <Link style={[styles.box, { backgroundColor: "#00e7be" }]} href={{ pathname: "/category", params: { name: clothes[clothes.length - 3].name, stepsLength: clothes[clothes.length - 3].steps } }} asChild>
-                                <TouchableOpacity>
-                                    <Image source={{ uri: clothes[clothes.length - 3].image }} style={styles.smallIcon} />
-                                    <View style={styles.boxContent}>
-                                        <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 3].name}</Text>
-                                        <Text style={ui.muted}>{clothes[clothes.length - 1].steps} pasos a seguir</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </Link>
+                            <View style={styles.group}>
+                                <Link style={[styles.box, { backgroundColor: "#00d2eb" }]} href={{ pathname: "/category", params: { title: clothes[clothes.length - 2].title, name: clothes[clothes.length - 2].name, stepsLength: clothes[clothes.length - 2].steps } }} asChild>
+                                    <TouchableOpacity>
+                                        <View style={styles.pill}>
+                                            <Text style={[ui.muted, { color: "#fff" }]}>{language.t("_homeTrend")}</Text>
+                                        </View>
+                                        <Image source={{ uri: clothes[clothes.length - 2].image }} style={styles.smallIcon} />
+                                        <View style={styles.boxContent}>
+                                            <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 2].title}</Text>
+                                            <Text style={ui.muted}>{clothes[clothes.length - 1].steps} {language.t("_homeStepsToFollow")}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Link>
+
+                                <Link style={[styles.box, { backgroundColor: "#00e7be" }]} href={{ pathname: "/category", params: { title: clothes[clothes.length - 3].title, name: clothes[clothes.length - 3].name, stepsLength: clothes[clothes.length - 3].steps } }} asChild>
+                                    <TouchableOpacity>
+                                        <Image source={{ uri: clothes[clothes.length - 3].image }} style={styles.smallIcon} />
+                                        <View style={styles.boxContent}>
+                                            <Text style={[ui.h4, ui.bold]}>{clothes[clothes.length - 3].title}</Text>
+                                            <Text style={ui.muted}>{clothes[clothes.length - 1].steps} {language.t("_homeStepsToFollow")}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Link>
+                            </View>
                         </View>
-                    </View>
+                    }
 
                     <View style={styles.paddingHorizontal}>
                         <Button
                             onClick={() => router.navigate("/designs")}
                             icon={<MaterialIcons name="menu-book" size={24} color="#fff" />}
-                            text={"Ver todos los diseños"}
+                            text={language.t("_homeButton")}
                         />
-                    <Text style={[ui.h3, { marginTop: 16 }]}>Aprende todos los puntos</Text>
+                        <Text style={[ui.h3, { marginTop: 16 }]}>{language.t("_homeLearnAll")}</Text>
                     </View>
 
                     <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
@@ -94,15 +104,14 @@ export default function Home() {
                                     numColumns={1}
                                     initialNumToRender={6}
                                     renderItem={({ item, i }) => {
-                                        console.log(item);
                                         return (
                                             <View key={i} style={styles.row}>
-                                                <Link asChild href={{ pathname: "/category", params: { name: item.name, stepsLength: item.steps } }}>
+                                                <Link asChild href={{ pathname: "/category", params: { title: item.title, name: item.name, stepsLength: item.steps } }}>
                                                     <Pressable>
                                                         <View style={styles.item}>
                                                             <Image transition={1000} style={styles.rowImage} source={{ uri: item.image }} placeholder={"LZLruhayXot8W?fQs*jt~8fQ=?js"} />
-                                                            <Text style={[ui.h4, ui.bold, styles.rowTitle]}>{item.name}</Text>
-                                                            <Text style={[ui.muted, { marginLeft: "auto" }]}>{item.steps} pasos</Text>
+                                                            <Text style={[ui.h4, ui.bold, styles.rowTitle]}>{item.title}</Text>
+                                                            <Text style={[ui.muted, { marginLeft: "auto" }]}>{item.steps} {language.t("_homeSteps")}</Text>
                                                         </View>
                                                     </Pressable>
                                                 </Link>
