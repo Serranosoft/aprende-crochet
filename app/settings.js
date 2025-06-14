@@ -35,7 +35,7 @@ export default function Settings() {
 
     return (
         <>
-            <Stack.Screen options={{ header: () => <Header title={"Ajustes"} back={true} settings={false} /> }} />
+            <Stack.Screen options={{ header: () => <Header title={""} back={true} settings={false} /> }} />
             <View style={styles.container}>
                 <View style={styles.box}>
                     <Text style={[ui.h2]}>{language.t("_settingsApp")}</Text>

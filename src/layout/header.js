@@ -38,7 +38,7 @@ export default function Header({ title, back, settings }) {
                     }}>
                         <View style={styles.row}>
                             <Image style={styles.icon} source={require("../../assets/settings.png")} />
-                            <Text style={ui.text}>Ajustes</Text>
+                            <Text style={ui.text}>{language.t("_settingsLabel")}</Text>
                         </View>
                     </MenuItem>
                 </Menu>
