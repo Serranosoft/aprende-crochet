@@ -12,7 +12,7 @@ export const translations = {
 
         _designsTitle: "¡Diseños de crochet!",
         _designsSubtitle: "Listado completo de nuestros diseños",
-        _progressDone: "¡Listo! Toca aquí para ver otra guía",
+        _progressDone: "¡Listo, ya has terminado!",
         _progressSwipe: "Desliza para ver el siguiente paso",
         _settingsLabel: "Ajustes",
 
@@ -71,7 +71,7 @@ export const translations = {
 
         _designsTitle: "Crochet designs!",
         _designsSubtitle: "Full list of our designs",
-        _progressDone: "Done! Tap here to see another guide",
+        _progressDone: "Done, you’ve finished!",
         _progressSwipe: "Swipe to see the next step",
         _settingsLabel: "Settings",
 
@@ -131,7 +131,7 @@ export const translations = {
 
         _designsTitle: "تصاميم الكروشيه!",
         _designsSubtitle: "القائمة الكاملة لتصاميمنا",
-        _progressDone: "تم! اضغط هنا لرؤية دليل آخر",
+        _progressDone: "تم، لقد أنهيت!",
         _progressSwipe: "اسحب لرؤية الخطوة التالية",
         _settingsLabel: "الإعدادات",
 
@@ -190,7 +190,7 @@ export const translations = {
 
         _designsTitle: "Modèles de crochet !",
         _designsSubtitle: "Liste complète de nos modèles",
-        _progressDone: "Terminé ! Appuie ici pour voir un autre guide",
+        _progressDone: "C’est bon, tu as terminé !",
         _progressSwipe: "Fais glisser pour voir l’étape suivante",
         _settingsLabel: "Paramètres",
 
@@ -251,7 +251,7 @@ export const translations = {
 
         _designsTitle: "Häkelmuster!",
         _designsSubtitle: "Komplette Liste unserer Designs",
-        _progressDone: "Fertig! Tippe hier, um eine weitere Anleitung zu sehen",
+        _progressDone:  "Fertig, du bist fertig!",
         _progressSwipe: "Wische, um den nächsten Schritt zu sehen",
         _settingsLabel: "Einstellungen",
 
@@ -311,7 +311,7 @@ export const translations = {
 
         _designsTitle: "क्रोशे डिज़ाइन!",
         _designsSubtitle: "हमारे सभी डिज़ाइनों की सूची",
-        _progressDone: "हो गया! एक और गाइड देखने के लिए यहाँ टैप करें",
+        _progressDone: "हो गया, आपने पूरा कर लिया!",
         _progressSwipe: "अगला चरण देखने के लिए स्वाइप करें",
         _settingsLabel: "सेटिंग्स",
 
