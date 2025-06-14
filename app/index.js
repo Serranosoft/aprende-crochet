@@ -1,14 +1,13 @@
-import { FlatList, StyleSheet, Text, View, StatusBar, TouchableOpacity, Image, ScrollView, Platform } from "react-native";
+import { FlatList, StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, Platform } from "react-native";
 import { Link, Stack, useFocusEffect, useRouter } from "expo-router";
 import { ui } from "../src/utils/styles";
 import LottieView from 'lottie-react-native';
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { categories_raw, clothes, fetchCategories, fetchDesigns, fetchTutorials } from "../src/utils/data";
+import { useCallback, useContext, useState } from "react";
+import { fetchDesigns, fetchTutorials } from "../src/utils/data";
 import { Pressable } from "react-native";
 import Button from "../src/components/button";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Bubble from "../src/components/bubble";
-import Constants from "expo-constants";
 import Header from "../src/layout/header";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";

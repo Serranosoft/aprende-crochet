@@ -1,7 +1,7 @@
-import { Alert, Platform, ScrollView, StyleSheet, Text, ToastAndroid, TouchableOpacity, View } from "react-native";
-import { Stack, router } from "expo-router";
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Stack } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { LangContext } from "../src/utils/Context";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";

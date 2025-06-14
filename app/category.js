@@ -42,7 +42,7 @@ export default function Category() {
     // Gestión de anuncios
     useEffect(() => {
         if (triggerAd === 5) {
-            // adsHandlerRef.current.showIntersitialAd();
+            adsHandlerRef.current.showIntersitialAd();
             setTriggerAd(0)
         }
     }, [triggerAd])

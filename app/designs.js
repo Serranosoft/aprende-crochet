@@ -1,10 +1,9 @@
 import { Link, Stack } from "expo-router"
-import { FlatList, Image, Pressable, StatusBar, StyleSheet, Text, View } from "react-native"
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ui } from "../src/utils/styles"
-import { useContext, useEffect, useMemo, useState } from "react"
-import { clothes, fetchDesigns } from "../src/utils/data"
+import { useContext, useEffect, useState } from "react"
+import { fetchDesigns } from "../src/utils/data"
 import Bubble from "../src/components/bubble"
-import Constants from "expo-constants";
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 

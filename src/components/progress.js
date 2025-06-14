@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useAnimatedStyle } from "react-native-reanimated";
 import Animated from 'react-native-reanimated';
 import { ui } from "../utils/styles";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { LangContext } from "../utils/Context";
 import { useContext } from "react";
 

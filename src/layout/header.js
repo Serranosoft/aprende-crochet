@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { ui } from "../utils/styles";
 import { router } from "expo-router";
-import { Menu, MenuDivider, MenuItem } from "react-native-material-menu";
+import { Menu, MenuItem } from "react-native-material-menu";
 import { useContext, useState } from "react";
 import { LangContext } from "../utils/Context";
 
