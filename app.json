@@ -30,7 +30,7 @@
                 "foregroundImage": "./assets/logo-croche.png",
                 "backgroundColor": "#5193F0"
             },
-            "versionCode": 13,
+            "versionCode": 15,
             "package": "com.paulaymanu113.crochet"
         },
         "locales": {
