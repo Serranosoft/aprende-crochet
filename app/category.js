@@ -18,15 +18,10 @@ export default function Category() {
     const { title, name, stepsLength } = params;
     
     const { language } = useContext(LangContext);
-    
 
     const [steps, setSteps] = useState([]);
     const [images, setImages] = useState([]);
-
     const [current, setCurrent] = useState(0);
-
-    const [triggerAd, setTriggerAd] = useState(0);
-    const adsHandlerRef = createRef();
 
     useEffect(() => {
         if (images.length < 1 && steps.length < 1) {
@@ -39,19 +34,10 @@ export default function Category() {
         }
     }, [])
 
-    // Gestión de anuncios
-    useEffect(() => {
-        if (triggerAd === 5) {
-            adsHandlerRef.current.showIntersitialAd();
-            setTriggerAd(0)
-        }
-    }, [triggerAd])
-
 
     return (
         <View style={styles.container}>
             <Stack.Screen options={{ header: () => <Header title={title} back={true} /> }} />
-            <AdsHandler ref={adsHandlerRef} adType={[0]} />
             <View style={{ alignItems: "center" }}>
                 <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             </View>

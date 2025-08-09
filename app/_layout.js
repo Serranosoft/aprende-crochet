@@ -8,6 +8,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
 import { translations } from "../src/utils/localizations";
 import { LangContext } from "../src/utils/Context";
+import * as StoreReview from 'expo-store-review';
+import AdsHandler from "../src/components/AdsHandler";
 
 SplashScreen.preventAutoHideAsync();
 export default function Layout() {
@@ -42,12 +44,40 @@ export default function Layout() {
         setLanguage(language || "es");
     }
 
+    // Gestión de anuncios
+    const [adsLoaded, setAdsLoaded] = useState(false);
+    const [adTrigger, setAdTrigger] = useState(0);
+    const [showOpenAd, setShowOpenAd] = useState(true);
+    const adsHandlerRef = createRef();
+
+    useEffect(() => {
+        if (adTrigger > 3) {
+            askForReview();
+            setShowOpenAd(false);
+        }
+        
+        if (adsLoaded) {
+            if (adTrigger > 4) {
+                adsHandlerRef.current.showIntersitialAd();
+                setAdTrigger(0);
+            }
+        }
+            
+    }, [adTrigger])
+
+    async function askForReview() {
+        if (await StoreReview.hasAction()) {
+            StoreReview.requestReview()
+        }
+    }
+
     if (!fontsLoaded) {
         return null;
     }
 
     return (
         <View style={styles.container}>
+            <AdsHandler ref={adsHandlerRef} showOpenAd={showOpenAd} adsLoaded={adsLoaded} setAdsLoaded={setAdsLoaded} setShowOpenAd={setShowOpenAd} />
             <GestureHandlerRootView style={styles.wrapper}>
                 <LangContext.Provider value={{ setLanguage: setLanguage, language: i18n }}>
                     <Stack />
