@@ -1,0 +1,71 @@
+{
+    "designs": [
+        {
+            "name": {
+                "es": "",
+                "en": ""
+            },
+            "patterns": [
+                {
+                    "name": {
+                        "es": "",
+                        "en": ""
+                    },
+                    "image": "",
+                    "metadata": [
+                        {
+                            "crochet_needle": {
+                                "es": "",
+                                "en": ""
+                            },
+                            "wool": 1,
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": 3,
+                            "additional_info": {
+                                "es": "",
+                                "en": ""
+                            }
+                        }
+                    ],
+                    "steps": [
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "",
+                                "en": ""
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "",
+                                "en": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "wools": [
+        {
+            "id": "",
+            "name": {
+                "es": "",
+                "en": ""
+            },
+            "color": ""
+        }
+    ],
+    "threads": [
+        {
+            "id": "",
+            "name": {
+                "es": "",
+                "en": ""
+            },
+            "color": ""
+        }
+    ]
+}
