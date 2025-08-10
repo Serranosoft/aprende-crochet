@@ -1,11 +1,16 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../utils/styles";
 
-export default function Button({ icon, text, onClick, disabled }) {
+export default function Button({ children, onPress, showIcon = true }) {
     return (
-        <TouchableOpacity style={[styles.button, disabled && styles.disabled]} onPress={onClick} disabled={disabled}>
-            {icon}
-            <Text style={[ui.h4, styles.buttonText]}>{text}</Text>
+        <TouchableOpacity style={[styles.button, !showIcon && styles.bigBtn]} onPress={onPress}>
+            <Text style={styles.text}>{children}</Text>
+            {
+                showIcon &&
+                <View style={styles.imgWrapper}>
+                    <Image source={require("../../assets/arrow-right.png")} style={styles.img} />
+                </View>
+            }
         </TouchableOpacity>
     )
 }
@@ -13,30 +18,42 @@ export default function Button({ icon, text, onClick, disabled }) {
 const styles = StyleSheet.create({
 
     button: {
+        position: "relative",
         flexDirection: "row",
         alignItems: "center",
-        gap: 12,
-        backgroundColor: "#466090",
-        paddingVertical: 8,
-        paddingHorizontal: 16,
-        borderRadius: 8,
-
-        shadowColor: "#efedff",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-        elevation: 4,
+        justifyContent: "center",
+        gap: 16,
+        paddingRight: 4,
+        paddingLeft: 24,
+        paddingVertical: 4,
+        borderRadius: 100,
+        textAlign: "center",
+        backgroundColor: "#424242",
     },
 
-    buttonText: {
-        marginBottom: -4,
-        color: "#fff",
+    bigBtn: {
+        paddingRight: 16,
+        paddingLeft: 16,
+        paddingVertical: 16,
     },
 
-    disabled: {
-        backgroundColor: "#777586"
+    text: {
+        // position: "absolute",
+    },
+
+    imgWrapper: {
+        width: 48,
+        height: 48,
+        backgroundColor: "#fff",
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: "auto"
+    },
+
+    img: {
+        width: 24,
+        height: 24,
     }
+
 })

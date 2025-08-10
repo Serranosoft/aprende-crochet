@@ -1,14 +1,14 @@
 import { SplashScreen, Stack } from "expo-router";
 import { View, StatusBar, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import { I18n } from "i18n-js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
 import { translations } from "../src/utils/localizations";
 import { LangContext } from "../src/utils/Context";
-import * as StoreReview from 'expo-store-review';
+// import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
 
 SplashScreen.preventAutoHideAsync();

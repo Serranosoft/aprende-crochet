@@ -9,11 +9,16 @@ import Button from "../src/components/button";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Bubble from "../src/components/bubble";
 import Header from "../src/layout/header";
-import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import { LangContext } from "../src/utils/Context";
+import Scroll from "../src/layout/home/scroll";
+import Hero from "../src/layout/home/hero";
+import LastPattern from "../src/layout/home/lastPattern";
+import Stitching from "../src/layout/home/stitching";
+import Shortcut from "../src/layout/home/shortcut";
 
-export default function Home() {
+export default function Index() {
 
     const [categories, setCategories] = useState([])
     const { language } = useContext(LangContext);
@@ -34,12 +39,20 @@ export default function Home() {
         <>
             <Stack.Screen options={{ header: () => <Header settings={true} /> }} />
             <View style={styles.container}>
+                <Scroll>
+                    <Hero />
+                    <LastPattern />
+                    <Shortcut />
+                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                    <Stitching />
 
-                <Bubble style={{ position: "absolute", top: -50, left: -100, width: 300, height: 300, opacity: 0.75 }} />
-                <ScrollView style={{ flex: 1, width: "100%" }} contentContainerStyle={{ alignItems: "flex-start", gap: 12 }} >
+                </Scroll>
+
+
+                {/* <Bubble style={{ position: "absolute", top: -50, left: -100, width: 300, height: 300, opacity: 0.75 }} /> */}
+                {/* <ScrollView style={{ flex: 1, width: "100%" }} contentContainerStyle={{ alignItems: "flex-start", gap: 12 }} >
 
                     <View style={styles.paddingHorizontal}>
-                        <Text style={ui.h1}>{language.t("_homeHeroH1")}</Text>
                         <Text style={ui.muted}>{language.t("_homeHeroH2")}</Text>
                     </View>
 
@@ -122,7 +135,7 @@ export default function Home() {
                             :
                             <LottieView source={require("../assets/lottie/loading-animation.json")} loop={true} autoPlay={true} />
                     }
-                </ScrollView>
+                </ScrollView> */}
             </View>
         </>
     )
@@ -135,6 +148,10 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 20,
         backgroundColor: "#fff",
         alignItems: "flex-start"
+    },
+
+    wrapper: {
+        paddingHorizontal: 12,
     },
 
     paddingHorizontal: {

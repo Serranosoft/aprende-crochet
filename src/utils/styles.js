@@ -11,7 +11,7 @@ export const ui = {
     muted: {
         fontFamily: "ancizar-medium",
         color: "#404040",
-        fontSize: 15,
+        fontSize: 14,
     },
     bold: {
         fontFamily: "ancizar-bold"
@@ -39,6 +39,12 @@ export const ui = {
     },
     white: {
         color: "#fff"    
+    },
+    lightgray: {
+        color: "#cfcfcfff"
+    },
+    center: {
+        textAlign: "center",
     },
     button: {
         paddingVertical: 12,

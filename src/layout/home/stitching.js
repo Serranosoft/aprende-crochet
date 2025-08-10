@@ -17,7 +17,7 @@ export default function Stitching() {
 
     return (
         <View style={styles.container}>
-            <Text style={ui.h2}>Aprende nuevos puntos de crochet</Text>
+            <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
             <View style={styles.grid}>
                 {data?.map((pattern) => {
                     return (
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 12,
         gap: 16,
-        // alignItems: "center"
     },
     grid: {
         flexDirection: "row",
