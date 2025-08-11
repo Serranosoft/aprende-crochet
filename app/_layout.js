@@ -10,6 +10,7 @@ import { translations } from "../src/utils/localizations";
 import { LangContext } from "../src/utils/Context";
 // import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
+import { initDb } from "../src/utils/sqlite";
 
 SplashScreen.preventAutoHideAsync();
 export default function Layout() {
@@ -37,6 +38,7 @@ export default function Layout() {
 
     useEffect(() => {
         getLanguage();
+        initDb();
     }, [])
     
     async function getLanguage() {

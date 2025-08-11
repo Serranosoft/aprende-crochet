@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         borderRadius: 100,
         textAlign: "center",
-        backgroundColor: "#424242",
+        backgroundColor: "#1c57a8ff",
     },
 
     bigBtn: {
