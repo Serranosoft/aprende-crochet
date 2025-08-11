@@ -1,6 +1,7 @@
 export const colors = {
     primary: "#1c57a8ff",
-    secondary: "#447ecfff"
+    secondary: "#447ecfff",
+    box: "#424242",
 }
 
 export const ui = {
@@ -17,6 +18,7 @@ export const ui = {
         fontFamily: "ancizar-medium",
         color: "#404040",
         fontSize: 14,
+        lineHeight: 22
     },
     bold: {
         fontFamily: "ancizar-bold"

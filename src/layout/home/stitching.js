@@ -13,7 +13,7 @@ export default function Stitching() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        setData(stitchings.stitching);
+        setData(stitchings.stitching.slice(0, 4));
     }, [])
 
     useEffect(() => {
@@ -50,15 +50,13 @@ export default function Stitching() {
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
-                                    <Image source={require("../../../assets/level.png")} style={styles.icon} />
-
+                                        <Image source={require("../../../assets/level.png")} style={styles.icon} />
                                     </View>
                                     <Text style={[ui.muted, ui.white]}>Principiante</Text>
                                 </View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
-                                    <Image source={require("../../../assets/clock.png")} style={styles.icon} />
-
+                                        <Image source={require("../../../assets/clock.png")} style={styles.icon} />
                                     </View>
                                     <Text style={[ui.muted, ui.white]}>{pattern.qty} pasos</Text>
                                 </View>

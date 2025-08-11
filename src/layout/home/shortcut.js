@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { ui } from "../../utils/styles";
+import { colors, ui } from "../../utils/styles";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { getPatternsInProgress } from "../../utils/sqlite";
@@ -24,7 +24,7 @@ export default function Shortcut() {
                 <Image source={require("../../../assets/teddy-bear/teddy3.png")} style={styles.teddy} />
             </View>
             <View style={styles.wrapper}>
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
+                <TouchableOpacity style={styles.box} onPress={() => router.push("/patterns")}>
                     <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
                     <Image source={require("../../../assets/tutorials.png")} style={styles.icon} />
                     <View style={styles.info}>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 0,
         padding: 12,
         gap: 8,
-        backgroundColor: "#424242",
+        backgroundColor: colors.box,
         flex: 1,
     },
     info: {
