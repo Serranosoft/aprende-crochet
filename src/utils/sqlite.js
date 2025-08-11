@@ -28,6 +28,13 @@ export async function getProgressFromPattern(pattern_id) {
     return x;
 }
 
+export async function getPatternsInProgress() {
+    const db = await getDb();
+    const x = await db.getAllAsync("SELECT COUNT(*) as count FROM my_progress WHERE progress > 0");
+    return x[0].count;
+}
+
+
 export async function addNewProgress(pattern_id, progress) {
     const db = await getDb();
     const id = uuid.v4();

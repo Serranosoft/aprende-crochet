@@ -1,8 +1,21 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
 import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { getPatternsInProgress } from "../../utils/sqlite";
 
 export default function Shortcut() {
+
+    const [patternsInProgress, setPatternsInProgress] = useState(0);
+
+    useEffect(() => {
+        handlePatternsInProgress();
+    }, [])
+
+    async function handlePatternsInProgress() {
+        const result = await getPatternsInProgress();
+        setPatternsInProgress(result);
+    }
 
     return (
         <View style={styles.container}>
@@ -25,6 +38,17 @@ export default function Shortcut() {
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>
                         <Text style={[ui.muted, ui.lightgray]}>21 diseños</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.wrapper}>
+
+                <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
+                    <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
+                    <Image source={require("../../../assets/my_progress.png")} style={styles.icon} />
+                    <View style={styles.info}>
+                        <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>
+                        <Text style={[ui.muted, ui.lightgray]}>{ patternsInProgress > 0 ? `${patternsInProgress} diseños` : "No has comenzado ningún patrón" }</Text>
                     </View>
                 </TouchableOpacity>
             </View>
