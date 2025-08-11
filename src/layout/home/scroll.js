@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     inner: {
         alignItems: "flex-start",
-        gap: 56,
+        gap: 48,
         paddingBottom: 80
     }
 })
