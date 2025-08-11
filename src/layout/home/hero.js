@@ -9,7 +9,7 @@ export default function Hero() {
     return (
         <View style={styles.container}>
             <Text style={ui.h1}>{language.t("_homeHeroH1")}</Text>
-            <Image source={require("../../../assets/teddy-bear/teddy2.png")} style={styles.image} />
+            {/* <Image source={require("../../../assets/teddy-bear/teddy2.png")} style={styles.image} /> */}
         </View>
     )
 }
