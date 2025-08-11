@@ -1,13 +1,14 @@
 {
     "designs": [
         {
-            "id": "designs-1",
+            "id": "designs-category-1",
             "name": {
                 "es": "",
                 "en": ""
             },
             "patterns": [
                 {
+                    "id": "designs-pattern-1",
                     "name": {
                         "es": "",
                         "en": ""
