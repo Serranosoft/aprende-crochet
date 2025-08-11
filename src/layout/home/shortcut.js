@@ -6,7 +6,10 @@ export default function Shortcut() {
 
     return (
         <View style={styles.container}>
-            <Text style={ui.h3}>Acceso rápido</Text>
+            <View style={styles.hero}>
+                <Text style={ui.h3}>Acceso rápido</Text>
+                <Image source={require("../../../assets/teddy-bear/teddy3.png")} style={styles.teddy} />
+            </View>
             <View style={styles.wrapper}>
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
                     <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
@@ -35,8 +38,11 @@ const styles = StyleSheet.create({
         gap: 16,
     },
     hero: {
-
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8
     },
+
     wrapper: {
         width: "100%",
         flexDirection: "row",
@@ -66,5 +72,9 @@ const styles = StyleSheet.create({
     icon: {
         width: 32,
         height: 32,
+    },
+    teddy: {
+        width: 40,
+        height: 40
     }
 })

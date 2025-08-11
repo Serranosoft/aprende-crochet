@@ -41,6 +41,7 @@ export default function Index() {
             <View style={styles.container}>
                 <Scroll>
                     <Hero />
+                    <Image source={require("../assets/teddy-bear/teddy5.png")} style={{ position: "absolute", opacity: 0.15, right: -100, top: 225 }} />
                     <LastPattern />
                     <Shortcut />
                     <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />

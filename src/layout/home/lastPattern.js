@@ -45,7 +45,7 @@ export default function LastPattern() {
                         </View>
                     </View>
                     <View style={styles.content}>
-                        <Text style={[ui.text, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con este patrón?"}</Text>
+                        <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con este patrón?"}</Text>
                         { hasLastPattern && <Progress current={3} qty={7} /> }
                         <Button showIcon={false}>
                             <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Ir al último patrón" : "Comenzar"}</Text>
@@ -69,14 +69,15 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        gap: 16,
+        gap: 8,
+        alignItems: "center"
     },
     decoration: {
         paddingLeft: 8,
     },
     card: {
         position: "relative",
-        width: 125,
+        width: 140,
         height: 175,
         backgroundColor: "#fff",
         borderWidth: 1,

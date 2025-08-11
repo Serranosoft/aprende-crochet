@@ -22,7 +22,7 @@ export default function Stitching() {
             handleProgress();
         }
     }, [data])
-    
+
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
         data.map(async (pattern) => {
@@ -35,7 +35,11 @@ export default function Stitching() {
 
     return (
         <View style={styles.container}>
-            <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
+            <View style={styles.hero}>
+                <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
+                <Image source={require("../../../assets/teddy-bear/teddy4.png")} style={styles.teddy} />
+
+            </View>
             <View style={styles.grid}>
                 {data?.map((pattern) => {
                     return (
@@ -109,5 +113,14 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 1,
         backgroundColor: "#fff"
+    },
+    hero: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8
+    },
+    teddy: {
+        width: 40,
+        height: 40
     }
 })
