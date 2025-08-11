@@ -1,19 +1,21 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useEffect, useState } from "react";
-import stitchings from "../../../stitchings.json";
+import { useContext, useEffect, useState } from "react";
+import designs from "../../../designs.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
+import { LangContext } from "../../utils/Context";
 
 const { width } = Dimensions.get("screen");
 
-export default function Stitching() {
+export default function Designs() {
 
     const [data, setData] = useState(null);
+    const { language } = useContext(LangContext);
 
     useEffect(() => {
-        setData(stitchings.stitching);
+        setData(designs.designs[0].patterns);
     }, [])
 
     useEffect(() => {
@@ -34,34 +36,54 @@ export default function Stitching() {
 
     return (
         <View style={styles.container}>
+            <Image source={require("../../../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
             <View style={styles.hero}>
-                <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
-                <Image source={require("../../../assets/teddy-bear/teddy4.png")} style={styles.teddy} />
+                <Text style={ui.h3}>Patrones y diseños de crochet</Text>
+                <Image source={require("../../../assets/teddy-bear/teddy6.png")} style={styles.teddy} />
 
             </View>
             <View style={styles.grid}>
                 {data?.map((pattern) => {
+                    console.log(pattern);
                     return (
                         <TouchableOpacity style={styles.box}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
-                                <Text style={[ui.h3, ui.white, ui.bold]}>{pattern.name}</Text>
+                                <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale == "es" ? pattern.name.es : pattern.name.en}</Text>
                                 <Progress current={pattern.progress || 0} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
-                                    <Image source={require("../../../assets/level.png")} style={styles.icon} />
+                                        <Image source={require("../../../assets/level.png")} style={styles.icon} />
 
                                     </View>
                                     <Text style={[ui.muted, ui.white]}>Principiante</Text>
                                 </View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
-                                    <Image source={require("../../../assets/clock.png")} style={styles.icon} />
-
+                                        <Image source={require("../../../assets/clock.png")} style={styles.icon} />
                                     </View>
                                     <Text style={[ui.muted, ui.white]}>{pattern.qty} pasos</Text>
                                 </View>
+                                {
+                                    pattern.metadata.scissors &&
+                                    <View style={styles.row}>
+                                        <View style={styles.iconWrapper}>
+                                            <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
+
+                                        </View>
+                                        <Text style={[ui.muted, ui.white]}>Tijeras</Text>
+                                    </View>
+                                }
+                                {
+                                    pattern.metadata.wool_needle &&
+                                    <View style={styles.row}>
+                                        <View style={styles.iconWrapper}>
+                                            <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
+                                        </View>
+                                        <Text style={[ui.muted, ui.white]}>Aguja de lana</Text>
+                                    </View>
+                                }
                             </View>
                         </TouchableOpacity>
                     )
@@ -78,6 +100,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 12,
         gap: 16,
+        position: "relative",
     },
     grid: {
         flexDirection: "row",
@@ -88,7 +111,7 @@ const styles = StyleSheet.create({
     box: {
         position: "relative",
         width: (width - 24 - 8) / 2,
-        height: 225,
+        height: 300,
         justifyContent: "flex-end",
         borderRadius: 16,
     },
@@ -135,5 +158,11 @@ const styles = StyleSheet.create({
     teddy: {
         width: 40,
         height: 40
+    },
+    bigTeddy: {
+        position: "absolute",
+        opacity: 0.25,
+        left: -125,
+        top: -100
     }
 })

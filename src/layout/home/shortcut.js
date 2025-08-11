@@ -45,7 +45,7 @@ export default function Shortcut() {
 
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
                     <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
-                    <Image source={require("../../../assets/my_progress.png")} style={styles.icon} />
+                    <Image source={require("../../../assets/my-progress.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>
                         <Text style={[ui.muted, ui.lightgray]}>{ patternsInProgress > 0 ? `${patternsInProgress} diseños` : "No has comenzado ningún patrón" }</Text>

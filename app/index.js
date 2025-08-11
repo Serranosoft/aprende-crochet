@@ -17,6 +17,7 @@ import Hero from "../src/layout/home/hero";
 import LastPattern from "../src/layout/home/lastPattern";
 import Stitching from "../src/layout/home/stitching";
 import Shortcut from "../src/layout/home/shortcut";
+import Designs from "../src/layout/home/designs";
 
 export default function Index() {
 
@@ -46,6 +47,7 @@ export default function Index() {
                     <Shortcut />
                     <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                     <Stitching />
+                    <Designs />
 
                 </Scroll>
 

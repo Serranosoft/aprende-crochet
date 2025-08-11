@@ -10,28 +10,66 @@
                 {
                     "id": "designs-pattern-1",
                     "name": {
-                        "es": "",
-                        "en": ""
+                        "es": "Diseño 1",
+                        "en": "Diseño 1"
                     },
-                    "image": "",
+                    "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
                     "difficulty": 0,
                     "qty": 7,
-                    "metadata": [
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "",
+                            "en": ""
+                        },
+                        "wool": 1,
+                        "scissors": true,
+                        "wool_needle": false,
+                        "thread": 3,
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
+                        }
+                    },
+                    "steps": [
                         {
-                            "crochet_needle": {
+                            "image": "",
+                            "content": {
                                 "es": "",
                                 "en": ""
-                            },
-                            "wool": 1,
-                            "scissors": true,
-                            "wool_needle": false,
-                            "thread": 3,
-                            "additional_info": {
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
                                 "es": "",
                                 "en": ""
                             }
                         }
-                    ],
+                    ]
+                },
+                {
+                    "id": "designs-pattern-2",
+                    "name": {
+                        "es": "Diseño 2",
+                        "en": "Diseño 2"
+                    },
+                    "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
+                    "difficulty": 0,
+                    "qty": 7,
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "",
+                            "en": ""
+                        },
+                        "wool": 1,
+                        "scissors": true,
+                        "wool_needle": true,
+                        "thread": 3,
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
+                        }
+                    },
                     "steps": [
                         {
                             "image": "",

@@ -33,7 +33,7 @@ export const ui = {
         fontSize: 32,
     },
     h3: {
-        fontFamily: "ancizar-medium",
+        fontFamily: "ancizar-bold",
         color: "#000",
         fontSize: 24,
     },

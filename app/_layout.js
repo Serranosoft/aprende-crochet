@@ -20,7 +20,6 @@ export default function Layout() {
         "ancizar-regular": require("../assets/fonts/AncizarSans-Regular.ttf"),
         "ancizar-medium": require("../assets/fonts/AncizarSans-Medium.ttf"),
         "ancizar-bold": require("../assets/fonts/AncizarSans-Bold.ttf"),
-        "ancizar-extrabold": require("../assets/fonts/AncizarSans-ExtraBold.ttf")
     });
 
     // Idioma
