@@ -9,7 +9,6 @@ export default function Shortcut() {
             <Text style={ui.h3}>Acceso rápido</Text>
             <View style={styles.wrapper}>
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
-
                     <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
                     <Image source={require("../../../assets/tutorials.png")} style={styles.icon} />
                     <View style={styles.info}>
@@ -19,11 +18,9 @@ export default function Shortcut() {
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
                     <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
-
                     <Image source={require("../../../assets/designs.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>
-
                         <Text style={[ui.muted, ui.lightgray]}>21 diseños</Text>
                     </View>
                 </TouchableOpacity>

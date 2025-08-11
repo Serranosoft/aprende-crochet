@@ -19,8 +19,13 @@ export async function initDb() {
 
 export async function getLastPattern() {
     const db = await getDb();
-    const x = await db.getAllAsync("SELECT * FROM learn WHERE isLastPattern = ?", 1);
+    const x = await db.getAllAsync("SELECT * FROM my_progress WHERE isLastPattern = ?", 1);
     return x[0];
+}
+export async function getProgressFromPattern(pattern_id) {
+    const db = await getDb();
+    const x = await db.getFirstAsync("SELECT progress FROM my_progress WHERE pattern_id = ?", pattern_id);
+    return x;
 }
 
 export async function addNewProgress(pattern_id, progress) {

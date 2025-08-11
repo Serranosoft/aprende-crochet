@@ -6,6 +6,7 @@ import stitchings from "../../../stitchings.json";
 import designs from "../../../designs.json";
 import { ui } from "../../utils/styles";
 import Button from "../../components/button";
+import Progress from "../../components/progress";
 
 const INITIAL_PATTERN = "stitching-1";
 
@@ -45,6 +46,7 @@ export default function LastPattern() {
                     </View>
                     <View style={styles.content}>
                         <Text style={[ui.text, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con este patrón?"}</Text>
+                        { hasLastPattern && <Progress current={3} qty={7} /> }
                         <Button showIcon={false}>
                             <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Ir al último patrón" : "Comenzar"}</Text>
                         </Button>

@@ -1,3 +1,8 @@
+export const colors = {
+    primary: "#1c57a8ff",
+    secondary: "#447ecfff"
+}
+
 export const ui = {
     img: {
         aspectRatio: 1,

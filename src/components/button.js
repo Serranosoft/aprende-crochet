@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { ui } from "../utils/styles";
+import { colors, ui } from "../utils/styles";
 
 export default function Button({ children, onPress, showIcon = true }) {
     return (
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         borderRadius: 100,
         textAlign: "center",
-        backgroundColor: "#1c57a8ff",
+        backgroundColor: colors.primary,
     },
 
     bigBtn: {

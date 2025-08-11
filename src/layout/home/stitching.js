@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import stitchings from "../../../stitchings.json";
 import getDifficultyIcon from "../../utils/iconsHandler";
 import Button from "../../components/button";
+import Progress from "../../components/progress";
+import { getProgressFromPattern } from "../../utils/sqlite";
 
 const { width } = Dimensions.get("screen");
 
@@ -15,6 +17,22 @@ export default function Stitching() {
         setData(stitchings.stitching);
     }, [])
 
+    useEffect(() => {
+        if (data) {
+            handleProgress();
+        }
+    }, [data])
+    
+    // Añadir a cada item de data la propiedad con el current de mi progreso
+    async function handleProgress() {
+        data.map(async (pattern) => {
+            let progress = await getProgressFromPattern(pattern.id);
+            if (progress) {
+                pattern.progress = progress;
+            }
+        })
+    }
+
     return (
         <View style={styles.container}>
             <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
@@ -25,6 +43,7 @@ export default function Stitching() {
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{pattern.name}</Text>
+                                <Progress current={pattern.progress || 0} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <Image source={getDifficultyIcon(pattern.difficulty)} style={styles.icon} />
