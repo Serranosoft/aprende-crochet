@@ -1,11 +1,15 @@
 import { Link, router, Stack } from "expo-router"
 import { FlatList, Image, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import stitchings from "../stitchings.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
+import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
+import Progress from "../src/components/progress"
+import { getProgressFromPattern } from "../src/utils/sqlite"
+import useBackHandler from "../src/components/use-back-handler"
 
 
 export default function Patterns() {
@@ -13,20 +17,57 @@ export default function Patterns() {
     const [patterns, setPatterns] = useState([])
     const { language } = useContext(LangContext);
 
+    // Bottom Sheet Variables
+    const [openDetails, setOpenDetails] = useState(false);
+    const [patternSelected, setPatternSelected] = useState(null);
+
     useEffect(() => {
         setPatterns(stitchings.stitching);
     }, [])
 
+    useEffect(() => {
+        if (patterns.length > 0) {
+            handleProgress();
+        }
+    }, [patterns])
+
+    useBackHandler(() => {
+        if (openDetails) {
+            setOpenDetails(false);
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    // Añadir a cada item de data la propiedad con el current de mi progreso
+    async function handleProgress() {
+        data.map(async (pattern) => {
+            let progress = await getProgressFromPattern(pattern.id);
+            if (progress) {
+                pattern.progress = progress;
+            }
+        })
+    }
+
+    function handleBottomSheet(pattern) {
+        // Establecer el patrón seleccionado 
+        setPatternSelected(pattern);
+        // Abrir bottomsheet con los valores
+        setOpenDetails(true);
+    }
+
     return (
         <>
-            <Stack.Screen options={{ header: () => <Header back={true} settings={true} /> }} />
+            <Stack.Screen options={{ header: () => <Header back={true} settings={true} overlay={openDetails} /> }} />
+
             <View style={styles.container}>
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Patrones</Text>
                 </View>
-                <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                {!openDetails && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />}
                 <Image source={require("../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
-                
+
 
 
                 <View style={styles.list}>
@@ -36,35 +77,30 @@ export default function Patterns() {
                         initialNumToRender={6}
                         contentContainerStyle={styles.inner}
                         renderItem={({ item, i }) => {
-                            console.log(item);
                             return (
                                 <TouchableOpacity
                                     key={item.id}
                                     style={styles.box}
-                                    onPress={() => {
-                                        router.navigate({
-                                            pathname: '/item',
-                                            params: { id: item.id }
-                                        })
-                                    }}>
+                                    onPress={() => { handleBottomSheet(item) }}>
                                     <View style={styles.imageWrapper}>
                                         <Image style={styles.image} source={{ uri: item.image }} />
                                     </View>
                                     <View style={styles.info}>
-                                        <Text style={[ui.h3, ui.bold, ui.white]}>{item.name}</Text>
+                                        <Text style={[ui.h3, ui.bold]}>{item.name}</Text>
+                                        <Progress current={item.progress || 0} qty={item.qty} />
                                         <View style={styles.separator}></View>
                                         <View style={styles.metadata}>
                                             <View style={styles.row}>
                                                 <View style={styles.iconWrapper}>
                                                     <Image source={require("../assets/level.png")} style={styles.icon} />
                                                 </View>
-                                                <Text style={[ui.muted, ui.white]}>Principiante</Text>
+                                                <Text style={ui.muted}>Principiante</Text>
                                             </View>
                                             <View style={styles.row}>
                                                 <View style={styles.iconWrapper}>
                                                     <Image source={require("../assets/clock.png")} style={styles.icon} />
                                                 </View>
-                                                <Text style={[ui.muted, ui.white]}>{item.qty} {language.t("_homeSteps")}</Text>
+                                                <Text style={ui.muted}>{item.qty} {language.t("_homeSteps")}</Text>
                                             </View>
                                         </View>
                                     </View>
@@ -74,6 +110,10 @@ export default function Patterns() {
                     />
                 </View>
             </View>
+            {openDetails && <View style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.65)" }}></View>}
+            <BottomSheetElement {...{ openDetails, setOpenDetails, patternSelected }} />
+
+
         </>
     )
 }
@@ -111,7 +151,7 @@ const styles = StyleSheet.create({
     box: {
         flexDirection: "row",
         gap: 16,
-        backgroundColor: colors.box/* "rgba(0,0,0,0.45)" */,
+        // backgroundColor: 
         paddingRight: 8,
         borderRadius: 16
     },
@@ -121,19 +161,18 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: 140,
-        borderTopLeftRadius: 16,
-        borderBottomLeftRadius: 16,
+        borderRadius: 16,
         objectFit: "cover"
     },
     info: {
         paddingVertical: 8,
-        flex: 1,
+        flex: 1.2,
         gap: 4,
     },
     separator: {
         width: "100%",
         height: 1,
-        backgroundColor: "#fff"
+        backgroundColor: colors.box
     },
     metadata: {
         gap: 8,
@@ -150,7 +189,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff"
+        backgroundColor: "#d8d8d8ff"
     },
     icon: {
         width: 16,
