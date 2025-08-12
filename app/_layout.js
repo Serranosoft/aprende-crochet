@@ -7,7 +7,7 @@ import { I18n } from "i18n-js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
 import { translations } from "../src/utils/localizations";
-import { LangContext } from "../src/utils/Context";
+import { AdsContext, LangContext } from "../src/utils/Context";
 // import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
 import { initDb } from "../src/utils/sqlite";
@@ -39,7 +39,7 @@ export default function Layout() {
         getLanguage();
         initDb();
     }, [])
-    
+
     async function getLanguage() {
         const language = await AsyncStorage.getItem("language");
         setLanguage(language || "es");
@@ -56,14 +56,14 @@ export default function Layout() {
             askForReview();
             setShowOpenAd(false);
         }
-        
+
         if (adsLoaded) {
             if (adTrigger > 4) {
                 adsHandlerRef.current.showIntersitialAd();
                 setAdTrigger(0);
             }
         }
-            
+
     }, [adTrigger])
 
     async function askForReview() {
@@ -81,7 +81,9 @@ export default function Layout() {
             <AdsHandler ref={adsHandlerRef} showOpenAd={showOpenAd} adsLoaded={adsLoaded} setAdsLoaded={setAdsLoaded} setShowOpenAd={setShowOpenAd} />
             <GestureHandlerRootView style={styles.wrapper}>
                 <LangContext.Provider value={{ setLanguage: setLanguage, language: i18n }}>
-                    <Stack />
+                    <AdsContext.Provider value={{ setAdTrigger, adsLoaded, setShowOpenAd  }}>
+                        <Stack />
+                    </AdsContext.Provider>
                 </LangContext.Provider>
             </GestureHandlerRootView>
             <StatusBar style="light" backgroundColor={"#fff"} />

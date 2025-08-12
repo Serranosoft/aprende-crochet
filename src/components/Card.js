@@ -7,7 +7,7 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-export default function Card({ steps, images, setTriggerAd, setCurrent, current, stepsLength }) {
+export default function Card({ step, image, setCurrent, current, stepsLength, setAdTrigger }) {
 
     const [hasImage, setHasImage] = useState(true);
 
@@ -29,7 +29,7 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
                         setCurrent((current) => current + 1);
                         position.value = Dimensions.get("window").width;
                         position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
-                        setTriggerAd((triggerAd) => triggerAd + 1);
+                        setAdTrigger((adTrigger) => adTrigger + 1);
                     }, 250)
                 } else {
                     // Cargar una vista con el final   
@@ -45,7 +45,7 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
                         setCurrent((current) => current - 1);
                         position.value = -Dimensions.get("window").width;
                         position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
-                        setTriggerAd((triggerAd) => triggerAd + 1);
+                        setAdTrigger((adTrigger) => adTrigger + 1);
                     }, 250)
 
                 } else {
@@ -85,28 +85,27 @@ export default function Card({ steps, images, setTriggerAd, setCurrent, current,
 
     return (
         <GestureDetector gesture={tap}>
-            {steps || images ?
-
+            {/* <View> */}
                 <Animated.View style={[animatedStyle, styles.wrapper]}>
                     <View style={styles.card}>
                         <Animated.View style={animatedHeight}>
-                            {images[current] &&
+                            { image && 
                                 <Image
                                     style={styles.image}
-                                    source={{ uri: images[current] }}
+                                    source={{ uri: image }}
                                     resizeMode="contain"
                                     onError={() => setHasImage(false)}
                                     onLoad={() => setHasImage(true)}
                                 />
                             }
+
                         </Animated.View>
-                        <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{steps[current]}</Animated.Text>
+                        <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{step}</Animated.Text>
                     </View>
                 </Animated.View>
+                {/* <LottieView source={require("../../assets/lottie/loading-animation.json")} style={styles.lottie} loop={true} autoPlay={true} /> */}
+            {/* </View> */}
 
-                :
-                <LottieView source={require("../../assets/lottie/loading-animation.json")} style={styles.lottie} loop={true} autoPlay={true} />
-            }
         </GestureDetector>
     )
 

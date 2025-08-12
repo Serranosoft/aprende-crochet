@@ -6,10 +6,8 @@ import { LangContext } from "../../utils/Context";
 import Button from "../../components/button";
 import { router } from "expo-router";
 
-const { height } = Dimensions.get("screen");
 
 export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected }) {
-    console.log(openDetails);
 
     const { language } = useContext(LangContext);
     // ref
@@ -85,7 +83,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 }
                             </>
                         </View>
-                        {patternSelected.progress < 0 &&
+                        { patternSelected.progress > 0 &&
                             <Button>
                                 <Text style={[ui.text, ui.white]}>Continuar con el paso {patternSelected.progress}</Text>
                             </Button>

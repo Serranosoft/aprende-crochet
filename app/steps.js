@@ -10,41 +10,50 @@ import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import Bubble from "../src/components/bubble";
 import Header from "../src/layout/header";
-import { LangContext } from "../src/utils/Context";
+import { AdsContext, LangContext } from "../src/utils/Context";
+import stitchings from "../stitchings.json";
+import designs from "../designs.json";
 
-export default function Category() {
+export default function Steps() {
 
     const params = useLocalSearchParams();
-    const { title, name, stepsLength } = params;
-    
+    const { id, step } = params;
     const { language } = useContext(LangContext);
+    const { setAdTrigger } = useContext(AdsContext);
 
     const [steps, setSteps] = useState([]);
-    const [images, setImages] = useState([]);
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(parseInt(step) || 0);
 
     useEffect(() => {
-        if (images.length < 1 && steps.length < 1) {
-            // Pasos
-            const steps = fetchData(name, language._locale);
-            setSteps(steps);
-
-            // Imagenes
-            fetchImages(name, stepsLength).then((result) => setImages(result));
-        }
+        fetchSteps();
     }, [])
+
+    async function fetchSteps() {
+        const matrix = [stitchings.stitching, designs.designs];
+        const element = matrix.map((arr) => arr.find((el) => el.id === id));
+        setSteps(element[0].steps);
+    }
 
 
     return (
         <View style={styles.container}>
-            <Stack.Screen options={{ header: () => <Header title={title} back={true} /> }} />
+            <Stack.Screen options={{ header: () => <Header /* title={title} */ back={true} /> }} />
             <View style={{ alignItems: "center" }}>
                 <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             </View>
             <Bubble style={{ position: "absolute", top: 150, left: -100, width: 300, height: 300, opacity: 0.75 }} />
             <View style={styles.wrapper}>
-                <Card steps={steps} images={images} setTriggerAd={setTriggerAd} setCurrent={setCurrent} current={current} stepsLength={stepsLength} />
-                <Progress current={(current + 1)} qty={stepsLength} />
+                {steps.length > 0 &&
+                    <Card
+                        step={language._locale !== "es" ? steps[current].content.en : steps[current].content.es}
+                        image={steps[current].image}
+                        setCurrent={setCurrent}
+                        current={current}
+                        stepsLength={steps.length}
+                        setAdTrigger={setAdTrigger}
+                    />
+                }
+                {/* <Progress current={(current + 1)} qty={stepsLength} /> */}
             </View>
         </View>
     )

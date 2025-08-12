@@ -44,7 +44,6 @@ export default function Designs() {
             </View>
             <View style={styles.grid}>
                 {data?.map((pattern) => {
-                    console.log(pattern);
                     return (
                         <TouchableOpacity style={styles.box}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
