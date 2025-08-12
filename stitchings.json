@@ -2,69 +2,632 @@
     "stitching": [
         {
             "id": "stitching-1",
-            "name": "Punto bajo",
-            "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
+            "name": {
+                "es": "Cambiar de color",
+                "en": "Change color"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-cambiar-de-color-0.jpg",
             "difficulty": 0,
-            "qty": 7,
+            "qty": 2,
             "steps": [
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-1-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-cambiar-de-color-1.jpg",
+                    "content": {
+                        "es": "Deja incompleta la última puntada del color anterior para que queden dos anillas en el ganchillo, y envuelve el nuevo hilo en el ganchillo.",
+                        "en": "Leave the last stitch of the previous color incomplete so that two loops remain on the hook, and wrap the new yarn over the hook."
+                    }
                 },
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-1-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-cambiar-de-color-2.jpg",
+                    "content": {
+                        "es": "Pasa el hilo nuevo para completar la puntada y sigue trabajando con él.",
+                        "en": "Pull the new yarn through to complete the stitch and continue working with it."
+                    }
                 }
             ]
         },
         {
             "id": "stitching-2",
-            "name": "Punto bajo",
-            "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
+            "name": {
+                "es": "Anillo mágico",
+                "en": "Magic ring"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-anillo-magico-0.jpg",
             "difficulty": 0,
-            "qty": 7,
+            "qty": 3,
             "steps": [
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-2-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-anillo-magico-1.jpg",
+                    "content": {
+                        "es": "Insertar la aguja en el primer punto de la cadena de la misma manera en la que se trabaja en una hilera. Quedarán dos puntos sobre la aguja.",
+                        "en": "Insert the hook into the first stitch of the chain in the same way as when working in a row. There will be two loops on the hook."
+                    }
                 },
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-2-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-anillo-magico-2.jpg",
+                    "content": {
+                        "es": "Hacer una lazada y deslizarse a través de los dos puntos. De esta manera se realizó el punto raso...",
+                        "en": "Make a yarn over and pull through both loops. This completes the slip stitch..."
+                    }
+                },
+                {
+                    "id": "stitching-2-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-anillo-magico-3.jpg",
+                    "content": {
+                        "es": "...para completar la unión en círculo.",
+                        "en": "...to close the ring."
+                    }
                 }
             ]
         },
         {
             "id": "stitching-3",
-            "name": "Punto bajo",
-            "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
+            "name": {
+                "es": "Punto bajo",
+                "en": "Single crochet"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-punto-bajo-0.jpg",
             "difficulty": 0,
-            "qty": 7,
+            "qty": 9,
             "steps": [
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-3-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-1.jpg",
+                    "content": {
+                        "es": "El punto bajo se realiza a partir del segundo punto de la cadena.",
+                        "en": "The single crochet is made starting from the second chain stitch."
+                    }
                 },
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-3-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-2.jpg",
+                    "content": {
+                        "es": "Insertar la aguja por dentro del segundo punto cadena.",
+                        "en": "Insert the hook into the second chain stitch."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-3.jpg",
+                    "content": {
+                        "es": "Hacer una lazada en la aguja.",
+                        "en": "Yarn over the hook."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-4.jpg",
+                    "content": {
+                        "es": "Pasar la lazado a través del punto de la cadena...",
+                        "en": "Pull the yarn through the chain stitch..."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-5", 
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-5.jpg",
+                    "content": {
+                        "es": "...hasta sacarlo por completo de la aguja. Quedan dos puntos en la aguja.",
+                        "en": "...until it is completely pulled through. There are two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-6",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-6.jpg",
+                    "content": {
+                        "es": "Volver a hacer una lazada en la aguja.",
+                        "en": "Yarn over the hook again."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-7",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-7.jpg",
+                    "content": {
+                        "es": "Y pasar esa lazada a través de los dos puntos de la aguja.",
+                        "en": "And pull that yarn through both loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-8",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-8.jpg",
+                    "content": {
+                        "es": "Así queda realizado el primer punto bajo. Se continúa desde el paso nº2 con el siguiente punto cadena.",
+                        "en": "This completes the first single crochet. Continue from step 2 with the next chain stitch."
+                    }
+                },
+                {
+                    "id": "stitching-3-step-9",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-bajo-9.jpg",
+                    "content": {
+                        "es": "Para un Punto Bajo / Medio Punto es necesario 1 cadena.",
+                        "en": "For a single crochet/half stitch, 1 chain is needed."
+                    }
                 }
             ]
         },
         {
             "id": "stitching-4",
-            "name": "Punto bajo",
-            "image": "https://wondercrochet.blog/wp-content/uploads/2022/12/5A033C77-EAC3-41A2-B9A4-87F2341A0D14-1024x1024.png",
+            "name": {
+                "es": "Punto alto",
+                "en": "Double crochet"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-punto-alto-0.jpg",
             "difficulty": 0,
-            "qty": 7,
+            "qty": 11,
             "steps": [
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-4-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-1.jpg",
+                    "content": {
+                        "es": "Tejer una cadena de base y por ser el primer punto se trabajará sobre el 4º punto de comienzo para contrarrestar la altura del punto, está marcado en un tono más oscuro para diferenciarlo.",
+                        "en": "Make a foundation chain, and since this is the first stitch, work into the 4th chain from the start to offset the stitch height. It is marked in a darker shade for distinction."
+                    }
                 },
                 {
-                    "image": "",
-                    "content": { "es": "", "en": "" }
+                    "id": "stitching-4-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-2.jpg",
+                    "content": {
+                        "es": "Hacer una lazada en el ganchillo.",
+                        "en": "Yarn over the hook."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-3.jpg",
+                    "content": {
+                        "es": "Introducir la aguja en el punto de la cadena base.",
+                        "en": "Insert the hook into the stitch of the foundation chain."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-4.jpg",
+                    "content": {
+                        "es": "Hacer otra lazada en el ganchillo y pasarla a través del punto de la cadena.",
+                        "en": "Yarn over again and pull it through the chain stitch."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-5",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-5.jpg",
+                    "content": {
+                        "es": "Quedan tres puntos en el ganchillo.",
+                        "en": "There are three loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-6",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-6.jpg",
+                    "content": {
+                        "es": "Hacer otra lazada en el ganchillo.",
+                        "en": "Yarn over again."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-7",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-7.jpg",
+                    "content": {
+                        "es": "Pasar la lazada a través de dos puntos del ganchillo.",
+                        "en": "Pull the yarn through two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-8",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-8.jpg",
+                    "content": {
+                        "es": "Quedan dos puntos en el ganchillo.",
+                        "en": "There are two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-9",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-9.jpg",
+                    "content": {
+                        "es": "Hacer la última lazada en el ganchillo.",
+                        "en": "Yarn over one last time."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-10",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-10.jpg",
+                    "content": {
+                        "es": "Pasar la lazada a través de los dos puntos que quedan en la aguja.",
+                        "en": "Pull the yarn through the remaining two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-4-step-11",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-11.jpg",
+                    "content": {
+                        "es": "Así queda terminado el punto alto.",
+                        "en": "This completes the double crochet stitch."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-5",
+            "name": {
+                "es": "Cadeneta (Punto cadena)",
+                "en": "Chain Stitch"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-cadeneta-0.jpg",
+            "difficulty": 0,
+            "qty": 6,
+            "steps": [
+                {
+                    "id": "stitching-5-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-1.jpg",
+                    "content": {
+                        "es": "Tenemos primero en la aguja el primer punto formado con un nudo corredizo.",
+                        "en": "We first have on the hook the first stitch made with a slip knot."
+                    }
+                },
+                {
+                    "id": "stitching-5-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-2.jpg",
+                    "content": {
+                        "es": "Mover el ganchillo de abajo para arriba y engancharlo en la hebra que sostiene el dedo índice izquierdo para hacer una lazada.",
+                        "en": "Move the hook from bottom to top and catch the yarn held by the left index finger to make a yarn over."
+                    }
+                },
+                {
+                    "id": "stitching-5-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-3.jpg",
+                    "content": {
+                        "es": "Una vez realizada la lazada deberá pasarse por dentro del punto que sostiene la aguja.",
+                        "en": "Once the yarn over is made, pass it through the stitch on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-5-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-4.jpg",
+                    "content": {
+                        "es": "De ésta manera se pasa la lazada por dentro del punto y el punto que se encontraba en la aguja se deja caer.",
+                        "en": "In this way, the yarn over passes through the stitch and the stitch that was on the hook is dropped."
+                    }
+                },
+                {
+                    "id": "stitching-5-step-5",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-5.jpg",
+                    "content": {
+                        "es": "Se ha creado un nuevo punto que se encuentra sostenido por la aguja.",
+                        "en": "A new stitch has been created and is now held on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-5-step-6",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-cadena-6.jpg",
+                    "content": {
+                        "es": "Repetir desde el paso número 2 hasta tener una cadena del largo deseado.",
+                        "en": "Repeat from step 2 until you have a chain of the desired length."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-6",
+            "name": {
+                "es": "Punto enano / Deslizado",
+                "en": "Slip Stitch"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-punto-enano-0.jpg",
+            "difficulty": 0,
+            "qty": 5,
+            "steps": [
+                {
+                    "id": "stitching-6-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-enano-1.jpg",
+                    "content": {
+                        "es": "Se muestra en color más oscuro el segundo punto de la cadena en donde debe insertarse la aguja.",
+                        "en": "The second chain stitch, where the hook should be inserted, is shown in a darker color."
+                    }
+                },
+                {
+                    "id": "stitching-6-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-enano-2.jpg",
+                    "content": {
+                        "es": "Insertar la aguja en el 2º punto de la cadena base del tejido.",
+                        "en": "Insert the hook into the 2nd stitch of the foundation chain."
+                    }
+                },
+                {
+                    "id": "stitching-6-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-enano-3.jpg",
+                    "content": {
+                        "es": "Hacer una lazada.",
+                        "en": "Yarn over."
+                    }
+                },
+                {
+                    "id": "stitching-6-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-enano-4.jpg",
+                    "content": {
+                        "es": "Pasar la lazada por dentro del punto de la cadena y de la aguja.",
+                        "en": "Pull the yarn over through the chain stitch and the hook."
+                    }
+                },
+                {
+                    "id": "stitching-6-step-5",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-enano-5.jpg",
+                    "content": {
+                        "es": "Se continúa con el punto cadena que sigue y se repiten los pasos 1 a 4 tantas veces como sea necesario.",
+                        "en": "Continue with the next chain stitch and repeat steps 1 to 4 as many times as needed."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-7",
+            "name": {
+                "es": "Punto medio alto",
+                "en": "Half double crochet"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-punto-medio-alto-0.jpg",
+            "difficulty": 0,
+            "qty": 9,
+            "steps": [
+                {
+                    "id": "stitching-7-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-1.jpg",
+                    "content": {
+                        "es": "Tejer una cadena de base y se trabajará sobre el 3º punto de comienzo que será marcado en un tono más oscuro para diferenciar.",
+                        "en": "Make a foundation chain and work into the 3rd chain from the start, which will be marked in a darker shade for distinction."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-2.jpg",
+                    "content": {
+                        "es": "Hacer una lazada en el ganchillo.",
+                        "en": "Yarn over the hook."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-3.jpg",
+                    "content": {
+                        "es": "Introducir el ganchillo en el punto de la cadena. Por ser el primer punto se debe insertar en el tercer punto de la cadena base para contrarrestar la altura que tendrá el punto terminado.",
+                        "en": "Insert the hook into the chain stitch. Since this is the first stitch, insert it into the third chain of the foundation to offset the height of the finished stitch."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-4.jpg",
+                    "content": {
+                        "es": "Volver a hacer una lazada en el ganchillo. Las lazadas están coloreadas en tono naranja para diferenciar.",
+                        "en": "Yarn over the hook again. The yarn overs are shown in orange for distinction."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-5",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-5.jpg",
+                    "content": {
+                        "es": "Sacar la última lazada a través del punto de la cadena.",
+                        "en": "Pull the last yarn over through the chain stitch."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-6",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-6.jpg",
+                    "content": {
+                        "es": "Quedan en la aguja tres puntos.",
+                        "en": "There are three loops on the hook."
+                    }
+                },
+                {"id": "stitching-7-step-7",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-7.jpg",
+                    "content": {
+                        "es": "Volver a hacer una lazada que será pasada a través de todos los puntos como muestra la figura número ocho.",
+                        "en": "Yarn over again and pull it through all the loops as shown in figure number eight."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-8",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-8.jpg",
+                    "content": {
+                        "es": "Finalmente pasar la última lazada que se realizó a través de los puntos que quedan en el ganchillo.",
+                        "en": "Finally, pull the last yarn over through the remaining loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-7-step-9",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-medio-alto-9.jpg",
+                    "content": {
+                        "es": "Así queda realizado el primer punto. Repetir todos los pasos desde el paso nº2 en cada punto que sigue.",
+                        "en": "This completes the first stitch. Repeat all the steps from step 2 for each following stitch."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-8",
+            "name": {
+                "es": "Punto alto doble",
+                "en": "Treble Crochet / Triple Crochet"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-punto-alto-doble-0.jpg",
+            "difficulty": 0,
+            "qty": 14,
+            "steps": [
+                {
+                    "id": "stitching-8-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-1.jpg",
+                    "content": {
+                        "es": "Tejer una cadena de base y por ser el primer punto se trabajará sobre el 5º punto de comienzo para contrarrestar la altura del punto, está marcado en un tono más oscuro para diferenciarlo.",
+                        "en": "Make a foundation chain, and since this is the first stitch, work into the 5th chain from the start to offset the stitch height. It is marked in a darker shade for distinction."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-2.jpg",
+                    "content": {
+                        "es": "Hacer dos lazadas en el ganchillo.",
+                        "en": "Yarn over the hook twice."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-3.jpg",
+                    "content": {
+                        "es": "Introducir la aguja en el punto de la cadena base.",
+                        "en": "Insert the hook into the stitch of the foundation chain."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-4",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-4.jpg",
+                    "content": {
+                        "es": "Hacer otra lazada en el ganchillo y pasarla a través del punto de la cadena.",
+                        "en": "Yarn over again and pull it through the chain stitch."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-5",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-5.jpg",
+                    "content": {
+                        "es": "Quedan 4 puntos en el ganchillo.",
+                        "en": "There are 4 loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-6",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-6.jpg",
+                    "content": {
+                        "es": "Hacer otra lazada en el ganchillo.",
+                        "en": "Yarn over again."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-7",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-7.jpg",
+                    "content": {
+                        "es": "Pasar la lazada a través de dos puntos del ganchillo.",
+                        "en": "Pull the yarn through two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-8",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-8.jpg",
+                    "content": {
+                        "es": "Quedan tres puntos en el ganchillo.",
+                        "en": "There are three loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-9",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-9.jpg",
+                    "content": {
+                        "es": "Hacer otra lazada en el ganchillo.",
+                        "en": "Yarn over again."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-10",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-10.jpg",
+                    "content": {
+                        "es": "Pasar la lazada a través de dos puntos del ganchillo.",
+                        "en": "Pull the yarn through two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-11",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-11.jpg",
+                    "content": {
+                        "es": "Quedan dos puntos en el ganchillo.",
+                        "en": "There are two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-12",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-12.jpg",
+                    "content": {
+                        "es": "Hacer la última lazada en el ganchillo.",
+                        "en": "Yarn over one last time."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-13",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-13.jpg",
+                    "content": {
+                        "es": "Pasar la lazada a través de los dos puntos que quedan en la aguja.",
+                        "en": "Pull the yarn through the remaining two loops on the hook."
+                    }
+                },
+                {
+                    "id": "stitching-8-step-14",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-punto-alto-doble-1.jpg",
+                    "content": {
+                        "es": "Así queda terminado el punto alto doble. (Para un Punto Alto Doble o Vareta Doble son necesarias 4 cadenas).",
+                        "en": "This completes the double treble crochet. (For a Double Treble Crochet or Double Post, 4 chains are needed)."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-9",
+            "name": {
+                "es": "Punto palomitas",
+                "en": "Popcorn Stitch"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-palomitas-0.jpg",
+            "difficulty": 0,
+            "qty": 2,
+            "steps": [
+                {
+                    "id": "stitching-9-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-palomitas-1.jpg",
+                    "content": {
+                        "es": "Una palomita es un racimo de puntos triples (su número es variable), que se dobla y se cierra en la parte superior. Cuando hagas una palomita de inicio, cuenta la cadeneta de giro como la primera puntada.",
+                        "en": "A bobble is a cluster of triple crochet stitches (the number can vary), folded and closed at the top. When making a starting bobble, count the turning chain as the first stitch."
+                    }
+                },
+                {
+                    "id": "stitching-9-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-palomitas-2.jpg",
+                    "content": {
+                        "es": "Para hacer una palomita con 4 puntadas, haz 4 puntos triples en el mismo lugar ",
+                        "en": "To make a bobble with 4 stitches, work 4 triple crochets in the same place."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "stitching-10",
+            "name": {
+                "es": "Aumento",
+                "en": "Crochet increase"
+            },
+            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/tutoriales-basicos-aumento-0.jpg",
+            "difficulty": 0,
+            "qty": 3,
+            "steps": [
+                {
+                    "id": "stitching-10-step-1",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/aumento-1.jpg",
+                    "content": {
+                        "es": "Ingresa con el ganchillo a través de una de las v formadas por la intersección entre dos puntos de tu anillo mágico cerrado, busca hilo y haz las dos argollitas del punto bajo.",
+                        "en": "Insert the hook through one of the V shapes formed by the intersection between two stitches of your closed magic ring, yarn over, and make the two loops of the single crochet."
+                    }
+                },
+                {
+                    "id": "stitching-10-step-2",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/aumento-2.jpg",
+                    "content": {
+                        "es": "Trae hilo y atraviésalas. El punto bajo que acabas de tejer es parte de un aumento; por lo tanto, tienes que volver a ingresar por la misma v y hacer un nuevo punto bajo.",
+                        "en": "Yarn over and pull through both loops. The single crochet you just made is part of an increase; therefore, insert again into the same V and make another single crochet."
+                    }
+                },
+                {
+                    "id": "stitching-10-step-3",
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/aumento-3.jpg",
+                    "content": {
+                        "es": "Poco a poco, ve haciendo aumentos en cada uno de los puntos disponibles en tu círculo mágico.",
+                        "en": "Gradually make increases in each available stitch of your magic ring."
+                    }
                 }
             ]
         }
