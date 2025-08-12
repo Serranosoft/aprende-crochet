@@ -46,7 +46,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                     patternSelected &&
                     <BottomSheetScrollView contentContainerStyle={styles.content}>
                         <Image source={{ uri: patternSelected.image }} style={styles.image} />
-                        <Text style={ui.h2}>{patternSelected.name}</Text>
+                        <Text style={ui.h2}>{language._locale !== "es" ? patternSelected.name.en : patternSelected.name.es}</Text>
                         <View style={styles.metadata}>
                             <View style={styles.row}>
                                 <View style={styles.iconWrapper}>
@@ -85,18 +85,17 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 }
                             </>
                         </View>
-                        {patternSelected.progress > 0 &&
+                        {patternSelected.progress < 0 &&
                             <Button>
                                 <Text style={[ui.text, ui.white]}>Continuar con el paso {patternSelected.progress}</Text>
                             </Button>
                         }
                         <View style={styles.steps}>
                             {patternSelected.steps?.map((step, index) => {
-                                console.log(step);
                                 return (
                                     <TouchableOpacity style={styles.step} onPress={() => {
                                         router.navigate({
-                                            pathname: '/item',
+                                            pathname: '/steps',
                                             params: { id: patternSelected.id, step: index }
                                         })
                                     }}>

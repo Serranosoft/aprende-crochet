@@ -86,7 +86,7 @@ export default function Patterns() {
                                         <Image style={styles.image} source={{ uri: item.image }} />
                                     </View>
                                     <View style={styles.info}>
-                                        <Text style={[ui.h3, ui.bold]}>{item.name}</Text>
+                                        <Text style={[ui.h3, ui.bold]}>{language._locale !== "es" ? item.name.en : item.name.es}</Text>
                                         <Progress current={item.progress || 0} qty={item.qty} />
                                         <View style={styles.separator}></View>
                                         <View style={styles.metadata}>

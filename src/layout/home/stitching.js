@@ -1,16 +1,18 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import stitchings from "../../../stitchings.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
+import { LangContext } from "../../utils/Context";
 
 const { width } = Dimensions.get("screen");
 
 export default function Stitching() {
 
     const [data, setData] = useState(null);
+    const { language } = useContext(LangContext);
 
     useEffect(() => {
         setData(stitchings.stitching.slice(0, 4));
@@ -45,7 +47,7 @@ export default function Stitching() {
                         <TouchableOpacity style={styles.box}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
-                                <Text style={[ui.h3, ui.white, ui.bold]}>{pattern.name}</Text>
+                                <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale !== "es" ? pattern.name.en : pattern.name.es}</Text>
                                 <Progress current={pattern.progress || 0} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
