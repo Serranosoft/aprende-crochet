@@ -15,6 +15,7 @@ import stitchings from "../stitchings.json";
 import designs from "../designs.json";
 import Counter from "../src/components/counter";
 import Button from "../src/components/button";
+import { handleProgress } from "../src/utils/sqlite";
 
 export default function Steps() {
 
@@ -26,10 +27,16 @@ export default function Steps() {
     const [steps, setSteps] = useState([]);
     const [title, setTitle] = useState(null);
     const [current, setCurrent] = useState(parseInt(step));
-    console.log(step);
+
+
     useEffect(() => {
         fetchSteps();
+        handlePattern();
     }, [])
+
+    async function handlePattern() {
+        await handleProgress(id, current);
+    }
 
     async function fetchSteps() {
         const matrix = [stitchings.stitching, designs.designs];

@@ -7,6 +7,7 @@ import designs from "../../../designs.json";
 import { ui } from "../../utils/styles";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
+import { getLastPattern } from "../../utils/sqlite";
 
 const INITIAL_PATTERN = "stitching-1";
 
@@ -15,11 +16,12 @@ export default function LastPattern() {
     const [pattern, setPattern] = useState(null);
     const [hasLastPattern, setHasLastPattern] = useState(false);
 
+
     async function getPattern() {
         // Obtiene el último patrón
-        const lastPattern = await AsyncStorage.getItem("last-pattern") || INITIAL_PATTERN;
-        lastPattern !== INITIAL_PATTERN && setHasLastPattern(true);
-
+        /* const lastPattern = await AsyncStorage.getItem("last-pattern") || INITIAL_PATTERN;
+        lastPattern !== INITIAL_PATTERN && setHasLastPattern(true); */
+        const lastPattern = await getLastPattern();
         const matrix = [stitchings.stitching, designs.designs];
         const element = matrix.map((arr) => arr.find((el) => el.id === lastPattern));
         setPattern(element[0])
