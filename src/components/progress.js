@@ -6,7 +6,7 @@ import { router } from "expo-router";
 import { LangContext } from "../utils/Context";
 import { useContext } from "react";
 
-export default function Progress({ current, qty }) {
+export default function Progress({ current, qty, large = false }) {
 
     const { language } = useContext(LangContext);
 
@@ -17,10 +17,10 @@ export default function Progress({ current, qty }) {
     return (
         <>
             {current > 0 &&
-                <View style={{ gap: 3 }}>
-                    <View style={{ backgroundColor: "rgba(0,0,0,0.35)", height: 12, borderRadius: 16 }}>
-                        <Animated.View style={[animatedStyle, { backgroundColor: "#00C853", height: 12, borderRadius: 16, justifyContent: "center", alignItems: "center" }]}>
-                            <Text style={[ui.muted, ui.bold, ui.center, { lineHeight: 13, fontSize: 11.5 }]}>{current}/{qty} </Text>
+                <View style={{ gap: 3, width: "100%", maxWidth: 250 }}>
+                    <View style={{ backgroundColor: "rgba(0,0,0,0.35)", height: large ? 24 : 12, borderRadius: 16 }}>
+                        <Animated.View style={[animatedStyle, { backgroundColor: "#00C853", height: large ? 24 : 12, borderRadius: 16, justifyContent: "center", alignItems: "center" }]}>
+                            <Text style={[ui.muted, ui.bold, ui.center, { lineHeight: 13, fontSize: large ? 16.5 : 11.5 }]}>{current}/{qty} </Text>
                         </Animated.View>
                     </View>
                 </View>

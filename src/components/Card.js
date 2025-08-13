@@ -85,26 +85,23 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
 
     return (
         <GestureDetector gesture={tap}>
-            {/* <View> */}
-                <Animated.View style={[animatedStyle, styles.wrapper]}>
-                    <View style={styles.card}>
-                        <Animated.View style={animatedHeight}>
-                            { image && 
-                                <Image
-                                    style={styles.image}
-                                    source={{ uri: image }}
-                                    resizeMode="contain"
-                                    onError={() => setHasImage(false)}
-                                    onLoad={() => setHasImage(true)}
-                                />
-                            }
+            <Animated.View style={[animatedStyle, styles.wrapper]}>
+                <View style={styles.card}>
+                    <Animated.View style={animatedHeight}>
+                        {image &&
+                            <Image
+                                style={styles.image}
+                                source={{ uri: image }}
+                                resizeMode="contain"
+                                onError={() => setHasImage(false)}
+                                onLoad={() => setHasImage(true)}
+                            />
+                        }
 
-                        </Animated.View>
-                        <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{step}</Animated.Text>
-                    </View>
-                </Animated.View>
-                {/* <LottieView source={require("../../assets/lottie/loading-animation.json")} style={styles.lottie} loop={true} autoPlay={true} /> */}
-            {/* </View> */}
+                    </Animated.View>
+                    <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{step}</Animated.Text>
+                </View>
+            </Animated.View>
 
         </GestureDetector>
     )
@@ -114,7 +111,6 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        justifyContent: "space-around",
         alignItems: "center",
         marginHorizontal: 20,
     },
