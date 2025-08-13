@@ -1,64 +1,72 @@
 import { Dimensions, StyleSheet, Image } from "react-native";
-import Animated, { withSpring } from "react-native-reanimated";
+import Animated, { withSpring, interpolate, Extrapolation } from "react-native-reanimated";
 import { colors, ui } from "../../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
+import Counter from "./counter";
 
 export default function Card({ step, image, setCurrent, current, stepsLength, setAdTrigger }) {
-
     const [hasImage, setHasImage] = useState(true);
-
     const position = useSharedValue(0);
 
-    const tap = Gesture.Pan().runOnJS(true)
+    const tap = Gesture.Pan()
+        .runOnJS(true)
         .activeOffsetX([60, 60])
         .onUpdate((e) => {
             position.value = e.translationX;
         })
         .onEnd((e) => {
-            if (e.translationX < -60) {
+            const isSwipeLeft = e.translationX < -60;
+            const isSwipeRight = e.translationX > 60;
+
+            if (isSwipeLeft) {
                 if ((current + 1) < stepsLength) {
-                    position.value = withTiming(position.value * 10, { duration: 400, easing: Easing.ease });
-                    if (e.translationX < 60 && e.translationX > -60) {
-                        position.value = withTiming(0, { duration: 400, easing: Easing.ease });
-                    }
+                    setCurrent((current) => current + 1);
+                    position.value = withTiming(position.value * 5, { duration: 400, easing: Easing.ease });
                     setTimeout(() => {
-                        setCurrent((current) => current + 1);
                         position.value = Dimensions.get("window").width;
-                        position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
+                        position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }));
                         setAdTrigger((adTrigger) => adTrigger + 1);
-                    }, 250)
+                    }, 250);
                 } else {
-                    // Cargar una vista con el final   
                     position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }));
                 }
-            } else if (e.translationX > 60) {
+            } else if (isSwipeRight) {
                 if (current > 0) {
-                    position.value = withTiming(position.value * 10, { duration: 400, easing: Easing.ease });
-                    if (e.translationX < 60 && e.translationX > -60) {
-                        position.value = withTiming(0, { duration: 400, easing: Easing.ease });
-                    }
+                    setCurrent((current) => current - 1);
+                    position.value = withTiming(position.value * 5, { duration: 200, easing: Easing.ease });
                     setTimeout(() => {
-                        setCurrent((current) => current - 1);
                         position.value = -Dimensions.get("window").width;
-                        position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
+                        position.value = withDelay(10, withTiming(0, { duration: 200, easing: Easing.ease }));
                         setAdTrigger((adTrigger) => adTrigger + 1);
-                    }, 250)
-
+                    }, 100);
                 } else {
-                    position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }))
+                    position.value = withDelay(10, withTiming(0, { duration: 200, easing: Easing.ease }));
                 }
+            } else {
+                // Animar suavemente de vuelta
+                position.value = withTiming(0, { duration: 300, easing: Easing.ease });
             }
+        });
 
-        })
-
-    const animatedStyle = useAnimatedStyle(() => ({
+    const animatedImageStyle = useAnimatedStyle(() => ({
         transform: [{ translateX: position.value }],
     }));
 
+    const animatedTextStyle = useAnimatedStyle(() => {
+        const opacityValue = interpolate(
+            Math.abs(position.value),
+            [0, 100],
+            [1, 0],
+            Extrapolation.CLAMP
+        );
+        return {
+            opacity: withTiming(opacityValue, { duration: 200 })
+        };
+    });
 
     const height = useSharedValue(230);
     const fontSize = useSharedValue(19);
@@ -66,28 +74,27 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
     const animatedHeight = useAnimatedStyle(() => ({
         width: "100%",
         height: height.value
-    }))
-    const animatedText = useAnimatedStyle(() => ({
-        fontSize: fontSize.value
-    }))
+    }));
 
+    const animatedFontSize = useAnimatedStyle(() => ({
+        fontSize: fontSize.value
+    }));
 
     useEffect(() => {
         if (!hasImage) {
-            height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
-            fontSize.value = withTiming(22, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
+            height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1) });
+            fontSize.value = withTiming(22, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1) });
         } else {
             height.value = withSpring(200);
-            fontSize.value = withTiming(19, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
-
+            fontSize.value = withTiming(19, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1) });
         }
-    }, [hasImage])
+    }, [hasImage]);
 
     return (
         <GestureDetector gesture={tap}>
-            <Animated.View style={[animatedStyle, styles.wrapper]}>
+            <View style={styles.wrapper}>
                 <View style={styles.card}>
-                    <Animated.View style={animatedHeight}>
+                    <Animated.View style={[animatedHeight, animatedImageStyle]}>
                         {image &&
                             <Image
                                 style={styles.image}
@@ -97,15 +104,15 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
                                 onLoad={() => setHasImage(true)}
                             />
                         }
-
                     </Animated.View>
-                    <Animated.Text style={[ui.text, animatedText, styles.content]}>{step}</Animated.Text>
+                    <Counter />
+                    <Animated.Text style={[ui.text, animatedFontSize, styles.content, animatedTextStyle]}>
+                        {step}
+                    </Animated.Text>
                 </View>
-            </Animated.View>
-
+            </View>
         </GestureDetector>
-    )
-
+    );
 }
 
 const styles = StyleSheet.create({
@@ -125,4 +132,4 @@ const styles = StyleSheet.create({
     content: {
         textAlign: "center",
     }
-})
+});

@@ -59,7 +59,6 @@ export default function Steps() {
                     />
                 }
             </View>
-            <Counter />
             <View style={styles.progressWrapper}>
                 <Progress current={(current + 1)} qty={steps.length} large />
             </View>
