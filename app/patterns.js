@@ -65,7 +65,7 @@ export default function Patterns() {
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Patrones</Text>
                 </View>
-                {!openDetails && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />}
+                <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Image source={require("../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
 
 
