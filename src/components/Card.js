@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet, Image } from "react-native";
 import Animated, { withSpring } from "react-native-reanimated";
-import { ui } from "../../src/utils/styles";
+import { colors, ui } from "../../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -77,7 +77,7 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
             height.value = withTiming(0, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
             fontSize.value = withTiming(22, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
         } else {
-            height.value = withSpring(230);
+            height.value = withSpring(200);
             fontSize.value = withTiming(19, { duration: 500, easing: Easing.bezier(0.25, 0.1, 0.25, 1), });
 
         }
@@ -99,7 +99,7 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
                         }
 
                     </Animated.View>
-                    <Animated.Text style={[ui.text, animatedText, { textAlign: "center", lineHeight: 25, fontWeight: "bold" }]}>{step}</Animated.Text>
+                    <Animated.Text style={[ui.text, animatedText, styles.content]}>{step}</Animated.Text>
                 </View>
             </Animated.View>
 
@@ -112,16 +112,17 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: "center",
-        marginHorizontal: 20,
+        justifyContent: "flex-start",
     },
     card: {
         width: "100%",
-        paddingHorizontal: 18,
-        paddingVertical: 8,
         gap: 24,
     },
     image: {
         width: "100%",
         height: "100%",
+    },
+    content: {
+        textAlign: "center",
     }
 })

@@ -26,15 +26,16 @@ const styles = StyleSheet.create({
         paddingRight: 4,
         paddingLeft: 24,
         paddingVertical: 4,
-        borderRadius: 100,
+        borderRadius: 16,
         textAlign: "center",
         backgroundColor: colors.primary,
     },
 
     bigBtn: {
-        paddingRight: 16,
-        paddingLeft: 16,
-        paddingVertical: 16,
+        paddingRight: 32,
+        paddingLeft: 32,
+        paddingVertical: 12,
+        borderRadius: 8
     },
 
     text: {

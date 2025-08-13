@@ -1,6 +1,6 @@
 export const colors = {
-    primary: "#1c57a8ff",
-    secondary: "#447ecfff",
+    primary: "#895D3B",
+    secondary: "#af815eff",
     box: "#424242",
 }
 
@@ -17,7 +17,7 @@ export const ui = {
     muted: {
         fontFamily: "ancizar-medium",
         color: "#404040",
-        fontSize: 14,
+        fontSize: 13.5,
         lineHeight: 22
     },
     bold: {

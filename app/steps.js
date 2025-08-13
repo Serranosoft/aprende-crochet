@@ -13,6 +13,8 @@ import Header from "../src/layout/header";
 import { AdsContext, LangContext } from "../src/utils/Context";
 import stitchings from "../stitchings.json";
 import designs from "../designs.json";
+import Counter from "../src/components/counter";
+import Button from "../src/components/button";
 
 export default function Steps() {
 
@@ -42,16 +44,9 @@ export default function Steps() {
             <Stack.Screen options={{ header: () => <Header back={true} /> }} />
             <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
             <View style={styles.hero}>
-                <Text style={ui.h3}>{title}</Text>
-                <Progress current={(current + 1)} qty={steps.length} large />
-
-                {/* <View style={styles.count}> */}
-                    {/* <Text style={[ui.h3, ui.white]}>{current + 1}/{steps.length}</Text> */}
-                {/* </View> */}
+                <Text style={ui.h2}>{title}</Text>
             </View>
             <Image source={require("../assets/teddy-bear/teddy8.png")} style={styles.bigTeddy} />
-
-            {/* <Bubble style={{ position: "absolute", top: 150, left: -100, width: 300, height: 300, opacity: 0.75 }} /> */}
             <View style={styles.wrapper}>
                 {steps.length > 0 &&
                     <Card
@@ -64,6 +59,19 @@ export default function Steps() {
                     />
                 }
             </View>
+            <Counter />
+            <View style={styles.progressWrapper}>
+                <Progress current={(current + 1)} qty={steps.length} large />
+            </View>
+            <View style={styles.footer}>
+                <Button showIcon={false}>
+                    <Text style={[ui.text, ui.white]}>Anterior</Text>
+                </Button>
+                <Button showIcon={false}>
+                    <Text style={[ui.text, ui.white]}>Siguiente</Text>
+                </Button>
+            </View>
+
         </View>
     )
 }
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        gap: 12,
+        gap: 16,
         paddingBottom: 16,
         backgroundColor: "#fff",
     },
@@ -89,6 +97,7 @@ const styles = StyleSheet.create({
         gap: 16,
         paddingHorizontal: 16
     },
+
     count: {
         justifyContent: "center",
         alignItems: "center",
@@ -97,13 +106,24 @@ const styles = StyleSheet.create({
         padding: 8,
         borderRadius: 100,
         backgroundColor: colors.primary,
-
     },
+
     bigTeddy: {
         position: "absolute",
-        opacity: 0.25,
+        opacity: 0.35,
         left: -150,
         bottom: -35,
         zIndex: -1
     },
+
+    footer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 24
+    },
+
+    progressWrapper: {
+        alignItems: "center",
+    }
 })

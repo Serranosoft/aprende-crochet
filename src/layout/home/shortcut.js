@@ -25,7 +25,6 @@ export default function Shortcut() {
             </View>
             <View style={styles.wrapper}>
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/patterns")}>
-                    <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
                     <Image source={require("../../../assets/tutorials.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold]}>Aprender desde cero</Text>
@@ -33,7 +32,6 @@ export default function Shortcut() {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
-                    <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
                     <Image source={require("../../../assets/designs.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>
@@ -44,7 +42,6 @@ export default function Shortcut() {
             <View style={styles.wrapper}>
 
                 <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
-                    <Image source={require("../../../assets/corner.png")} style={styles.decoration} />
                     <Image source={require("../../../assets/my-progress.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>
