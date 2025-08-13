@@ -45,7 +45,7 @@ export default function Designs() {
             <View style={styles.grid}>
                 {data?.map((pattern) => {
                     return (
-                        <TouchableOpacity style={styles.box}>
+                        <TouchableOpacity key={pattern.id} style={styles.box}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale == "es" ? pattern.name.es : pattern.name.en}</Text>

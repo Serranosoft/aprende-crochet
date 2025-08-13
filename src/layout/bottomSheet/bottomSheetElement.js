@@ -15,7 +15,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
 
     // callbacks
     const handleSheetChanges = useCallback((index) => {
-        console.log('handleSheetChanges', index);
+        // console.log('handleSheetChanges', index);
     }, []);
 
     useEffect(() => {
@@ -91,7 +91,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                         <View style={styles.steps}>
                             {patternSelected.steps?.map((step, index) => {
                                 return (
-                                    <TouchableOpacity style={styles.step} onPress={() => {
+                                    <TouchableOpacity key={index} style={styles.step} onPress={() => {
                                         router.navigate({
                                             pathname: '/steps',
                                             params: { id: patternSelected.id, step: index }
