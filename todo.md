@@ -5,6 +5,8 @@
 
 
 ## Mejoras  
+- Añadir zoom a las imagenes
+- Añadir modal de actualizaciones
 - Crear la pantalla designs similar a patterns que consuma del json designs.
 - Crear la pantalla de mis patrones en curso listando de la matriz [designs, stitchings] junto con la tabla my_progress
 - Al pulsar en siguiente o anterior se debe ejecutar la acción de pasar a la anterior o al siguiente paso.
