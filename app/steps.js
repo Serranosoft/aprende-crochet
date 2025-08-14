@@ -22,7 +22,6 @@ export default function Steps() {
     const params = useLocalSearchParams();
     const { id, step } = params;
     const { language } = useContext(LangContext);
-    const { setAdTrigger } = useContext(AdsContext);
 
     const [steps, setSteps] = useState([]);
     const [title, setTitle] = useState(null);
@@ -53,7 +52,7 @@ export default function Steps() {
     useEffect(() => {
         updateProgress();
     }, [current])
-    
+
     async function updateProgress() {
         await handleProgress(id, current);
     }
@@ -76,30 +75,15 @@ export default function Steps() {
             <Image source={require("../assets/teddy-bear/teddy8.png")} style={styles.bigTeddy} />
             <View style={styles.wrapper}>
                 {steps.length > 0 &&
-                    <Card
-                        step={language._locale !== "es" ? steps[current].content.en : steps[current].content.es}
-                        image={steps[current].image}
-                        setCurrent={setCurrent}
-                        current={current}
-                        stepsLength={steps.length}
-                        setAdTrigger={setAdTrigger}
-                        count={count}
-                        setCount={setCount}
-                    />
+                    <Card {...{
+                        step: steps[current], setCurrent, current, stepsLength: steps.length, count, setCount
+                    }} />
                 }
             </View>
             <View style={styles.progressWrapper}>
+                <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>
                 <Progress current={current} qty={steps.length} large />
             </View>
-            <View style={styles.footer}>
-                <Button showIcon={false}>
-                    <Text style={[ui.text, ui.white]}>Anterior</Text>
-                </Button>
-                <Button showIcon={false}>
-                    <Text style={[ui.text, ui.white]}>Siguiente</Text>
-                </Button>
-            </View>
-
         </View>
     )
 }

@@ -4,13 +4,16 @@ import { colors, ui } from "../../src/utils/styles";
 import LottieView from 'lottie-react-native';
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import Counter from "./counter";
+import { AdsContext, LangContext } from "../utils/Context";
 
-export default function Card({ step, image, setCurrent, current, stepsLength, setAdTrigger, count, setCount }) {
+export default function Card({ step, setCurrent, current, stepsLength, count, setCount }) {
     const [hasImage, setHasImage] = useState(true);
     const position = useSharedValue(0);
+    const { setAdTrigger } = useContext(AdsContext);
+    const { language } = useContext(LangContext);
 
     const tap = Gesture.Pan()
         .runOnJS(true)
@@ -95,10 +98,10 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
             <View style={styles.wrapper}>
                 <View style={styles.card}>
                     <Animated.View style={[animatedHeight, animatedImageStyle]}>
-                        {image &&
+                        {step.image &&
                             <Image
                                 style={styles.image}
-                                source={{ uri: image }}
+                                source={{ uri: step.image }}
                                 resizeMode="contain"
                                 onError={() => setHasImage(false)}
                                 onLoad={() => setHasImage(true)}
@@ -107,7 +110,7 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
                     </Animated.View>
                     <Counter {...{ count, setCount }} />
                     <Animated.Text style={[ui.text, animatedFontSize, styles.content, animatedTextStyle]}>
-                        {step}
+                        {language._locale !== "es" ? step.content.en : step.content.es}
                     </Animated.Text>
                 </View>
             </View>
