@@ -69,9 +69,14 @@ export async function updateLastPattern(pattern_id) {
     const db = await getDb();
 
     const lastPattern = await db.getAllAsync("SELECT id FROM last_pattern LIMIT 1");
-    const id = lastPattern.length > 0 ? lastPattern[0].id : uuid.v4();
-
-    await db.runAsync("INSERT OR REPLACE INTO last_pattern (id, pattern_id) VALUES (?, ?)", id, pattern_id);
+    if (lastPattern.length > 0) {
+        const id = lastPattern[0].id;
+        await db.runAsync("UPDATE last_pattern SET pattern_id = ? WHERE id = ?", pattern_id, id );
+    } else {
+        const id = uuid.v4();
+        await db.runAsync("INSERT into last_pattern (id, pattern_id) VALUES (?,?)", id,pattern_id );
+    }
+    const result = await db.getAllAsync("SELECT pattern_id FROM last_pattern");
 }
 
 export async function updateProgress(pattern_id, progress) {
