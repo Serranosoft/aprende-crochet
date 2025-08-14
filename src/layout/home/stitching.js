@@ -48,7 +48,7 @@ export default function Stitching() {
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale !== "es" ? pattern.name.en : pattern.name.es}</Text>
-                                <Progress current={pattern.progress || 0} qty={pattern.qty} />
+                                <Progress current={pattern.progress !== undefined ? pattern.progress : null} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
