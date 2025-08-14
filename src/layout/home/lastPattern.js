@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import stitchings from "../../../stitchings.json";
@@ -18,12 +18,10 @@ export default function LastPattern() {
 
 
     async function getPattern() {
-        // Obtiene el último patrón
-        /* const lastPattern = await AsyncStorage.getItem("last-pattern") || INITIAL_PATTERN;
-        lastPattern !== INITIAL_PATTERN && setHasLastPattern(true); */
         const lastPattern = await getLastPattern();
         const matrix = [stitchings.stitching, designs.designs];
         const element = matrix.map((arr) => arr.find((el) => el.id === lastPattern));
+        element && setHasLastPattern(true);
         setPattern(element[0])
     }
 
@@ -48,12 +46,16 @@ export default function LastPattern() {
                     </View>
                     <View style={styles.content}>
                         <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con este patrón?"}</Text>
-                        { hasLastPattern && <Progress current={3} qty={7} /> }
-                        <Button showIcon={false}>
-                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Ir al último patrón" : "Comenzar"}</Text>
+                        {hasLastPattern && <Progress current={pattern.progress} qty={pattern.steps.length} />}
+                        <Button showIcon={false} onPress={() => {
+                            router.navigate({
+                                pathname: '/steps',
+                                params: { id: pattern.id, step: pattern.progress }
+                            })
+                        }}>
+                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "Comenzar"}</Text>
                         </Button>
                     </View>
-                    {/* Último patrón en progreso */}
                 </View>
             }
         </>
