@@ -50,6 +50,14 @@ export default function Steps() {
         }
     }, [count])
 
+    useEffect(() => {
+        updateProgress();
+    }, [current])
+    
+    async function updateProgress() {
+        await handleProgress(id, current);
+    }
+
     async function fetchSteps() {
         const matrix = [stitchings.stitching, designs.designs];
         const element = matrix.map((arr) => arr.find((el) => el.id === id));

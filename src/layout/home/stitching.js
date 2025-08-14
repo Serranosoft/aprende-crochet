@@ -1,17 +1,20 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import stitchings from "../../../stitchings.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
+import handleLevelString from "../../utils/handleJson";
+import { router, useFocusEffect } from "expo-router";
 
 const { width } = Dimensions.get("screen");
 
 export default function Stitching() {
 
     const [data, setData] = useState(null);
+    const dataRef = useRef();
     const { language } = useContext(LangContext);
 
     useEffect(() => {
@@ -19,19 +22,31 @@ export default function Stitching() {
     }, [])
 
     useEffect(() => {
-        if (data) {
-            handleProgress();
-        }
+        dataRef.current = data;
     }, [data])
+
+    useFocusEffect(
+        useCallback(() => {
+            if (dataRef.current) {
+                handleProgress();
+            }
+        }, [])
+    );
+
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
-        data.map(async (pattern) => {
-            let progress = await getProgressFromPattern(pattern.id);
-            if (progress) {
-                pattern.progress = progress;
-            }
-        })
+        const updated = await Promise.all(
+            dataRef.current.map(async (pattern) => {
+                let x = await getProgressFromPattern(pattern.id);
+                return {
+                    ...pattern,
+                    progress: x !== null ? parseInt(x.progress) : pattern.progress
+                };
+            })
+        );
+
+        setData(updated);
     }
 
     return (
@@ -44,7 +59,15 @@ export default function Stitching() {
             <View style={styles.grid}>
                 {data?.map((pattern) => {
                     return (
-                        <TouchableOpacity key={pattern.id} style={styles.box}>
+                        <TouchableOpacity
+                            key={pattern.id}
+                            style={styles.box}
+                            onPress={() => {
+                                router.navigate({
+                                    pathname: '/steps',
+                                    params: { id: pattern.id, step: pattern.progress || 0 }
+                                })
+                            }}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale !== "es" ? pattern.name.en : pattern.name.es}</Text>
@@ -54,7 +77,7 @@ export default function Stitching() {
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/level.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={[ui.muted, ui.white]}>Principiante</Text>
+                                    <Text style={[ui.muted, ui.white]}>{handleLevelString(pattern.difficulty)}</Text>
                                 </View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
@@ -67,7 +90,7 @@ export default function Stitching() {
                     )
                 })}
             </View>
-            <Button>
+            <Button onPress={() => router.navigate("/patterns")}>
                 <Text style={[ui.h4, ui.white]}>Ver todos los patrones</Text>
             </Button>
         </View>

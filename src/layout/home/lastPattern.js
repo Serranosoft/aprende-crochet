@@ -7,7 +7,7 @@ import designs from "../../../designs.json";
 import { ui } from "../../utils/styles";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
-import { getLastPattern } from "../../utils/sqlite";
+import { getLastPattern, getProgressFromPattern } from "../../utils/sqlite";
 
 const INITIAL_PATTERN = "stitching-1";
 
@@ -18,11 +18,21 @@ export default function LastPattern() {
 
 
     async function getPattern() {
+        console.log("get last pattern");
         const lastPattern = await getLastPattern();
-        const matrix = [stitchings.stitching, designs.designs];
-        const element = matrix.map((arr) => arr.find((el) => el.id === lastPattern));
-        element && setHasLastPattern(true);
-        setPattern(element[0])
+        console.log(lastPattern);
+        if (lastPattern) {
+            const progress = await getProgressFromPattern(lastPattern);
+            const matrix = [stitchings.stitching, designs.designs];
+            const element = matrix.map((arr) => arr.find((el) => el.id === lastPattern));
+
+            if (element) {
+                const updatedPattern = {...element[0], progress: progress ? parseInt(progress.progress) : 0};
+                setPattern(updatedPattern);
+                setHasLastPattern(true);
+            }
+
+        }
     }
 
     useFocusEffect(

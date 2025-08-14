@@ -44,12 +44,16 @@ export default function Patterns() {
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
-        patterns.map(async (pattern) => {
-            let x = await getProgressFromPattern(pattern.id);
-            if (x !== null) {
-                pattern.progress = parseInt(x.progress);
-            }
-        })
+        const updated = await Promise.all(
+            patterns.map(async (pattern) => {
+                const x = await getProgressFromPattern(pattern.id);
+                return {
+                    ...pattern,
+                    progress: x !== null ? parseInt(x.progress) : pattern.progress
+                };
+            })
+        );
+        setPatterns(updated);
     }
 
     function handleBottomSheet(pattern) {
