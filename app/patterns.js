@@ -1,4 +1,4 @@
-import { Link, router, Stack } from "expo-router"
+import { Link, router, Stack, useFocusEffect } from "expo-router"
 import { FlatList, Image, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useRef, useState } from "react"
@@ -21,15 +21,17 @@ export default function Patterns() {
     const [openDetails, setOpenDetails] = useState(false);
     const [patternSelected, setPatternSelected] = useState(null);
 
+    useFocusEffect(
+        useCallback(() => {
+            if (patterns.length > 0) {
+                handleProgress();
+            }
+        }, [patterns])
+    );
+
     useEffect(() => {
         setPatterns(stitchings.stitching);
     }, [])
-
-    useEffect(() => {
-        if (patterns.length > 0) {
-            handleProgress();
-        }
-    }, [patterns])
 
     useBackHandler(() => {
         if (openDetails) {
@@ -42,10 +44,10 @@ export default function Patterns() {
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
-        data.map(async (pattern) => {
-            let progress = await getProgressFromPattern(pattern.id);
-            if (progress) {
-                pattern.progress = progress;
+        patterns.map(async (pattern) => {
+            let x = await getProgressFromPattern(pattern.id);
+            if (x !== null) {
+                pattern.progress = parseInt(x.progress);
             }
         })
     }
@@ -87,7 +89,7 @@ export default function Patterns() {
                                     </View>
                                     <View style={styles.info}>
                                         <Text style={[ui.h3, ui.bold]}>{language._locale !== "es" ? item.name.en : item.name.es}</Text>
-                                        <Progress current={item.progress || 0} qty={item.qty} />
+                                        <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
                                         <View style={styles.separator}></View>
                                         <View style={styles.metadata}>
                                             <View style={styles.row}>

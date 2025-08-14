@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 8,
-        backgroundColor: "red"
     },
     action: {
         width: 20,

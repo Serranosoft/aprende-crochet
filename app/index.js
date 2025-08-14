@@ -32,7 +32,7 @@ export default function Index() {
             setCategories(tutorials);
             const aux = fetchDesigns(language._locale);
             setClothes(aux);
-        }, [language])
+        }, [])
     );
 
 

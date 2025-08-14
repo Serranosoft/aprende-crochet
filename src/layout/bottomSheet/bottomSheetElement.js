@@ -25,7 +25,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
             bottomSheetRef.current?.close();
         }
     }, [openDetails])
-    
+
 
     return (
         <BottomSheet
@@ -83,9 +83,10 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 }
                             </>
                         </View>
-                        { patternSelected.progress > 0 &&
+                        {
+                            patternSelected.progress !== undefined &&
                             <Button>
-                                <Text style={[ui.text, ui.white]}>Continuar con el paso {patternSelected.progress}</Text>
+                                <Text style={[ui.text, ui.white]}>Continuar con el paso {(parseInt(patternSelected.progress) + 1)}</Text>
                             </Button>
                         }
                         <View style={styles.steps}>

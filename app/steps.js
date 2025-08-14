@@ -31,7 +31,6 @@ export default function Steps() {
     const [count, setCount] = useState(null);
 
     useEffect(() => {
-        console.log("useEffect.");
         fetchSteps();
         handlePattern();
     }, [])
@@ -82,7 +81,7 @@ export default function Steps() {
                 }
             </View>
             <View style={styles.progressWrapper}>
-                <Progress current={(current + 1)} qty={steps.length} large />
+                <Progress current={current} qty={steps.length} large />
             </View>
             <View style={styles.footer}>
                 <Button showIcon={false}>
