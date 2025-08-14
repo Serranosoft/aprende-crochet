@@ -1,6 +1,6 @@
 import { Image, Platform, StatusBar, StyleSheet, Text, View } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { createRef, useContext, useEffect, useState } from "react";
+import { createRef, useContext, useEffect, useRef, useState } from "react";
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
 import { fetchData, fetchImages } from "../src/utils/data";
@@ -15,7 +15,7 @@ import stitchings from "../stitchings.json";
 import designs from "../designs.json";
 import Counter from "../src/components/counter";
 import Button from "../src/components/button";
-import { handleProgress } from "../src/utils/sqlite";
+import { handleCounter, handleProgress, updateCounter } from "../src/utils/sqlite";
 
 export default function Steps() {
 
@@ -28,15 +28,28 @@ export default function Steps() {
     const [title, setTitle] = useState(null);
     const [current, setCurrent] = useState(parseInt(step));
 
+    const [count, setCount] = useState(null);
 
     useEffect(() => {
+        console.log("useEffect.");
         fetchSteps();
         handlePattern();
     }, [])
 
     async function handlePattern() {
+        // Gestión del progreso (Añadir nuevo patrón o actualizar su progreso)
         await handleProgress(id, current);
+
+        // Gestión del contador (Añadir un nuevo contador si no existe, sino debo actualizarlo)
+        const count = await handleCounter(id);
+        setCount(parseInt(count));
     }
+
+    useEffect(() => {
+        if (count !== null) {
+            updateCounter(id, count);
+        }
+    }, [count])
 
     async function fetchSteps() {
         const matrix = [stitchings.stitching, designs.designs];
@@ -63,6 +76,8 @@ export default function Steps() {
                         current={current}
                         stepsLength={steps.length}
                         setAdTrigger={setAdTrigger}
+                        count={count}
+                        setCount={setCount}
                     />
                 }
             </View>

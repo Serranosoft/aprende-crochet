@@ -1,24 +1,22 @@
 import { useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors, ui } from "../utils/styles";
 
-export default function Counter() {
-
-    const [count, setCount] = useState(0);
+export default function Counter({ count, setCount }) {
 
     return (
         <View style={styles.container}>
             <Text style={ui.muted}>Número de hilos</Text>
             <View style={styles.wrapper}>
-                <TouchableOpacity style={styles.actionWrapper} onPress={() => setCount((count) => count > 0 ? count - 1 : count)}>
+                <Pressable style={styles.actionWrapper} onPress={() => setCount((count) => count > 0 ? count - 1 : count)}>
                     <Image source={require("../../assets/minus.png")} style={styles.action} />
-                </TouchableOpacity>
+                </Pressable>
                 <View style={styles.countWrapper}>
-                    <Text style={[ui.h2, styles.count]}>{ count }</Text>
+                    <Text style={[ui.h2, styles.count]}>{count}</Text>
                 </View>
-                <TouchableOpacity style={styles.actionWrapper} onPress={() => setCount((count) => count + 1)}>
+                <Pressable style={styles.actionWrapper} onPress={() => setCount((count) => count + 1)}>
                     <Image source={require("../../assets/plus.png")} style={styles.action} />
-                </TouchableOpacity>
+                </Pressable>
             </View>
         </View>
     )
@@ -49,6 +47,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 8,
+        backgroundColor: "red"
     },
     action: {
         width: 20,

@@ -16,8 +16,10 @@ export async function initDb() {
     await db.execAsync('PRAGMA foreign_keys = ON');
     await db.execAsync(`DROP TABLE IF EXISTS my_progress`);
     await db.execAsync(`DROP TABLE IF EXISTS last_pattern`);
+    await db.execAsync(`DROP TABLE IF EXISTS counters`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS my_progress (id TEXT, pattern_id TEXT, progress TEXT);`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS last_pattern (id TEXT PRIMARY KEY, pattern_id TEXT);`);
+    await db.execAsync(`CREATE TABLE IF NOT EXISTS counters (id TEXT PRIMARY KEY, pattern_id TEXT, progress TEXT);`);
 }
 
 export async function getLastPattern() {
@@ -41,6 +43,7 @@ export async function getPatternsInProgress() {
 export async function handleProgress(pattern_id, progress) {
     const db = await getDb();
     const patterns = await db.getAllAsync("SELECT * from my_progress");
+
     // Si existe entonces actualizar el progreso del patrón con el paso recibido. Si es exactamente igual entonces no cambia nada.
     if (patterns.some((el) => el.pattern_id === pattern_id)) {
         updateLastPattern(pattern_id);
@@ -48,7 +51,7 @@ export async function handleProgress(pattern_id, progress) {
         if (patterns.some((el) => el.progress !== progress)) {
             updateProgress(pattern_id, progress);
         }
-    // En caso de no existir, añadir nuevo progreso.
+        // En caso de no existir, añadir nuevo progreso.
     } else {
         addNewProgress(pattern_id, progress);
         updateLastPattern(pattern_id);
@@ -74,4 +77,21 @@ export async function updateLastPattern(pattern_id) {
 export async function updateProgress(pattern_id, progress) {
     const db = await getDb();
     db.runAsync("UPDATE my_progress SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
+}
+
+export async function handleCounter(pattern_id) {
+    const db = await getDb();
+    const id = uuid.v4();
+    const counters = await db.getAllAsync("SELECT * from counters");
+    if (counters.some((el) => el.pattern_id === pattern_id)) {
+        return counters[0].progress;
+    } else {
+        db.runAsync("INSERT INTO counters (id, pattern_id, progress) VALUES (?,?,?)", id, pattern_id, 0);
+        return 0;
+    }
+}
+
+export async function updateCounter(pattern_id, progress) {
+    const db = await getDb();
+    db.runAsync("UPDATE counters SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
 }

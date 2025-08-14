@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import { View } from "react-native";
 import Counter from "./counter";
 
-export default function Card({ step, image, setCurrent, current, stepsLength, setAdTrigger }) {
+export default function Card({ step, image, setCurrent, current, stepsLength, setAdTrigger, count, setCount }) {
     const [hasImage, setHasImage] = useState(true);
     const position = useSharedValue(0);
 
     const tap = Gesture.Pan()
         .runOnJS(true)
-        .activeOffsetX([60, 60])
+        .activeOffsetX([300, 300])
         .onUpdate((e) => {
             position.value = e.translationX;
         })
@@ -50,7 +50,7 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
                 // Animar suavemente de vuelta
                 position.value = withTiming(0, { duration: 300, easing: Easing.ease });
             }
-        });
+        }).simultaneousWithExternalGesture();
 
     const animatedImageStyle = useAnimatedStyle(() => ({
         transform: [{ translateX: position.value }],
@@ -105,7 +105,7 @@ export default function Card({ step, image, setCurrent, current, stepsLength, se
                             />
                         }
                     </Animated.View>
-                    <Counter />
+                    <Counter {...{ count, setCount }} />
                     <Animated.Text style={[ui.text, animatedFontSize, styles.content, animatedTextStyle]}>
                         {step}
                     </Animated.Text>
