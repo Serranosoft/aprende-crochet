@@ -85,7 +85,12 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                         </View>
                         {
                             patternSelected.progress !== undefined &&
-                            <Button>
+                            <Button onPress={() => {
+                                router.navigate({
+                                    pathname: '/steps',
+                                    params: { id: patternSelected.id, step: patternSelected.progress }
+                                })
+                            }}>
                                 <Text style={[ui.text, ui.white]}>Continuar con el paso {(parseInt(patternSelected.progress) + 1)}</Text>
                             </Button>
                         }
