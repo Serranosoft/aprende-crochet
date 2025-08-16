@@ -20,7 +20,7 @@ export default function Steps() {
     const { id, step } = params;
     const { language } = useContext(LangContext);
 
-    const [steps, setSteps] = useState([]);
+    const [steps, setSteps] = useState(null);
     const [title, setTitle] = useState(null);
     const [current, setCurrent] = useState(parseInt(step));
 
@@ -47,7 +47,6 @@ export default function Steps() {
     }, [count])
 
     useEffect(() => {
-        console.log("current: "+current);
         updateProgress();
     }, [current])
 
@@ -72,14 +71,14 @@ export default function Steps() {
             </View>
             <Image source={require("../assets/teddy-bear/teddy8.png")} style={styles.bigTeddy} />
             <View style={styles.wrapper}>
-                {steps.length > 0 &&
+                {steps && steps.length > 0 &&
                     <Card {...{
                         step: steps[current], setCurrent, current, stepsLength: steps.length, count, setCount
                     }} />
                 }
             </View>
             {
-                isLastStep(current, steps.length) &&
+                steps && isLastStep(current, steps.length) &&
                 <View style={styles.footer}>
                     <Image source={require("../assets/teddy-bear/teddy9.png")} style={styles.footerImg} />
                     <Button showIcon={false} onPress={() => router.back() }>
@@ -89,7 +88,7 @@ export default function Steps() {
             }
             <View style={styles.progressWrapper}>
                 {hasNextStep(current) && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
-                <Progress current={current} qty={steps.length} large />
+                { steps && <Progress current={current} qty={steps.length} large /> }
             </View>
         </View>
     )
