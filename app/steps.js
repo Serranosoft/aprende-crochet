@@ -28,10 +28,10 @@ export default function Steps() {
 
     useEffect(() => {
         fetchSteps();
-        handleCounter();
+        getCounter();
     }, [])
 
-    async function handleCounter() {
+    async function getCounter() {
         // Gestión del contador (Añadir un nuevo contador si no existe, sino debo actualizarlo)
         const count = await handleCounter(id);
         setCount(parseInt(count));
