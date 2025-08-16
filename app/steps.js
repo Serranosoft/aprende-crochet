@@ -28,13 +28,10 @@ export default function Steps() {
 
     useEffect(() => {
         fetchSteps();
-        handlePattern();
+        handleCounter();
     }, [])
 
-    async function handlePattern() {
-        // Gestión del progreso (Añadir nuevo patrón o actualizar su progreso)
-        await handleProgress(id, current);
-
+    async function handleCounter() {
         // Gestión del contador (Añadir un nuevo contador si no existe, sino debo actualizarlo)
         const count = await handleCounter(id);
         setCount(parseInt(count));
