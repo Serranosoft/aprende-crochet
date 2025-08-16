@@ -1,5 +1,5 @@
 import { SplashScreen, Stack } from "expo-router";
-import { View, StatusBar, StyleSheet } from "react-native";
+import { View, StatusBar, StyleSheet, Image, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { createRef, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
@@ -11,6 +11,7 @@ import { AdsContext, LangContext } from "../src/utils/Context";
 // import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
 import { initDb } from "../src/utils/sqlite";
+import { ui } from "../src/utils/styles";
 
 SplashScreen.preventAutoHideAsync();
 export default function Layout() {
@@ -35,10 +36,18 @@ export default function Layout() {
         }
     }, [fontsLoaded]);
 
+    // Gestión base de datos
+    const [isReady, setIsReady] = useState(false);
+
     useEffect(() => {
         getLanguage();
-        initDb();
+        loadDb();
     }, [])
+
+    async function loadDb() {
+        await initDb();
+        setIsReady(true);
+    }
 
     async function getLanguage() {
         const language = await AsyncStorage.getItem("language");
@@ -79,13 +88,21 @@ export default function Layout() {
     return (
         <View style={styles.container}>
             <AdsHandler ref={adsHandlerRef} showOpenAd={showOpenAd} adsLoaded={adsLoaded} setAdsLoaded={setAdsLoaded} setShowOpenAd={setShowOpenAd} />
-            <GestureHandlerRootView style={styles.wrapper}>
-                <LangContext.Provider value={{ setLanguage: setLanguage, language: i18n }}>
-                    <AdsContext.Provider value={{ setAdTrigger, adsLoaded, setShowOpenAd  }}>
-                        <Stack />
-                    </AdsContext.Provider>
-                </LangContext.Provider>
-            </GestureHandlerRootView>
+            {
+                isReady ?
+                    <GestureHandlerRootView style={styles.wrapper}>
+                        <LangContext.Provider value={{ setLanguage: setLanguage, language: i18n }}>
+                            <AdsContext.Provider value={{ setAdTrigger, adsLoaded, setShowOpenAd }}>
+                                <Stack />
+                            </AdsContext.Provider>
+                        </LangContext.Provider>
+                    </GestureHandlerRootView>
+                    :
+                    <View style={styles.loading}>
+                        <Image source={require("../assets/teddy-bear/teddy10.png")} style={styles.loadingImg} /> 
+                        <Text style={ui.h2}>Cargando...</Text>
+                    </View>
+            }
             <StatusBar style="light" backgroundColor={"#fff"} />
         </View >
     )
@@ -103,5 +120,15 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         justifyContent: "center",
     },
+    loading: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 16
+    },
+    loadingImg: {
+        width: 100,
+        height: 100,
+    }
 
 })
