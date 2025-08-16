@@ -4,15 +4,16 @@ import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useState } from "react"
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
+import stitchings from "../stitchings.json";
 import designs from "../designs.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
-import { getProgressFromPattern } from "../src/utils/sqlite"
+import { getPatternsInProgress, getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
 
 
-export default function Designs() {
+export default function PatternsInProgress() {
 
     const [patterns, setPatterns] = useState([])
     const { language } = useContext(LangContext);
@@ -30,8 +31,19 @@ export default function Designs() {
     );
 
     useEffect(() => {
-        setPatterns(designs.designs);
+        handleMyPatterns();
     }, [])
+
+    async function handleMyPatterns() {
+        const result = await getPatternsInProgress();
+        const matrix = [stitchings.stitching, designs.designs];
+        let elements = [];
+        result.forEach((patternInProgress) => {
+            const element = matrix.map((arr) => arr.find((el) => el.id === patternInProgress.pattern_id));
+            if (element) elements.push(element[0]);
+        })
+        setPatterns(elements);
+    }
 
     useBackHandler(() => {
         if (openDetails) {
@@ -69,9 +81,9 @@ export default function Designs() {
 
             <View style={styles.container}>
                 <View style={styles.hero}>
-                    <Text style={ui.h1}>Diseños</Text>
+                    <Text style={ui.h1}>Mis patrones</Text>
                 </View>
-                <Image source={require("../assets/teddy-bear/teddy2.png")} style={styles.bigTeddy} />
+                <Image source={require("../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
 
 
 
@@ -141,7 +153,7 @@ const styles = StyleSheet.create({
     bigTeddy: {
         position: "absolute",
         opacity: 0.35,
-        right: -80,
+        right: -120,
         top: 0,
         zIndex: -1
     },
