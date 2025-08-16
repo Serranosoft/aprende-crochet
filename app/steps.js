@@ -1,5 +1,5 @@
 import { Image, Platform, StatusBar, StyleSheet, Text, View } from "react-native";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { router, Stack, useLocalSearchParams } from "expo-router";
 import { createRef, useContext, useEffect, useRef, useState } from "react";
 import Progress from "../src/components/progress";
 import AdsHandler from "../src/components/AdsHandler";
@@ -80,8 +80,17 @@ export default function Steps() {
                     }} />
                 }
             </View>
+            {
+                (current + 1) === steps.length &&
+                <View style={styles.footer}>
+                    <Image source={require("../assets/teddy-bear/teddy9.png")} style={styles.footerImg} />
+                    <Button showIcon={false} onPress={() => router.back() }>
+                        <Text style={[ui.muted, ui.white]}>He terminado</Text>
+                    </Button>
+                </View>
+            }
             <View style={styles.progressWrapper}>
-                <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>
+                {(current + 1) < steps.length && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
                 <Progress current={current} qty={steps.length} large />
             </View>
         </View>
@@ -129,13 +138,22 @@ const styles = StyleSheet.create({
     },
 
     footer: {
+        position: "relative",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        gap: 24
+        gap: 24,
+        alignSelf: "center"
     },
 
     progressWrapper: {
         alignItems: "center",
+    },
+    footerImg: {
+        position: "absolute",
+        top: -50,
+        right: 0,
+        width: 64,
+        height: 64
     }
 })
