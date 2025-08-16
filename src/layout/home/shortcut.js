@@ -47,7 +47,7 @@ export default function Shortcut() {
                         { patternsQty && <Text style={[ui.muted, ui.lightgray]}>{patternsQty} tutoriales</Text> }
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
+                <TouchableOpacity style={styles.box} onPress={() => router.push("/designs")}>
                     <Image source={require("../../../assets/designs.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>

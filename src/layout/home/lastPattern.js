@@ -55,7 +55,7 @@ export default function LastPattern() {
                         </View>
                     </View>
                     <View style={styles.content}>
-                        <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con este patrón?"}</Text>
+                        <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con lo básico?"}</Text>
                         {hasLastPattern && <Progress current={pattern.progress} qty={pattern.steps.length} />}
                         <Button showIcon={false} onPress={() => {
                             router.navigate({
@@ -63,7 +63,7 @@ export default function LastPattern() {
                                 params: { id: pattern.id, step: pattern.progress }
                             })
                         }}>
-                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "Comenzar"}</Text>
+                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "¡Si!"}</Text>
                         </Button>
                     </View>
                 </View>
