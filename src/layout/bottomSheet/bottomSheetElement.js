@@ -26,12 +26,23 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
         }
     }, [openDetails])
 
-    async function navigateToSteps(step) {
+    function navigateToSteps(step) {
         router.navigate({
             pathname: '/steps',
             params: { id: patternSelected.id, step: step }
         })
         setOpenDetails(false);
+    }
+
+    function getNextStepIndex() {
+        return patternSelected.progress < (patternSelected.qty - 1) ?
+            patternSelected.progress + 1 :
+            patternSelected.progress
+    }
+    function getNextStepNumber() {
+        return (patternSelected.progress + 1) < patternSelected.qty ? 
+        (patternSelected.progress + 2) : 
+        patternSelected.qty
     }
 
 
@@ -93,9 +104,9 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                         </View>
                         {
                             patternSelected.progress !== undefined &&
-                            <Button onPress={() => navigateToSteps(patternSelected.progress)}>
+                            <Button onPress={() => navigateToSteps(getNextStepIndex())}>
                                 <Text style={[ui.text, ui.white]}>
-                                    Continuar con el paso {(patternSelected.progress + 1) < patternSelected.qty ? (parseInt(patternSelected.progress) + 2) : patternSelected.qty}
+                                    Continuar con el paso {getNextStepNumber()}
                                 </Text>
                             </Button>
                         }
