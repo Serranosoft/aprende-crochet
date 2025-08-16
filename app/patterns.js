@@ -1,7 +1,7 @@
-import { Link, router, Stack, useFocusEffect } from "expo-router"
-import { FlatList, Image, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Stack, useFocusEffect } from "expo-router"
+import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
-import { useCallback, useContext, useEffect, useRef, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import stitchings from "../stitchings.json";

@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getLocales } from "expo-localization";
 import { translations } from "../src/utils/localizations";
 import { AdsContext, LangContext } from "../src/utils/Context";
-// import * as StoreReview from 'expo-store-review';
+import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
 import { initDb } from "../src/utils/sqlite";
 import { ui } from "../src/utils/styles";

@@ -1,19 +1,15 @@
-import { Image, Platform, StatusBar, StyleSheet, Text, View } from "react-native";
+import { Image, Platform, StyleSheet, Text, View } from "react-native";
 import { router, Stack, useLocalSearchParams } from "expo-router";
-import { createRef, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
-import AdsHandler from "../src/components/AdsHandler";
-import { fetchData, fetchImages } from "../src/utils/data";
 import Card from "../src/components/Card";
 import { colors, ui } from "../src/utils/styles";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
-import Bubble from "../src/components/bubble";
 import Header from "../src/layout/header";
-import { AdsContext, LangContext } from "../src/utils/Context";
+import { LangContext } from "../src/utils/Context";
 import stitchings from "../stitchings.json";
 import designs from "../designs.json";
-import Counter from "../src/components/counter";
 import Button from "../src/components/button";
 import { handleCounter, handleProgress, updateCounter } from "../src/utils/sqlite";
 
