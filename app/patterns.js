@@ -71,7 +71,6 @@ export default function Patterns() {
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Patrones</Text>
                 </View>
-                <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
                 <Image source={require("../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
 
 
@@ -114,6 +113,8 @@ export default function Patterns() {
                             )
                         }}
                     />
+                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+
                 </View>
             </View>
             {openDetails && <View style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.65)" }}></View>}
@@ -129,6 +130,7 @@ const styles = StyleSheet.create({
         flex: 1,
         gap: 24,
         backgroundColor: "#fff",
+        paddingTop: 16,
         alignItems: "flex-start"
     },
 
@@ -138,8 +140,8 @@ const styles = StyleSheet.create({
 
     bigTeddy: {
         position: "absolute",
-        opacity: 0.25,
-        right: -125,
+        opacity: 0.35,
+        right: -120,
         top: 0,
         zIndex: -1
     },
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
     box: {
         flexDirection: "row",
         gap: 16,
-        // backgroundColor: 
+        backgroundColor: "rgba(255,255,255, 0.7)",
         paddingRight: 8,
         borderRadius: 16
     },
