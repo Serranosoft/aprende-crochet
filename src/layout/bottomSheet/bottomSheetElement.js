@@ -26,6 +26,14 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
         }
     }, [openDetails])
 
+    async function navigateToSteps(step) {
+        router.navigate({
+            pathname: '/steps',
+            params: { id: patternSelected.id, step: step }
+        })
+        setOpenDetails(false);
+    }
+
 
     return (
         <BottomSheet
@@ -85,24 +93,17 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                         </View>
                         {
                             patternSelected.progress !== undefined &&
-                            <Button onPress={() => {
-                                router.navigate({
-                                    pathname: '/steps',
-                                    params: { id: patternSelected.id, step: patternSelected.progress }
-                                })
-                            }}>
-                                <Text style={[ui.text, ui.white]}>Continuar con el paso {(parseInt(patternSelected.progress) + 1)}</Text>
+                            <Button onPress={() => navigateToSteps(patternSelected.progress)}>
+                                <Text style={[ui.text, ui.white]}>
+                                    Continuar con el paso {patternSelected.progress >= (parseInt(patternSelected.progress) + 2) ? (parseInt(patternSelected.progress) + 2) : patternSelected.qty}
+                                </Text>
                             </Button>
                         }
                         <View style={styles.steps}>
                             {patternSelected.steps?.map((step, index) => {
                                 return (
-                                    <TouchableOpacity key={index} style={styles.step} onPress={() => {
-                                        router.navigate({
-                                            pathname: '/steps',
-                                            params: { id: patternSelected.id, step: index }
-                                        })
-                                    }}>
+                                    <TouchableOpacity key={index} style={styles.step} onPress={() => navigateToSteps(index)}>
+                                        {(patternSelected.progress) >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
                                         <Image source={{ uri: step.image }} style={styles.stepImg} />
                                         <View style={styles.stepInfo}>
                                             <Text style={ui.h3}>Paso {index + 1}</Text>
@@ -201,5 +202,12 @@ const styles = StyleSheet.create({
         height: 1,
         backgroundColor: colors.box
     },
+    tickImg: {
+        width: 24,
+        height: 24,
+        position: "absolute",
+        top: 0,
+        right: 8,
+    }
 
 })
