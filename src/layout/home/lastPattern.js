@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     card: {
         position: "relative",
         width: 140,
-        height: 175,
+        height: 150,
         backgroundColor: "#fff",
         borderWidth: 1,
         borderRadius: 8,
@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: "100%",
-        borderRadius: 16
+        borderRadius: 16,
+        objectFit: "fill"
     }
 })

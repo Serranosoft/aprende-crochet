@@ -12,6 +12,7 @@ import stitchings from "../stitchings.json";
 import designs from "../designs.json";
 import Button from "../src/components/button";
 import { handleCounter, handleProgress, updateCounter } from "../src/utils/sqlite";
+import { hasNextStep, isLastStep } from "../src/layout/steps/stepsUtils";
 
 export default function Steps() {
 
@@ -46,6 +47,7 @@ export default function Steps() {
     }, [count])
 
     useEffect(() => {
+        console.log("current: "+current);
         updateProgress();
     }, [current])
 
@@ -77,7 +79,7 @@ export default function Steps() {
                 }
             </View>
             {
-                (current + 1) === steps.length &&
+                isLastStep(current, steps.length) &&
                 <View style={styles.footer}>
                     <Image source={require("../assets/teddy-bear/teddy9.png")} style={styles.footerImg} />
                     <Button showIcon={false} onPress={() => router.back() }>
@@ -86,7 +88,7 @@ export default function Steps() {
                 </View>
             }
             <View style={styles.progressWrapper}>
-                {(current + 1) < steps.length && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
+                {hasNextStep(current) && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
                 <Progress current={current} qty={steps.length} large />
             </View>
         </View>

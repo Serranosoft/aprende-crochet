@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import Counter from "./counter";
 import { AdsContext, LangContext } from "../utils/Context";
+import { isLastStep } from "../layout/steps/stepsUtils";
 
 export default function Card({ step, setCurrent, current, stepsLength, count, setCount }) {
     const [hasImage, setHasImage] = useState(true);
@@ -26,7 +27,7 @@ export default function Card({ step, setCurrent, current, stepsLength, count, se
             const isSwipeRight = e.translationX > 60;
 
             if (isSwipeLeft) {
-                if ((current + 1) < stepsLength) {
+                if (isLastStep(current, stepsLength)) {
                     setCurrent((current) => current + 1);
                     position.value = withTiming(position.value * 5, { duration: 400, easing: Easing.ease });
                     setTimeout(() => {

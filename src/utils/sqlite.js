@@ -109,5 +109,4 @@ export async function handleCounter(pattern_id) {
 export async function updateCounter(pattern_id, progress) {
     const db = await getDb();
     db.runAsync("UPDATE counters SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
-    console.log(`update ${pattern_id} with ${progress}`);
 }
