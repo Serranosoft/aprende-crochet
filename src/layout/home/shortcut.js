@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors, ui } from "../../utils/styles";
-import { router } from "expo-router";
-import { useEffect, useState } from "react";
-import { getPatternsInProgress } from "../../utils/sqlite";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
+import { getPatternsQtyInProgress } from "../../utils/sqlite";
 import stitchings from "../../../stitchings.json";
 import designs from "../../../designs.json";
 
@@ -12,11 +12,17 @@ export default function Shortcut() {
     const [designsQty, setDesignsQty] = useState(null);
     const [patternsInProgress, setPatternsInProgress] = useState(0);
 
+
     useEffect(() => {
         handlePatternsQty();
         handleDesignsQty();
-        handlePatternsInProgress();
     }, [])
+    
+    useFocusEffect(
+        useCallback(() => {
+            handlePatternsInProgress();
+        }, [])
+    )
 
     async function handlePatternsQty() {
         const result = stitchings.stitching.length;
@@ -29,7 +35,7 @@ export default function Shortcut() {
     }
 
     async function handlePatternsInProgress() {
-        const result = await getPatternsInProgress();
+        const result = await getPatternsQtyInProgress();
         setPatternsInProgress(result);
     }
 
@@ -57,7 +63,7 @@ export default function Shortcut() {
             </View>
             <View style={styles.wrapper}>
 
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/")}>
+                <TouchableOpacity style={styles.box} onPress={() => router.push("/patternsInProgress")}>
                     <Image source={require("../../../assets/my-progress.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>

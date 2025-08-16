@@ -17,7 +17,7 @@ export async function initDb() {
     await db.execAsync(`DROP TABLE IF EXISTS my_progress`);
     await db.execAsync(`DROP TABLE IF EXISTS last_pattern`);
     await db.execAsync(`DROP TABLE IF EXISTS counters`);
-    await db.execAsync(`CREATE TABLE IF NOT EXISTS my_progress (id TEXT, pattern_id TEXT, progress TEXT, is_finished INT);`);
+    await db.execAsync(`CREATE TABLE IF NOT EXISTS my_progress (id TEXT, pattern_id TEXT, progress TEXT);`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS last_pattern (id TEXT PRIMARY KEY, pattern_id TEXT);`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS counters (id TEXT PRIMARY KEY, pattern_id TEXT, progress TEXT);`);
 }
@@ -26,7 +26,7 @@ export async function initDb() {
 export async function addNewProgress(pattern_id, progress) {
     const db = await getDb();
     const id = uuid.v4();
-    db.runAsync("INSERT into my_progress (id, pattern_id, progress, is_finished) VALUES (?,?,?, ?)", id, pattern_id, progress, 0);
+    db.runAsync("INSERT into my_progress (id, pattern_id, progress) VALUES (?,?,?)", id, pattern_id, progress);
 }
 
 export async function updateProgress(pattern_id, progress) {
@@ -40,10 +40,16 @@ export async function getProgressFromPattern(pattern_id) {
     return x;
 }
 
+export async function getPatternsQtyInProgress() {
+    const db = await getDb();
+    const x = await db.getAllAsync("SELECT COUNT(*) as count FROM my_progress");
+    return x[0].count;
+}
+
 export async function getPatternsInProgress() {
     const db = await getDb();
-    const x = await db.getAllAsync("SELECT COUNT(*) as count FROM my_progress WHERE progress > 0");
-    return x[0].count;
+    const x = await db.getAllAsync("SELECT * FROM my_progress");
+    return x;
 }
 
 // Gestiona si debe añadir un nuevo progreso o si debe actualizar el último patrón visto
