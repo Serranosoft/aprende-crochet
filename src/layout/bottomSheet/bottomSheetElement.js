@@ -95,7 +95,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             patternSelected.progress !== undefined &&
                             <Button onPress={() => navigateToSteps(patternSelected.progress)}>
                                 <Text style={[ui.text, ui.white]}>
-                                    Continuar con el paso {patternSelected.progress >= (parseInt(patternSelected.progress) + 2) ? (parseInt(patternSelected.progress) + 2) : patternSelected.qty}
+                                    Continuar con el paso {(patternSelected.progress + 1) < patternSelected.qty ? (parseInt(patternSelected.progress) + 2) : patternSelected.qty}
                                 </Text>
                             </Button>
                         }
