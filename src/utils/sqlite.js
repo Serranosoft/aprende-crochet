@@ -17,16 +17,23 @@ export async function initDb() {
     await db.execAsync(`DROP TABLE IF EXISTS my_progress`);
     await db.execAsync(`DROP TABLE IF EXISTS last_pattern`);
     await db.execAsync(`DROP TABLE IF EXISTS counters`);
-    await db.execAsync(`CREATE TABLE IF NOT EXISTS my_progress (id TEXT, pattern_id TEXT, progress TEXT);`);
+    await db.execAsync(`CREATE TABLE IF NOT EXISTS my_progress (id TEXT, pattern_id TEXT, progress TEXT, is_finished INT);`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS last_pattern (id TEXT PRIMARY KEY, pattern_id TEXT);`);
     await db.execAsync(`CREATE TABLE IF NOT EXISTS counters (id TEXT PRIMARY KEY, pattern_id TEXT, progress TEXT);`);
 }
 
-export async function getLastPattern() {
+// PATTERN PROGRESS
+export async function addNewProgress(pattern_id, progress) {
     const db = await getDb();
-    const x = await db.getAllAsync("SELECT pattern_id FROM last_pattern");
-    return x[0].pattern_id;
+    const id = uuid.v4();
+    db.runAsync("INSERT into my_progress (id, pattern_id, progress, is_finished) VALUES (?,?,?, ?)", id, pattern_id, progress, 0);
 }
+
+export async function updateProgress(pattern_id, progress) {
+    const db = await getDb();
+    db.runAsync("UPDATE my_progress SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
+}
+
 export async function getProgressFromPattern(pattern_id) {
     const db = await getDb();
     const x = await db.getFirstAsync("SELECT progress FROM my_progress WHERE pattern_id = ?", pattern_id);
@@ -58,11 +65,16 @@ export async function handleProgress(pattern_id, progress) {
     }
 }
 
+// LAST PATTERN
 
-export async function addNewProgress(pattern_id, progress) {
+export async function getLastPattern() {
     const db = await getDb();
-    const id = uuid.v4();
-    db.runAsync("INSERT into my_progress (id, pattern_id, progress) VALUES (?,?,?)", id, pattern_id, progress);
+    const x = await db.getFirstAsync("SELECT pattern_id FROM last_pattern");
+    if (x) {
+        return x.pattern_id;
+    } else {
+        return null;
+    }
 }
 
 export async function updateLastPattern(pattern_id) {
@@ -79,11 +91,8 @@ export async function updateLastPattern(pattern_id) {
     const result = await db.getAllAsync("SELECT pattern_id FROM last_pattern");
 }
 
-export async function updateProgress(pattern_id, progress) {
-    const db = await getDb();
-    db.runAsync("UPDATE my_progress SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
-}
 
+// COUNTERS
 export async function handleCounter(pattern_id) {
     const db = await getDb();
     const id = uuid.v4();
