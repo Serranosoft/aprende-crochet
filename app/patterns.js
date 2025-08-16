@@ -26,7 +26,7 @@ export default function Patterns() {
             if (patterns.length > 0) {
                 handleProgress();
             }
-        }, [patterns])
+        }, [patterns.length])
     );
 
     useEffect(() => {
@@ -87,7 +87,7 @@ export default function Patterns() {
                                 <TouchableOpacity
                                     key={item.id}
                                     style={styles.box}
-                                    onPress={() => { handleBottomSheet(item) }}>
+                                    onPress={() => handleBottomSheet(item)}>
                                     <View style={styles.imageWrapper}>
                                         <Image style={styles.image} source={{ uri: item.image }} />
                                     </View>
