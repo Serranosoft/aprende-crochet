@@ -97,8 +97,9 @@ export async function handleCounter(pattern_id) {
     const db = await getDb();
     const id = uuid.v4();
     const counters = await db.getAllAsync("SELECT * from counters");
-    if (counters.some((el) => el.pattern_id === pattern_id)) {
-        return counters[0].progress;
+    const coincidence = counters.find((el) => el.pattern_id === pattern_id);
+    if (coincidence) {
+        return coincidence.progress;
     } else {
         db.runAsync("INSERT INTO counters (id, pattern_id, progress) VALUES (?,?,?)", id, pattern_id, 0);
         return 0;
@@ -108,4 +109,5 @@ export async function handleCounter(pattern_id) {
 export async function updateCounter(pattern_id, progress) {
     const db = await getDb();
     db.runAsync("UPDATE counters SET progress = ? WHERE pattern_id = ?", progress, pattern_id);
+    console.log(`update ${pattern_id} with ${progress}`);
 }
