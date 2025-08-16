@@ -18,9 +18,7 @@ export default function LastPattern() {
 
 
     async function getPattern() {
-        console.log("get last pattern");
         const lastPattern = await getLastPattern();
-        console.log(lastPattern);
         if (lastPattern) {
             const progress = await getProgressFromPattern(lastPattern);
             const matrix = [stitchings.stitching, designs.designs];
@@ -31,7 +29,9 @@ export default function LastPattern() {
                 setPattern(updatedPattern);
                 setHasLastPattern(true);
             }
-
+        } else {
+            const pattern = stitchings.stitching[0];
+            setPattern(pattern);
         }
     }
 
