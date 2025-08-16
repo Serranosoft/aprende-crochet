@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     },
 
     inner: {
+        paddingBottom: 80,
         paddingHorizontal: 12,
         gap: 16
     },
