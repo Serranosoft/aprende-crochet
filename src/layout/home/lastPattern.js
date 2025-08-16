@@ -30,6 +30,7 @@ export default function LastPattern() {
             }
         } else {
             const pattern = stitchings.stitching[0];
+            pattern.progress = 0;
             setPattern(pattern);
         }
     }
