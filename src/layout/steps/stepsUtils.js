@@ -3,5 +3,5 @@ export function isLastStep(current, stepsLength) {
 }
 
 export function hasNextStep(current, stepsLength) {
-  return current + 1 < stepsLength;
+  return (current + 1) < stepsLength;
 }
