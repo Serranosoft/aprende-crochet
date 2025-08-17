@@ -36,13 +36,13 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
     }
 
     function getNextStepIndex() {
-        return patternSelected.progress < (patternSelected.qty - 1) ?
-            patternSelected.progress + 1 :
-            patternSelected.progress
+        return parseInt(patternSelected.progress) < (patternSelected.qty - 1) ?
+            parseInt(patternSelected.progress) + 1 :
+            parseInt(patternSelected.progress)
     }
     function getNextStepNumber() {
-        return (patternSelected.progress + 1) < patternSelected.qty ?
-            (patternSelected.progress + 2) :
+        return (parseInt(patternSelected.progress) + 1) < patternSelected.qty ?
+            (parseInt(patternSelected.progress) + 2) :
             patternSelected.qty
     }
 
@@ -119,7 +119,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             {patternSelected.steps?.map((step, index) => {
                                 return (
                                     <TouchableOpacity key={index} style={styles.step} onPress={() => navigateToSteps(index)}>
-                                        {patternSelected.progress && patternSelected.progress >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
+                                        {patternSelected.progress && parseInt(patternSelected.progress) >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
                                         <Image source={{ uri: step.image }} style={styles.stepImg} />
                                         <View style={styles.stepInfo}>
                                             <Text style={ui.h3}>Paso {index + 1}</Text>
