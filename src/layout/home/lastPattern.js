@@ -8,7 +8,7 @@ import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getLastPattern, getProgressFromPattern } from "../../utils/sqlite";
 
-const INITIAL_PATTERN = "stitching-1";
+const INITIAL_PATTERN = "stitching-3";
 
 export default function LastPattern() {
 
@@ -29,7 +29,7 @@ export default function LastPattern() {
                 setHasLastPattern(true);
             }
         } else {
-            const pattern = stitchings.stitching[0];
+            const pattern = stitchings.stitching.find((el) => el.id === INITIAL_PATTERN);
             pattern.progress = 0;
             setPattern(pattern);
         }
@@ -63,7 +63,7 @@ export default function LastPattern() {
                                 params: { id: pattern.id, step: pattern.progress }
                             })
                         }}>
-                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "¡Si!"}</Text>
+                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "Ver punto bajo"}</Text>
                         </Button>
                     </View>
                 </View>
