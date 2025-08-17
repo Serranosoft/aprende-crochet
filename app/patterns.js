@@ -1,4 +1,4 @@
-import { Stack, useFocusEffect } from "expo-router"
+import { Stack, useFocusEffect, useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useRef, useState } from "react"
@@ -8,7 +8,6 @@ import stitchings from "../stitchings.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
-import { getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown } from "react-native-reanimated"
 import { handleProgress } from "../src/utils/patternUtils"
@@ -16,6 +15,9 @@ import { handleProgress } from "../src/utils/patternUtils"
 const INITIAL_DATA = stitchings.stitching;
 
 export default function Patterns() {
+
+    const params = useLocalSearchParams();
+    const { pattern_id } = params;
 
     const initialData = useRef(INITIAL_DATA);
 
@@ -31,6 +33,21 @@ export default function Patterns() {
             init();
         }, [])
     );
+
+    // En caso de recibir un pattern_id, abrir el desplegable con la opción recibida.
+    useEffect(() => {
+        if (pattern_id) {
+            if (data.length > 0) {
+                const item = data.find((el) => el.id === pattern_id);
+                if (item) {
+                    setTimeout(() => {
+                        handleBottomSheet(item);
+                    }, 750);
+                }
+
+            }
+        }
+    }, [pattern_id, data])
 
     useBackHandler(() => {
         if (openDetails) {

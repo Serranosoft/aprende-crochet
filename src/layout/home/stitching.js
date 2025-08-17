@@ -29,7 +29,6 @@ export default function Stitching() {
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function init() {
         const result = await handleProgress(initialData.current);
-        console.log(result);
         setData(result)
     }
 
@@ -48,8 +47,8 @@ export default function Stitching() {
                             style={styles.box}
                             onPress={() => {
                                 router.navigate({
-                                    pathname: '/steps',
-                                    params: { id: pattern.id, step: pattern.progress || 0 }
+                                    pathname: '/patterns',
+                                    params: { pattern_id: pattern.id }
                                 })
                             }}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}

@@ -6,7 +6,7 @@ import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
-import { useFocusEffect } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { handleProgress } from "../../utils/patternUtils";
 
 const { width } = Dimensions.get("screen");
@@ -41,7 +41,16 @@ export default function Designs() {
             <View style={styles.grid}>
                 {data && data.map((pattern) => {
                     return (
-                        <TouchableOpacity key={pattern.id} style={styles.box}>
+                        <TouchableOpacity
+                            key={pattern.id}
+                            style={styles.box}
+                            onPress={() => {
+                                router.navigate({
+                                    pathname: '/designs',
+                                    params: { pattern_id: pattern.id }
+                                })
+                            }}
+                        >
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale == "es" ? pattern.name.es : pattern.name.en}</Text>

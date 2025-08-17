@@ -1,7 +1,7 @@
-import { Stack, useFocusEffect } from "expo-router"
+import { Stack, useFocusEffect, useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
-import { useCallback, useContext, useRef, useState } from "react"
+import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import designs from "../designs.json";
@@ -15,6 +15,9 @@ import { handleProgress } from "../src/utils/patternUtils"
 const INITIAL_DATA = designs.designs;
 
 export default function Designs() {
+
+    const params = useLocalSearchParams();
+    const { pattern_id } = params;
 
     const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
@@ -30,6 +33,21 @@ export default function Designs() {
             init();
         }, [])
     );
+
+    // En caso de recibir un pattern_id, abrir el desplegable con la opción recibida.
+    useEffect(() => {
+        if (pattern_id) {
+            if (data.length > 0) {
+                const item = data.find((el) => el.id === pattern_id);
+                if (item) {
+                    setTimeout(() => {
+                        handleBottomSheet(item);
+                    }, 750);
+                }
+
+            }
+        }
+    }, [pattern_id, data])
 
     useBackHandler(() => {
         if (openDetails) {
