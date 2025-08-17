@@ -52,13 +52,5 @@ export const ui = {
     center: {
         textAlign: "center",
     },
-    button: {
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        backgroundColor: "#5193F1",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 12,
-    }
 
 }
