@@ -9,7 +9,7 @@ import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import useBackHandler from "../src/components/use-back-handler"
-import Animated, { FadeInDown } from "react-native-reanimated"
+import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 
 const INITIAL_DATA = designs.designs;
@@ -82,7 +82,12 @@ export default function Designs() {
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Diseños</Text>
                 </View>
-                <Image source={require("../assets/teddy-bear/teddy2.png")} style={styles.bigTeddy} />
+                <Animated.Image
+                key={Date.now()}
+                    source={require("../assets/teddy-bear/teddy2.png")}
+                    style={styles.bigTeddy}
+                    entering={SlideInRight.duration(1000).delay(250)}
+                />
 
                 <View style={styles.list}>
                     <FlatList
@@ -112,7 +117,7 @@ export default function Designs() {
                                                     <View style={styles.iconWrapper}>
                                                         <Image source={require("../assets/level.png")} style={styles.icon} />
                                                     </View>
-                                                    <Text style={ui.muted}>{handleLevelString(pattern.difficulty)}</Text>
+                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
                                                 </View>
                                                 <View style={styles.row}>
                                                     <View style={styles.iconWrapper}>

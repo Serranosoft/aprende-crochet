@@ -19,10 +19,11 @@ export default function Index() {
             <View style={styles.container}>
                 <Scroll>
                     <Hero />
-                    <Animated.Image 
+                    <Animated.Image
+                        key={Date.now()}
                         entering={SlideInRight.duration(1000).delay(250)}
                         source={require("../assets/teddy-bear/teddy5.png")} 
-                        style={{ position: "absolute", opacity: 0.35, right: -135, top: 225 }}
+                        style={{ position: "absolute", opacity: 0.4, right: -115, top: 185 }}
                     />
                     <LastPattern />
                     <Shortcut />

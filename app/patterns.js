@@ -9,7 +9,7 @@ import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import useBackHandler from "../src/components/use-back-handler"
-import Animated, { FadeInDown } from "react-native-reanimated"
+import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 
 const INITIAL_DATA = stitchings.stitching;
@@ -82,7 +82,12 @@ export default function Patterns() {
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Patrones</Text>
                 </View>
-                <Image source={require("../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
+                <Animated.Image
+                    key={Date.now()}
+                    source={require("../assets/teddy-bear/teddy7.png")} 
+                    style={styles.bigTeddy}
+                    entering={SlideInRight.duration(1000).delay(250)}
+                />
 
 
 
