@@ -7,7 +7,7 @@ import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
 import { router, useFocusEffect } from "expo-router";
-import { handleProgress } from "../../utils/patternUtils";
+import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 
 const { width } = Dimensions.get("screen");
 const INITIAL_DATA = designs.designs[0].patterns.slice(0, 4);
@@ -61,7 +61,7 @@ export default function Designs() {
                                         <Image source={require("../../../assets/level.png")} style={styles.icon} />
 
                                     </View>
-                                    <Text style={[ui.muted, ui.white]}>Principiante</Text>
+                                    <Text style={[ui.muted, ui.white]}>{handleLevelString(pattern.difficulty)}</Text>
                                 </View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>

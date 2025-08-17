@@ -10,7 +10,7 @@ import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown } from "react-native-reanimated"
-import { handleProgress } from "../src/utils/patternUtils"
+import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 
 const INITIAL_DATA = stitchings.stitching;
 
@@ -109,7 +109,7 @@ export default function Patterns() {
                                                     <View style={styles.iconWrapper}>
                                                         <Image source={require("../assets/level.png")} style={styles.icon} />
                                                     </View>
-                                                    <Text style={ui.muted}>Principiante</Text>
+                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
                                                 </View>
                                                 <View style={styles.row}>
                                                     <View style={styles.iconWrapper}>
