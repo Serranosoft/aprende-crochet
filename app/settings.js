@@ -1,12 +1,13 @@
-import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { Stack } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useContext, useState } from "react";
 import { LangContext } from "../src/utils/Context";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
-import { ui } from "../src/utils/styles";
+import { colors, ui } from "../src/utils/styles";
 import Header from "../src/layout/header";
+import Animated, { SlideInLeft, SlideInRight } from "react-native-reanimated";
 
 export default function Settings() {
 
@@ -37,16 +38,21 @@ export default function Settings() {
         <>
             <Stack.Screen options={{ header: () => <Header title={""} back={true} settings={false} /> }} />
             <View style={styles.container}>
+                <Animated.Image
+                    entering={SlideInLeft.duration(1000).delay(250)}
+                    source={require("../assets/teddy-bear/teddy11.png")}
+                    style={{ position: "absolute", opacity: 0.35, left: -95, bottom: 0 }}
+                />
                 <View style={styles.box}>
-                    <Text style={[ui.h2]}>{language.t("_settingsApp")}</Text>
-                    <Text style={[ui.h4]}>{language.t("_settingsLang")}</Text>
+                    <Text style={[ui.h2, ui.white]}>{language.t("_settingsApp")}</Text>
+                    <Text style={[ui.h4, ui.white]}>{language.t("_settingsLang")}</Text>
                     <View style={styles.scrollContainer}>
                         <ScrollView style={styles.scroll}>
                             {
                                 languages.map((language, index) => {
                                     return (
                                         <TouchableOpacity key={index} onPress={() => handlePress(language.acronym)} style={[styles.option, selected === language.acronym && styles.selected]}>
-                                            <Text style={[ui.text, { color: selected === language.acronym ? "#fff" : "#000"}]}>{language.title}</Text>
+                                            <Text style={[ui.text, { color: selected === language.acronym ? "#fff" : "#000" }]}>{language.title}</Text>
                                         </TouchableOpacity>
                                     )
                                 })
@@ -64,9 +70,10 @@ export default function Settings() {
 const styles = StyleSheet.create({
 
     container: {
+        position: "relative",
         flex: 1,
         gap: 12,
-        backgroundColor: "#fff",
+        backgroundColor: "#fff"
 
     },
     row: {
@@ -75,13 +82,13 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         marginVertical: 8,
         paddingBottom: 16,
-        borderBottomWidth: 2,
-        borderBottomColor: "#f0f0f0"
+        // borderBottomWidth: 2,
+        // borderBottomColor: "#f0f0f0"
     },
 
     box: {
         gap: 12,
-        backgroundColor: "#e3f0ff",
+        backgroundColor: colors.primary,
         paddingVertical: 16,
         paddingHorizontal: 16,
         marginHorizontal: 20,
@@ -104,6 +111,6 @@ const styles = StyleSheet.create({
     },
 
     selected: {
-        backgroundColor: "#466090",
+        backgroundColor: "#b16226ff",
     }
 })
