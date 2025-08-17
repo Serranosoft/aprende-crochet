@@ -1,37 +1,40 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import designs from "../../../designs.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
+import { useFocusEffect } from "expo-router";
 
 const { width } = Dimensions.get("screen");
+const INITIAL_DATA = designs.designs[0].patterns.slice(0, 4);
 
 export default function Designs() {
 
+    const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
     const { language } = useContext(LangContext);
 
-    useEffect(() => {
-        setData(designs.designs[0].patterns);
-    }, [])
-
-    useEffect(() => {
-        if (data) {
+    useFocusEffect(
+        useCallback(() => {
             handleProgress();
-        }
-    }, [data])
+        }, [])
+    );
+
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
-        data.map(async (pattern) => {
-            let progress = await getProgressFromPattern(pattern.id);
-            if (progress) {
-                pattern.progress = progress;
-            }
-        })
+        const updated = await Promise.all(
+            initialData.current.map(async (pattern) => {
+                console.log(pattern);
+                let x = await getProgressFromPattern(pattern.id);
+                return { ...pattern, progress: x };
+            })
+        );
+
+        setData(updated);
     }
 
     return (
@@ -43,13 +46,13 @@ export default function Designs() {
 
             </View>
             <View style={styles.grid}>
-                {data?.map((pattern) => {
+                {data && data.map((pattern) => {
                     return (
                         <TouchableOpacity key={pattern.id} style={styles.box}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale == "es" ? pattern.name.es : pattern.name.en}</Text>
-                                <Progress current={pattern.progress !== undefined ? pattern.progress : null} qty={pattern.qty} />
+                                <Progress current={pattern.progress} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>

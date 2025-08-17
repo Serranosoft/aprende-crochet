@@ -11,25 +11,17 @@ import { router, useFocusEffect } from "expo-router";
 
 const { width } = Dimensions.get("screen");
 
+const INITIAL_DATA = stitchings.stitching.slice(0, 4);
+
 export default function Stitching() {
 
+    const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
-    const dataRef = useRef();
     const { language } = useContext(LangContext);
-
-    useEffect(() => {
-        setData(stitchings.stitching.slice(0, 4));
-    }, [])
-
-    useEffect(() => {
-        dataRef.current = data;
-    }, [data])
 
     useFocusEffect(
         useCallback(() => {
-            if (dataRef.current) {
-                handleProgress();
-            }
+            handleProgress();
         }, [])
     );
 
@@ -37,12 +29,9 @@ export default function Stitching() {
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function handleProgress() {
         const updated = await Promise.all(
-            dataRef.current.map(async (pattern) => {
+            initialData.current.map(async (pattern) => {
                 let x = await getProgressFromPattern(pattern.id);
-                return {
-                    ...pattern,
-                    progress: x !== null ? parseInt(x.progress) : pattern.progress
-                };
+                return { ...pattern, progress: x };
             })
         );
 
@@ -57,7 +46,7 @@ export default function Stitching() {
 
             </View>
             <View style={styles.grid}>
-                {data?.map((pattern) => {
+                {data && data.map((pattern) => {
                     return (
                         <TouchableOpacity
                             key={pattern.id}
@@ -71,7 +60,7 @@ export default function Stitching() {
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
                                 <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale !== "es" ? pattern.name.en : pattern.name.es}</Text>
-                                <Progress current={pattern.progress !== undefined ? pattern.progress : null} qty={pattern.qty} />
+                                <Progress current={pattern.progress} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
