@@ -32,6 +32,10 @@ export default function Stitching() {
         setData(result)
     }
 
+    function renderName(item) {
+        return language._locale !== "es" ? item.name.en : item.name.es
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.hero}>
@@ -53,7 +57,7 @@ export default function Stitching() {
                             }}>
                             {pattern.image.length > 0 && <Image source={{ uri: pattern.image }} style={styles.image} />}
                             <View style={styles.info}>
-                                <Text style={[ui.h3, ui.white, ui.bold]}>{language._locale !== "es" ? pattern.name.en : pattern.name.es}</Text>
+                                <Text style={[ui.h3, ui.white, ui.bold]}>{renderName(pattern)}</Text>
                                 <Progress current={pattern.progress} qty={pattern.qty} />
                                 <View style={styles.separator}></View>
                                 <View style={styles.row}>

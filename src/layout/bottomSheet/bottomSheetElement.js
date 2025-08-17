@@ -5,6 +5,7 @@ import { colors, ui } from "../../utils/styles";
 import { LangContext } from "../../utils/Context";
 import Button from "../../components/button";
 import { router } from "expo-router";
+import handleLevelString from "../../utils/patternUtils";
 
 
 export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected }) {
@@ -40,9 +41,13 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
             patternSelected.progress
     }
     function getNextStepNumber() {
-        return (patternSelected.progress + 1) < patternSelected.qty ? 
-        (patternSelected.progress + 2) : 
-        patternSelected.qty
+        return (patternSelected.progress + 1) < patternSelected.qty ?
+            (patternSelected.progress + 2) :
+            patternSelected.qty
+    }
+
+    function renderName(item) {
+        return language._locale !== "es" ? item.name.en : item.name.es
     }
 
 
@@ -63,13 +68,13 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                     patternSelected &&
                     <BottomSheetScrollView contentContainerStyle={styles.content}>
                         <Image source={{ uri: patternSelected.image }} style={styles.image} />
-                        <Text style={ui.h2}>{language._locale !== "es" ? patternSelected.name.en : patternSelected.name.es}</Text>
+                        <Text style={ui.h2}>{renderName(patternSelected)}</Text>
                         <View style={styles.metadata}>
                             <View style={styles.row}>
                                 <View style={styles.iconWrapper}>
                                     <Image source={require("../../../assets/level.png")} style={styles.icon} />
                                 </View>
-                                <Text style={ui.text}>Principiante</Text>
+                                <Text style={ui.text}>{handleLevelString(patternSelected.difficulty)}</Text>
                             </View>
                             <View style={styles.row}>
                                 <View style={styles.iconWrapper}>

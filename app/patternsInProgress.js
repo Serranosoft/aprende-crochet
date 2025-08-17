@@ -68,6 +68,10 @@ export default function PatternsInProgress() {
         setOpenDetails(true);
     }
 
+    function renderName(item) {
+        return language._locale !== "es" ? item.name.en : item.name.es
+    }
+
     return (
         <>
             <Stack.Screen options={{ header: () => <Header back={true} settings={true} overlay={openDetails} /> }} />
@@ -96,7 +100,7 @@ export default function PatternsInProgress() {
                                         <Image style={styles.image} source={{ uri: item.image }} />
                                     </View>
                                     <View style={styles.info}>
-                                        <Text style={[ui.h3, ui.bold]}>{language._locale !== "es" ? item.name.en : item.name.es}</Text>
+                                        <Text style={[ui.h3, ui.bold]}>{renderName(item)}</Text>
                                         <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
                                         <View style={styles.separator}></View>
                                         <View style={styles.metadata}>
