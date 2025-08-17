@@ -12,6 +12,7 @@ import * as StoreReview from 'expo-store-review';
 import AdsHandler from "../src/components/AdsHandler";
 import { initDb } from "../src/utils/sqlite";
 import { ui } from "../src/utils/styles";
+import UpdatesModal from "../src/layout/updates-modal";
 
 SplashScreen.preventAutoHideAsync();
 export default function Layout() {
@@ -94,6 +95,7 @@ export default function Layout() {
                         <LangContext.Provider value={{ setLanguage: setLanguage, language: i18n }}>
                             <AdsContext.Provider value={{ setAdTrigger, adsLoaded, setShowOpenAd }}>
                                 <Stack />
+                                <UpdatesModal />
                             </AdsContext.Provider>
                         </LangContext.Provider>
                     </GestureHandlerRootView>
