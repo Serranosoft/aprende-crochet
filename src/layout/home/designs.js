@@ -28,9 +28,8 @@ export default function Designs() {
     async function handleProgress() {
         const updated = await Promise.all(
             initialData.current.map(async (pattern) => {
-                console.log(pattern);
                 let x = await getProgressFromPattern(pattern.id);
-                return { ...pattern, progress: x };
+                return { ...pattern, progress: x ? x.progress : x };
             })
         );
 
