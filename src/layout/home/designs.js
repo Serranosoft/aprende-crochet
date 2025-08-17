@@ -91,7 +91,7 @@ export default function Designs() {
                 })}
             </View>
             <Button>
-                <Text style={[ui.h4, ui.white]}>Ver todos los patrones</Text>
+                <Text style={[ui.h4, ui.white]}>Ver todos los diseños</Text>
             </Button>
         </View>
     )
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     },
     bigTeddy: {
         position: "absolute",
-        opacity: 0.25,
+        opacity: 0.4,
         left: -125,
         top: -100
     }

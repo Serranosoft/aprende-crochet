@@ -10,6 +10,7 @@ import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import { getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
+import Animated, { FadeInDown } from "react-native-reanimated"
 
 
 export default function Patterns() {
@@ -81,35 +82,39 @@ export default function Patterns() {
                         numColumns={1}
                         initialNumToRender={6}
                         contentContainerStyle={styles.inner}
-                        renderItem={({ item, i }) => {
+                        renderItem={({ item, index }) => {
                             return (
-                                <TouchableOpacity
+                                <Animated.View
+                                    entering={FadeInDown.duration(300).delay(350 * index)}
                                     key={item.id}
-                                    style={styles.box}
-                                    onPress={() => handleBottomSheet(item)}>
-                                    <View style={styles.imageWrapper}>
-                                        <Image style={styles.image} source={{ uri: item.image }} />
-                                    </View>
-                                    <View style={styles.info}>
-                                        <Text style={[ui.h3, ui.bold]}>{language._locale !== "es" ? item.name.en : item.name.es}</Text>
-                                        <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
-                                        <View style={styles.separator}></View>
-                                        <View style={styles.metadata}>
-                                            <View style={styles.row}>
-                                                <View style={styles.iconWrapper}>
-                                                    <Image source={require("../assets/level.png")} style={styles.icon} />
+                                >
+                                    <TouchableOpacity
+                                        style={styles.box}
+                                        onPress={() => handleBottomSheet(item)}>
+                                        <View style={styles.imageWrapper}>
+                                            <Image style={styles.image} source={{ uri: item.image }} />
+                                        </View>
+                                        <View style={styles.info}>
+                                            <Text style={[ui.h3, ui.bold]}>{language._locale !== "es" ? item.name.en : item.name.es}</Text>
+                                            <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
+                                            <View style={styles.separator}></View>
+                                            <View style={styles.metadata}>
+                                                <View style={styles.row}>
+                                                    <View style={styles.iconWrapper}>
+                                                        <Image source={require("../assets/level.png")} style={styles.icon} />
+                                                    </View>
+                                                    <Text style={ui.muted}>Principiante</Text>
                                                 </View>
-                                                <Text style={ui.muted}>Principiante</Text>
-                                            </View>
-                                            <View style={styles.row}>
-                                                <View style={styles.iconWrapper}>
-                                                    <Image source={require("../assets/clock.png")} style={styles.icon} />
+                                                <View style={styles.row}>
+                                                    <View style={styles.iconWrapper}>
+                                                        <Image source={require("../assets/clock.png")} style={styles.icon} />
+                                                    </View>
+                                                    <Text style={ui.muted}>{item.qty} {language.t("_homeSteps")}</Text>
                                                 </View>
-                                                <Text style={ui.muted}>{item.qty} {language.t("_homeSteps")}</Text>
                                             </View>
                                         </View>
-                                    </View>
-                                </TouchableOpacity>
+                                    </TouchableOpacity>
+                                </Animated.View>
                             )
                         }}
                     />
