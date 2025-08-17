@@ -1,21 +1,24 @@
 import { Stack, useFocusEffect } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useRef, useState } from "react"
 import { LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import designs from "../designs.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
-import { getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown } from "react-native-reanimated"
+import { handleProgress } from "../src/utils/patternUtils"
 
+const INITIAL_DATA = designs.designs;
 
 export default function Designs() {
 
-    const [patterns, setPatterns] = useState([])
+    const initialData = useRef(INITIAL_DATA);
+    const [data, setData] = useState(null);
+
     const { language } = useContext(LangContext);
 
     // Bottom Sheet Variables
@@ -24,15 +27,9 @@ export default function Designs() {
 
     useFocusEffect(
         useCallback(() => {
-            if (patterns.length > 0) {
-                handleProgress();
-            }
-        }, [patterns.length])
+            init();
+        }, [])
     );
-
-    useEffect(() => {
-        setPatterns(designs.designs);
-    }, [])
 
     useBackHandler(() => {
         if (openDetails) {
@@ -43,18 +40,9 @@ export default function Designs() {
         }
     });
 
-    // Añadir a cada item de data la propiedad con el current de mi progreso
-    async function handleProgress() {
-        const updated = await Promise.all(
-            patterns.map(async (pattern) => {
-                const x = await getProgressFromPattern(pattern.id);
-                return {
-                    ...pattern,
-                    progress: x !== null ? parseInt(x.progress) : pattern.progress
-                };
-            })
-        );
-        setPatterns(updated);
+    async function init() {
+        const result = await handleProgress(initialData.current);
+        setData(result)
     }
 
     function handleBottomSheet(pattern) {
@@ -74,11 +62,9 @@ export default function Designs() {
                 </View>
                 <Image source={require("../assets/teddy-bear/teddy2.png")} style={styles.bigTeddy} />
 
-
-
                 <View style={styles.list}>
                     <FlatList
-                        data={patterns}
+                        data={data}
                         numColumns={1}
                         initialNumToRender={6}
                         contentContainerStyle={styles.inner}

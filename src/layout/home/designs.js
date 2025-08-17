@@ -7,6 +7,7 @@ import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
 import { useFocusEffect } from "expo-router";
+import { handleProgress } from "../../utils/patternUtils";
 
 const { width } = Dimensions.get("screen");
 const INITIAL_DATA = designs.designs[0].patterns.slice(0, 4);
@@ -19,21 +20,14 @@ export default function Designs() {
 
     useFocusEffect(
         useCallback(() => {
-            handleProgress();
+            init();
         }, [])
     );
 
 
-    // Añadir a cada item de data la propiedad con el current de mi progreso
-    async function handleProgress() {
-        const updated = await Promise.all(
-            initialData.current.map(async (pattern) => {
-                let x = await getProgressFromPattern(pattern.id);
-                return { ...pattern, progress: x ? x.progress : x };
-            })
-        );
-
-        setData(updated);
+    async function init() {
+        const result = await handleProgress(initialData.current);
+        setData(result)
     }
 
     return (

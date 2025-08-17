@@ -11,6 +11,7 @@ import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import { getPatternsInProgress, getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
+import { handleProgress } from "../src/utils/patternUtils"
 
 
 export default function PatternsInProgress() {
@@ -25,7 +26,7 @@ export default function PatternsInProgress() {
     useFocusEffect(
         useCallback(() => {
             if (patterns.length > 0) {
-                handleProgress();
+                init();
             }
         }, [patterns.length])
     );
@@ -55,17 +56,9 @@ export default function PatternsInProgress() {
     });
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
-    async function handleProgress() {
-        const updated = await Promise.all(
-            patterns.map(async (pattern) => {
-                const x = await getProgressFromPattern(pattern.id);
-                return {
-                    ...pattern,
-                    progress: x !== null ? parseInt(x.progress) : pattern.progress
-                };
-            })
-        );
-        setPatterns(updated);
+    async function init() {
+        const result = await handleProgress(patterns);
+        setPatterns(result)
     }
 
     function handleBottomSheet(pattern) {

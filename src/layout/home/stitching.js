@@ -6,7 +6,7 @@ import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
-import handleLevelString from "../../utils/handleJson";
+import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 import { router, useFocusEffect } from "expo-router";
 
 const { width } = Dimensions.get("screen");
@@ -21,21 +21,16 @@ export default function Stitching() {
 
     useFocusEffect(
         useCallback(() => {
-            handleProgress();
+            init();
         }, [])
     );
 
 
     // Añadir a cada item de data la propiedad con el current de mi progreso
-    async function handleProgress() {
-        const updated = await Promise.all(
-            initialData.current.map(async (pattern) => {
-                let x = await getProgressFromPattern(pattern.id);
-                return { ...pattern, progress: x ? x.progress : x };
-            })
-        );
-
-        setData(updated);
+    async function init() {
+        const result = await handleProgress(initialData.current);
+        console.log(result);
+        setData(result)
     }
 
     return (
