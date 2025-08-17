@@ -108,7 +108,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             </>
                         </View>
                         {
-                            patternSelected.progress !== undefined &&
+                            patternSelected.progress !== null &&
                             <Button onPress={() => navigateToSteps(getNextStepIndex())}>
                                 <Text style={[ui.text, ui.white]}>
                                     Continuar con el paso {getNextStepNumber()}
@@ -119,7 +119,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             {patternSelected.steps?.map((step, index) => {
                                 return (
                                     <TouchableOpacity key={index} style={styles.step} onPress={() => navigateToSteps(index)}>
-                                        {(patternSelected.progress) >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
+                                        {patternSelected.progress && patternSelected.progress >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
                                         <Image source={{ uri: step.image }} style={styles.stepImg} />
                                         <View style={styles.stepInfo}>
                                             <Text style={ui.h3}>Paso {index + 1}</Text>
