@@ -111,6 +111,8 @@ export default function Patterns() {
                         numColumns={1}
                         initialNumToRender={6}
                         contentContainerStyle={styles.inner}
+                        windowSize={5}
+                        removeClippedSubviews={true}
                         renderItem={({ item, index }) => {
                             return (
                                 <Animated.View
