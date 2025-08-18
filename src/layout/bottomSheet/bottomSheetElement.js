@@ -8,7 +8,7 @@ import { router } from "expo-router";
 import handleLevelString from "../../utils/patternUtils";
 
 
-export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected }) {
+export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected, wools, threads }) {
 
     const { language } = useContext(LangContext);
     // ref
@@ -68,7 +68,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                     patternSelected &&
                     <BottomSheetScrollView contentContainerStyle={styles.content}>
                         <Image source={{ uri: patternSelected.image }} style={styles.image} />
-                        <Text style={ui.h2}>{renderName(patternSelected)}</Text>
+                        <Text style={[ui.h2, ui.center]}>{renderName(patternSelected)}</Text>
                         <View style={styles.metadata}>
                             <View style={styles.row}>
                                 <View style={styles.iconWrapper}>
@@ -82,30 +82,68 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 </View>
                                 <Text style={ui.text}>{patternSelected.qty} {language.t("_homeSteps")}</Text>
                             </View>
-                        </View>
-                        <View style={styles.metadata}>
-                            <>
-                                {
-                                    patternSelected.metadata?.scissors &&
-                                    <View style={styles.row}>
-                                        <View style={styles.iconWrapper}>
-                                            <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
-                                        </View>
-                                        <Text style={ui.text}>Tijeras</Text>
+                            {
+                                patternSelected.metadata?.scissors &&
+                                <View style={styles.row}>
+                                    <View style={styles.iconWrapper}>
+                                        <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
                                     </View>
-                                }
-                                {
-                                    patternSelected.metadata?.wool_needle &&
-                                    <View style={styles.row}>
-                                        <View style={styles.metadata}>
-                                            <View style={styles.iconWrapper}>
-                                                <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
+                                    <Text style={ui.text}>Tijeras</Text>
+                                </View>
+                            }
+                            {
+                                patternSelected.metadata?.wool_needle &&
+                                <View style={styles.row}>
+                                    <View style={styles.iconWrapper}>
+                                        <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
+                                    </View>
+                                    <Text style={ui.text}>Aguja de lana</Text>
+                                </View>
+                            }
+                            {
+                                (patternSelected.metadata?.wool?.length > 0 || patternSelected.metadata?.thread?.length > 0) &&
+                                <View style={styles.woolsWrapper}>
+                                    <Text style={[ui.h4, ui.bold]}>Necesitarás estos colores</Text>
+                                    {
+                                        patternSelected.metadata?.wool.length > 0 &&
+                                        <View style={styles.woolsGroup}>
+                                            <Text style={[ui.text, ui.bold]}>Lana</Text>
+                                            <View style={styles.wools}>
+                                                {patternSelected.metadata?.wool.map((woolEl) => {
+                                                    const wool = wools[woolEl];
+                                                    return (
+                                                        wool &&
+                                                        <View style={styles.wool}>
+                                                            <View style={[styles.woolBall, { backgroundColor: wool.color }]}>
+                                                            </View>
+                                                            <Text style={ui.muted}>{renderName(wool)}</Text>
+                                                        </View>
+                                                    )
+                                                })}
                                             </View>
-                                            <Text style={ui.text}>Aguja de lana</Text>
                                         </View>
-                                    </View>
-                                }
-                            </>
+                                    }
+                                    {
+                                        patternSelected.metadata?.thread?.length > 0 &&
+                                        <View style={styles.woolsGroup}>
+                                            <Text style={[ui.text, ui.bold]}>Hilo</Text>
+                                            <View style={styles.wools}>
+                                                {patternSelected.metadata?.thread.map((threadEl) => {
+                                                    const thread = threads[threadEl];
+                                                    return (
+                                                        thread &&
+                                                        <View style={styles.wool}>
+                                                            <View style={[styles.woolBall, { backgroundColor: thread.color }]}>
+                                                            </View>
+                                                            <Text style={ui.muted}>{renderName(thread)}</Text>
+                                                        </View>
+                                                    )
+                                                })}
+                                            </View>
+                                        </View>
+                                    }
+                                </View>
+                            }
                         </View>
                         {
                             patternSelected.progress !== null &&
@@ -120,7 +158,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 return (
                                     <TouchableOpacity key={index} style={styles.step} onPress={() => navigateToSteps(index)}>
                                         {patternSelected.progress && parseInt(patternSelected.progress) >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
-                                        <Image source={{ uri: step.image }} style={styles.stepImg} />
+                                        {step.image && <Image source={{ uri: step.image }} style={styles.stepImg} />}
                                         <View style={styles.stepInfo}>
                                             <Text style={ui.h3}>Paso {index + 1}</Text>
                                             <View style={styles.separator}></View>
@@ -173,7 +211,8 @@ const styles = StyleSheet.create({
     },
     metadata: {
         flexDirection: "row",
-        alignItems: "center",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
         gap: 24,
     },
     row: {
@@ -224,6 +263,27 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 0,
         right: 8,
+    },
+    woolsWrapper: {
+        width: "100%",
+    },
+    wools: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        gap: 12,
+        marginTop: 8
+    },
+    woolsGroup: {
+        marginTop: 12
+    },
+    wool: {
+        alignItems: "center",
+    },
+    woolBall: {
+        width: 32,
+        height: 32,
+        borderWidth: 1,
+        borderRadius: 100,
     }
 
 })

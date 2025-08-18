@@ -12,7 +12,7 @@ import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 
-const INITIAL_DATA = designs.designs;
+const INITIAL_DATA = designs.designs.flatMap((category) => category.patterns);
 
 export default function Designs() {
 
@@ -21,6 +21,8 @@ export default function Designs() {
 
     const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
+    const [wools, setWools] = useState(null);
+    const [threads, setThreads] = useState(null);
 
     const { language } = useContext(LangContext);
 
@@ -33,6 +35,11 @@ export default function Designs() {
             init();
         }, [])
     );
+
+    useEffect(() => {
+        getWools();
+        getThreads();
+    }, [])
 
     // En caso de recibir un pattern_id, abrir el desplegable con la opción recibida.
     useEffect(() => {
@@ -60,19 +67,43 @@ export default function Designs() {
 
     async function init() {
         const result = await handleProgress(initialData.current);
-        setData(result)
+        // Better performance: Quedarme únicamente con los campos que se van a usar. Los demás pertenecen al detalle.
+        const data = result.map(el => ({
+            id: el.id,
+            name: el.name,
+            image: el.image,
+            difficulty: el.difficulty,
+            qty: el.qty,
+            progress: el.progress,
+        }));
+        setData(data)
+    }
+
+    function getWools() {
+        const result = Object.fromEntries(designs.wools.map(el => [el.id, el]));
+        setWools(result);
+    }
+    function getThreads() {
+        const result = Object.fromEntries(designs.threads.map(el => [el.id, el]));
+        setThreads(result);
     }
 
     function handleBottomSheet(pattern) {
+
+        const fullPattern = initialData.current.find(el => el.id === pattern.id);
+        fullPattern.progress = pattern.progress;
+
         // Establecer el patrón seleccionado 
-        setPatternSelected(pattern);
+        setPatternSelected(fullPattern);
         // Abrir bottomsheet con los valores
         setOpenDetails(true);
     }
 
-    function renderName(item) {
-        return language._locale !== "es" ? item.name.en : item.name.es
-    }
+    const renderName = useCallback(
+        (item) => language._locale !== "es" ? item.name.en : item.name.es,
+        [language._locale]
+    )
+
 
     return (
         <>
@@ -83,7 +114,7 @@ export default function Designs() {
                     <Text style={ui.h1}>Diseños</Text>
                 </View>
                 <Animated.Image
-                key={Date.now()}
+                    key={Date.now()}
                     source={require("../assets/teddy-bear/teddy2.png")}
                     style={styles.bigTeddy}
                     entering={SlideInRight.duration(1000).delay(250)}
@@ -95,6 +126,8 @@ export default function Designs() {
                         numColumns={1}
                         initialNumToRender={6}
                         contentContainerStyle={styles.inner}
+                        windowSize={5}
+                        removeClippedSubviews={true}
                         renderItem={({ item, index }) => {
                             return (
                                 <Animated.View
@@ -109,7 +142,7 @@ export default function Designs() {
                                             <Image style={styles.image} source={{ uri: item.image }} />
                                         </View>
                                         <View style={styles.info}>
-                                            <Text style={[ui.h3, ui.bold]}>{renderName(item)}</Text>
+                                            <Text style={[ui.h3, ui.bold, ui.center]}>{renderName(item)}</Text>
                                             <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
                                             <View style={styles.separator}></View>
                                             <View style={styles.metadata}>
@@ -137,7 +170,7 @@ export default function Designs() {
                 </View>
             </View>
             {openDetails && <View style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.65)" }}></View>}
-            <BottomSheetElement {...{ openDetails, setOpenDetails, patternSelected }} />
+            <BottomSheetElement {...{ openDetails, setOpenDetails, patternSelected, wools, threads }} />
 
 
         </>
