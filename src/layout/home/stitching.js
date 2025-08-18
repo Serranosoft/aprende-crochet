@@ -29,12 +29,22 @@ export default function Stitching() {
     // Añadir a cada item de data la propiedad con el current de mi progreso
     async function init() {
         const result = await handleProgress(initialData.current);
-        setData(result)
+        // Better performance: Quedarme únicamente con los campos que se van a usar. Los demás pertenecen al detalle.
+        const data = result.map(el => ({
+            id: el.id,
+            name: el.name,
+            image: el.image,
+            difficulty: el.difficulty,
+            qty: el.qty,
+            progress: el.progress,
+        }));
+        setData(data)
     }
 
-    function renderName(item) {
-        return language._locale !== "es" ? item.name.en : item.name.es
-    }
+    const renderName = useCallback(
+        (item) => language._locale !== "es" ? item.name.en : item.name.es,
+        [language._locale]
+    )
 
     return (
         <View style={styles.container}>

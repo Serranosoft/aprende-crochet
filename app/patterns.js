@@ -60,19 +60,33 @@ export default function Patterns() {
 
     async function init() {
         const result = await handleProgress(initialData.current);
-        setData(result)
+        // Better performance: Quedarme únicamente con los campos que se van a usar. Los demás pertenecen al detalle.
+        const data = result.map(el => ({
+            id: el.id,
+            name: el.name,
+            image: el.image,
+            difficulty: el.difficulty,
+            qty: el.qty,
+            progress: el.progress,
+        }));
+        setData(data)
     }
 
     function handleBottomSheet(pattern) {
+        // Recuperar el patrón completo con todos los datos antes de abrir el detalle
+        const fullPattern = initialData.current.find(el => el.id === pattern.id);
+        fullPattern.progress = pattern.progress;
+
         // Establecer el patrón seleccionado 
-        setPatternSelected(pattern);
+        setPatternSelected(fullPattern);
         // Abrir bottomsheet con los valores
         setOpenDetails(true);
     }
 
-    function renderName(item) {
-        return language._locale !== "es" ? item.name.en : item.name.es
-    }
+    const renderName = useCallback(
+        (item) => language._locale !== "es" ? item.name.en : item.name.es,
+        [language._locale]
+    )
 
     return (
         <>
@@ -84,7 +98,7 @@ export default function Patterns() {
                 </View>
                 <Animated.Image
                     key={Date.now()}
-                    source={require("../assets/teddy-bear/teddy7.png")} 
+                    source={require("../assets/teddy-bear/teddy7.png")}
                     style={styles.bigTeddy}
                     entering={SlideInRight.duration(1000).delay(250)}
                 />

@@ -89,7 +89,7 @@ export default function Designs() {
     }
 
     function handleBottomSheet(pattern) {
-
+        // Recuperar el patrón completo con todos los datos antes de abrir el detalle
         const fullPattern = initialData.current.find(el => el.id === pattern.id);
         fullPattern.progress = pattern.progress;
 
