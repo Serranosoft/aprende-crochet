@@ -45,7 +45,7 @@ export default function Designs() {
     // En caso de recibir un pattern_id, abrir el desplegable con la opción recibida.
     useEffect(() => {
         if (pattern_id) {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 const item = data.find((el) => el.id === pattern_id);
                 if (item) {
                     setTimeout(() => {
