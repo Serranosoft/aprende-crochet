@@ -126,7 +126,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                                     const wool = wools[woolEl];
                                                     return (
                                                         wool &&
-                                                        <View style={styles.wool}>
+                                                        <View style={styles.wool} key={wool.color}>
                                                             <View style={[styles.woolBall, { backgroundColor: wool.color }]}>
                                                             </View>
                                                             <Text style={ui.muted}>{renderName(wool)}</Text>
@@ -145,7 +145,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                                     const thread = threads[threadEl];
                                                     return (
                                                         thread &&
-                                                        <View style={styles.wool}>
+                                                        <View style={styles.wool} key={thread.color}>
                                                             <View style={[styles.woolBall, { backgroundColor: thread.color }]}>
                                                             </View>
                                                             <Text style={ui.muted}>{renderName(thread)}</Text>
