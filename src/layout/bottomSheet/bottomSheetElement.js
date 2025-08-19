@@ -100,6 +100,20 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 </View>
                             }
                             {
+                                patternSelected.metadata?.additional_info &&
+                                <View style={styles.additionalInfo}>
+                                    <Text style={[ui.h4, ui.bold]}>Necesitarás estos materiales</Text>
+                                    <Text style={ui.muted}>
+                                        {
+                                            language._locale !== "es" ?
+                                                patternSelected.metadata?.additional_info.en
+                                                :
+                                                patternSelected.metadata?.additional_info.es
+                                        }
+                                    </Text>
+                                </View>
+                            }
+                            {
                                 (patternSelected.metadata?.wool?.length > 0 || patternSelected.metadata?.thread?.length > 0) &&
                                 <View style={styles.woolsWrapper}>
                                     <Text style={[ui.h4, ui.bold]}>Necesitarás estos colores</Text>
@@ -283,6 +297,12 @@ const styles = StyleSheet.create({
         height: 32,
         borderWidth: 1,
         borderRadius: 100,
+    },
+    additionalInfo: {
+        width: "100%",
+        // flexDirection: "row",
+        gap: 8,
+        // alignItems: "center"
     }
 
 })

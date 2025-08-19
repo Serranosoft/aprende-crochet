@@ -17,7 +17,6 @@ export const ui = {
         fontFamily: "ancizar-medium",
         color: "#404040",
         fontSize: 13.5,
-        lineHeight: 22
     },
     bold: {
         fontFamily: "ancizar-bold"
