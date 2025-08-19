@@ -52,10 +52,10 @@ export default function Steps() {
     }
 
     async function fetchSteps() {
-        const matrix = [stitchings.stitching, designs.designs];
-        const element = matrix.map((arr) => arr.find((el) => el.id === id));
-        setTitle(language._locale !== "es" ? element[0].name.en : element[0].name.es);
-        setSteps(element[0].steps);
+        const matrix = [...stitchings.stitching, ...designs.designs.flatMap((category) => category.patterns)];
+        const element = matrix.find((el) => el.id === id);
+        setTitle(language._locale !== "es" ? element.name.en : element.name.es);
+        setSteps(element.steps);
     }
 
 

@@ -39,11 +39,11 @@ export default function PatternsInProgress() {
 
     async function handleMyPatterns() {
         const result = await getPatternsInProgress();
-        const matrix = [stitchings.stitching, designs.designs];
+        const matrix = [...stitchings.stitching, ...designs.designs.flatMap((category) => category.patterns)];
         let elements = [];
         result.forEach((patternInProgress) => {
-            const element = matrix.map((arr) => arr.find((el) => el.id === patternInProgress.pattern_id));
-            if (element) elements.push(element[0]);
+            const element = matrix.find((el) => el.id === patternInProgress.pattern_id);
+            if (element) elements.push(element);
         })
         setPatterns(elements);
     }

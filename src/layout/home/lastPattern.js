@@ -18,13 +18,14 @@ export default function LastPattern() {
 
     async function getPattern() {
         const lastPattern = await getLastPattern();
+        console.log(lastPattern);
         if (lastPattern) {
             const progress = await getProgressFromPattern(lastPattern);
-            const matrix = [stitchings.stitching, designs.designs];
-            const element = matrix.map((arr) => arr.find((el) => el.id === lastPattern));
+            const matrix = [...stitchings.stitching, ...designs.designs.flatMap((category) => category.patterns)];
+            const element = matrix.find((el) => el.id === lastPattern);
 
             if (element) {
-                const updatedPattern = {...element[0], progress: progress ? parseInt(progress.progress) : 0};
+                const updatedPattern = { ...element, progress: progress ? parseInt(progress.progress) : 0 };
                 setPattern(updatedPattern);
                 setHasLastPattern(true);
             }

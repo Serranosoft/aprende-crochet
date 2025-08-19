@@ -10,7 +10,7 @@ import { router, useFocusEffect } from "expo-router";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 
 const { width } = Dimensions.get("screen");
-const INITIAL_DATA = designs.designs[0].patterns.slice(0, 4);
+const INITIAL_DATA = designs.designs[1].patterns.slice(0, 4);
 
 export default function Designs() {
 
