@@ -11,7 +11,7 @@ import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import { getPatternsInProgress, getProgressFromPattern } from "../src/utils/sqlite"
 import useBackHandler from "../src/components/use-back-handler"
-import { handleProgress } from "../src/utils/patternUtils"
+import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import { useRenderName } from "../src/hooks/useRenderName"
 
@@ -116,7 +116,7 @@ export default function PatternsInProgress() {
                                                     <View style={styles.iconWrapper}>
                                                         <Image source={require("../assets/level.png")} style={styles.icon} />
                                                     </View>
-                                                    <Text style={ui.muted}>Principiante</Text>
+                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
                                                 </View>
                                                 <View style={styles.row}>
                                                     <View style={styles.iconWrapper}>
