@@ -69,25 +69,6 @@ export default function Designs() {
                                     </View>
                                     <Text style={[ui.muted, ui.white]}>{pattern.qty} pasos</Text>
                                 </View>
-                                {
-                                    pattern.metadata.scissors &&
-                                    <View style={styles.row}>
-                                        <View style={styles.iconWrapper}>
-                                            <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
-
-                                        </View>
-                                        <Text style={[ui.muted, ui.white]}>Tijeras</Text>
-                                    </View>
-                                }
-                                {
-                                    pattern.metadata.wool_needle &&
-                                    <View style={styles.row}>
-                                        <View style={styles.iconWrapper}>
-                                            <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
-                                        </View>
-                                        <Text style={[ui.muted, ui.white]}>Aguja de lana</Text>
-                                    </View>
-                                }
                             </View>
                         </TouchableOpacity>
                     )
