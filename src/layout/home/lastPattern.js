@@ -18,7 +18,7 @@ export default function LastPattern() {
 
     async function getPattern() {
         const lastPattern = await getLastPattern();
-        console.log(lastPattern);
+
         if (lastPattern) {
             const progress = await getProgressFromPattern(lastPattern);
             const matrix = [...stitchings.stitching, ...designs.designs.flatMap((category) => category.patterns)];
@@ -61,7 +61,7 @@ export default function LastPattern() {
                         <Button showIcon={false} onPress={() => {
                             router.navigate({
                                 pathname: '/steps',
-                                params: { id: pattern.id, step: pattern.progress }
+                                params: { id: pattern.id, step: pattern.progress, featuredImage: pattern.image }
                             })
                         }}>
                             <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "Ver punto bajo"}</Text>
