@@ -13,6 +13,7 @@ import { getPatternsInProgress, getProgressFromPattern } from "../src/utils/sqli
 import useBackHandler from "../src/components/use-back-handler"
 import { handleProgress } from "../src/utils/patternUtils"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
+import { useRenderName } from "../src/hooks/useRenderName"
 
 
 export default function PatternsInProgress() {
@@ -69,9 +70,7 @@ export default function PatternsInProgress() {
         setOpenDetails(true);
     }
 
-    function renderName(item) {
-        return language._locale !== "es" ? item.name.en : item.name.es
-    }
+    const renderName = useRenderName(language._locale);
 
     return (
         <>

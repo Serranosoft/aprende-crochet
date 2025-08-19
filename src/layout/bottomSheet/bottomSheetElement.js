@@ -6,6 +6,7 @@ import { LangContext } from "../../utils/Context";
 import Button from "../../components/button";
 import { router } from "expo-router";
 import handleLevelString from "../../utils/patternUtils";
+import { useRenderName } from "../../hooks/useRenderName";
 
 
 export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected, wools, threads }) {
@@ -46,9 +47,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
             patternSelected.qty
     }
 
-    function renderName(item) {
-        return language._locale !== "es" ? item.name.en : item.name.es
-    }
+    const renderName = useRenderName(language._locale);
 
 
     return (

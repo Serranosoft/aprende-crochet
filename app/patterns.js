@@ -11,6 +11,7 @@ import Progress from "../src/components/progress"
 import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
+import { useRenderName } from "../src/hooks/useRenderName"
 
 const INITIAL_DATA = stitchings.stitching;
 
@@ -83,10 +84,7 @@ export default function Patterns() {
         setOpenDetails(true);
     }
 
-    const renderName = useCallback(
-        (item) => language._locale !== "es" ? item.name.en : item.name.es,
-        [language._locale]
-    )
+    const renderName = useRenderName(language._locale);
 
     return (
         <>

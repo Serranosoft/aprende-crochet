@@ -8,6 +8,7 @@ import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 import { router, useFocusEffect } from "expo-router";
+import { useRenderName } from "../../hooks/useRenderName";
 
 const { width } = Dimensions.get("screen");
 
@@ -41,10 +42,7 @@ export default function Stitching() {
         setData(data)
     }
 
-    const renderName = useCallback(
-        (item) => language._locale !== "es" ? item.name.en : item.name.es,
-        [language._locale]
-    )
+    const renderName = useRenderName(language._locale);
 
     return (
         <View style={styles.container}>
