@@ -31,7 +31,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
     function navigateToSteps(step) {
         router.navigate({
             pathname: '/steps',
-            params: { id: patternSelected.id, step: step }
+            params: { id: patternSelected.id, step: step, featuredImage: patternSelected.image }
         })
         setOpenDetails(false);
     }

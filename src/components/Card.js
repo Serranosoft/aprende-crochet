@@ -10,7 +10,7 @@ import Counter from "./counter";
 import { AdsContext, LangContext } from "../utils/Context";
 import { hasNextStep, isLastStep } from "../layout/steps/stepsUtils";
 
-export default function Card({ step, setCurrent, current, stepsLength, count, setCount }) {
+export default function Card({ step, setCurrent, current, stepsLength, count, setCount, featuredImage }) {
     const [hasImage, setHasImage] = useState(true);
     const position = useSharedValue(0);
     const { setAdTrigger } = useContext(AdsContext);
@@ -99,15 +99,15 @@ export default function Card({ step, setCurrent, current, stepsLength, count, se
             <View style={styles.wrapper}>
                 <View style={styles.card}>
                     <Animated.View style={[animatedHeight, animatedImageStyle]}>
-                        {step.image &&
+                        
                             <Image
                                 style={styles.image}
-                                source={{ uri: step.image }}
+                                source={{ uri: step.image || featuredImage }}
                                 resizeMode="contain"
                                 onError={() => setHasImage(false)}
                                 onLoad={() => setHasImage(true)}
                             />
-                        }
+                        
                     </Animated.View>
                     <Counter {...{ count, setCount }} />
                     <Animated.Text style={[ui.text, animatedFontSize, styles.content, animatedTextStyle]}>

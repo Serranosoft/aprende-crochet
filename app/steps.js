@@ -17,7 +17,7 @@ import { hasNextStep, isLastStep } from "../src/layout/steps/stepsUtils";
 export default function Steps() {
 
     const params = useLocalSearchParams();
-    const { id, step } = params;
+    const { id, step, featuredImage } = params;
     const { language } = useContext(LangContext);
 
     const [steps, setSteps] = useState(null);
@@ -70,7 +70,7 @@ export default function Steps() {
             <View style={styles.wrapper}>
                 {steps && steps.length > 0 &&
                     <Card {...{
-                        step: steps[current], setCurrent, current, stepsLength: steps.length, count, setCount
+                        step: steps[current], setCurrent, current, stepsLength: steps.length, count, setCount, featuredImage
                     }} />
                 }
             </View>
@@ -84,7 +84,7 @@ export default function Steps() {
                 </View>
             }
             <View style={styles.progressWrapper}>
-                {hasNextStep(current) && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
+                {steps && hasNextStep(current, steps.length) && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
                 { steps && <Progress current={current} qty={steps.length} large /> }
             </View>
         </View>
