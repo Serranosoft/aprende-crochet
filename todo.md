@@ -3,12 +3,11 @@
 - _designsSubtitle
 - _homeSteps
 
-## Work in progress
-- Falta añadir las variables de «Modal de actualizaciones» en los distintos idiomas, solo está en Español.
-- Falta añadir el additional_info del json
-
 ## Mejoras  
+- Añadir mensaje "No hay patrones en progreso" en el caso de que el progreso sea 0
+- Falta añadir las variables de «Modal de actualizaciones» en los distintos idiomas, solo está en Español.
+
+## Futuro
 - Añadir zoom a las imagenes (Posponer funcionalidad debido a incompatibilidad con animacion de swipe)
-- la funcion renderName se repite en numerosas partes, extraer a Utils.
 
 ## Fallos
