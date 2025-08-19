@@ -1,4 +1,4 @@
-import { Stack, useFocusEffect } from "expo-router"
+import { router, Stack, useFocusEffect } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useState } from "react"
@@ -14,6 +14,7 @@ import useBackHandler from "../src/components/use-back-handler"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import { useRenderName } from "../src/hooks/useRenderName"
+import Button from "../src/components/button"
 
 
 export default function PatternsInProgress() {
@@ -33,9 +34,11 @@ export default function PatternsInProgress() {
         }, [patterns.length])
     );
 
-    useEffect(() => {
-        handleMyPatterns();
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            handleMyPatterns();
+        }, [])
+    );
 
     async function handleMyPatterns() {
         const result = await getPatternsInProgress();
@@ -80,57 +83,80 @@ export default function PatternsInProgress() {
                 <View style={styles.hero}>
                     <Text style={ui.h1}>Mis patrones</Text>
                 </View>
-                <Animated.Image
-                    key={Date.now()}
-                    source={require("../assets/teddy-bear/teddy12.png")}
-                    style={styles.bigTeddy}
-                    entering={SlideInRight.duration(1000).delay(250)}
-                />
+                {patterns.length > 0 &&
+                    <Animated.Image
+                        key={Date.now()}
+                        source={require("../assets/teddy-bear/teddy12.png")}
+                        style={styles.bigTeddy}
+                        entering={SlideInRight.duration(1000).delay(250)}
+                    />
+                }
 
 
 
                 <View style={styles.list}>
-                    <FlatList
-                        data={patterns}
-                        numColumns={1}
-                        initialNumToRender={6}
-                        contentContainerStyle={styles.inner}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <Animated.View
-                                    entering={FadeInDown.duration(300).delay(350 * index)}
-                                    key={item.id}
-                                >
-                                    <TouchableOpacity
-                                        style={styles.box}
-                                        onPress={() => handleBottomSheet(item)}>
-                                        <View style={styles.imageWrapper}>
-                                            <Image style={styles.image} source={{ uri: item.image }} />
-                                        </View>
-                                        <View style={styles.info}>
-                                            <Text style={[ui.h3, ui.bold]}>{renderName(item)}</Text>
-                                            <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
-                                            <View style={styles.separator}></View>
-                                            <View style={styles.metadata}>
-                                                <View style={styles.row}>
-                                                    <View style={styles.iconWrapper}>
-                                                        <Image source={require("../assets/level.png")} style={styles.icon} />
-                                                    </View>
-                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
+                    {
+                        patterns.length > 0 ?
+
+                            <FlatList
+                                data={patterns}
+                                numColumns={1}
+                                initialNumToRender={6}
+                                contentContainerStyle={styles.inner}
+                                renderItem={({ item, index }) => {
+                                    return (
+                                        <Animated.View
+                                            entering={FadeInDown.duration(300).delay(350 * index)}
+                                            key={item.id}
+                                        >
+                                            <TouchableOpacity
+                                                style={styles.box}
+                                                onPress={() => handleBottomSheet(item)}>
+                                                <View style={styles.imageWrapper}>
+                                                    <Image style={styles.image} source={{ uri: item.image }} />
                                                 </View>
-                                                <View style={styles.row}>
-                                                    <View style={styles.iconWrapper}>
-                                                        <Image source={require("../assets/clock.png")} style={styles.icon} />
+                                                <View style={styles.info}>
+                                                    <Text style={[ui.h3, ui.bold]}>{renderName(item)}</Text>
+                                                    <Progress current={item.progress !== undefined ? item.progress : null} qty={item.qty} />
+                                                    <View style={styles.separator}></View>
+                                                    <View style={styles.metadata}>
+                                                        <View style={styles.row}>
+                                                            <View style={styles.iconWrapper}>
+                                                                <Image source={require("../assets/level.png")} style={styles.icon} />
+                                                            </View>
+                                                            <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
+                                                        </View>
+                                                        <View style={styles.row}>
+                                                            <View style={styles.iconWrapper}>
+                                                                <Image source={require("../assets/clock.png")} style={styles.icon} />
+                                                            </View>
+                                                            <Text style={ui.muted}>{item.qty} {language.t("_homeSteps")}</Text>
+                                                        </View>
                                                     </View>
-                                                    <Text style={ui.muted}>{item.qty} {language.t("_homeSteps")}</Text>
                                                 </View>
-                                            </View>
-                                        </View>
-                                    </TouchableOpacity>
-                                </Animated.View>
-                            )
-                        }}
-                    />
+                                            </TouchableOpacity>
+                                        </Animated.View>
+                                    )
+                                }}
+                            />
+                            :
+                            <View style={styles.empty}>
+                                <Image source={require("../assets/teddy-bear/teddy13.png")} style={{ width: 100, height: 100 }} />
+                                <Text style={ui.h4}>No tienes patrones en progreso</Text>
+                                <View style={styles.emptyActions}>
+                                    <Button showIcon={false} onPress={() => {
+                                        router.navigate("patterns")
+                                    }}>
+                                        <Text style={[ui.text, ui.bold, ui.white]}>Ver tutoriales</Text>
+                                    </Button>
+                                    <Button showIcon={false} onPress={() => {
+                                        router.navigate("designs")
+                                    }}>
+                                        <Text style={[ui.text, ui.bold, ui.white]}>Ver diseños</Text>
+                                    </Button>
+                                </View>
+                            </View>
+                    }
                     <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
 
                 </View>
@@ -159,8 +185,8 @@ const styles = StyleSheet.create({
     bigTeddy: {
         position: "absolute",
         opacity: 0.35,
-        right: -120,
-        top: 0,
+        right: -75,
+        top: 125,
         zIndex: -1
     },
 
@@ -222,6 +248,20 @@ const styles = StyleSheet.create({
         width: 16,
         height: 16,
     },
+    empty: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    emptyActions: {
+        flexDirection: "row",
+        gap: 16,
+        marginTop: 16,
+        paddingTop: 16,
+        borderTopWidth: 2,
+        borderColor: colors.primary
+    }
+
 
 
 })
