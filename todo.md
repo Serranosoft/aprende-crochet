@@ -5,7 +5,7 @@
 
 ## Mejoras  
 - Falta añadir las variables de «Modal de actualizaciones» en los distintos idiomas, solo está en Español.
-
+- Reemplazar testIds por los ids de los anuncios correctos
 
 ## Futuro
 - Añadir zoom a las imagenes (Posponer funcionalidad debido a incompatibilidad con animacion de swipe)
