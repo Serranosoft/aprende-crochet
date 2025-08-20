@@ -1,16 +1,15 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import designs from "../../../designs.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
-import { getProgressFromPattern } from "../../utils/sqlite";
 import { LangContext } from "../../utils/Context";
 import { router, useFocusEffect } from "expo-router";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 
 const { width } = Dimensions.get("screen");
-const INITIAL_DATA = designs.designs[1].patterns.slice(0, 4);
+const INITIAL_DATA = designs.designs[0].patterns.slice(0, 2);
 
 export default function Designs() {
 
