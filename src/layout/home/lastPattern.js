@@ -7,6 +7,7 @@ import { ui } from "../../utils/styles";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getLastPattern, getProgressFromPattern } from "../../utils/sqlite";
+import * as Haptics from "expo-haptics";
 
 const INITIAL_PATTERN = "stitching-3";
 
@@ -59,6 +60,7 @@ export default function LastPattern() {
                         <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con lo básico?"}</Text>
                         {hasLastPattern && <Progress current={pattern.progress} qty={pattern.steps.length} />}
                         <Button showIcon={false} onPress={() => {
+                            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
                             router.navigate({
                                 pathname: '/steps',
                                 params: { id: pattern.id, step: pattern.progress, featuredImage: pattern.image }

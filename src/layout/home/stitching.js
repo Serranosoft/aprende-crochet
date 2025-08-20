@@ -9,6 +9,7 @@ import { AdsContext, LangContext } from "../../utils/Context";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 import { router, useFocusEffect } from "expo-router";
 import { useRenderName } from "../../hooks/useRenderName";
+import * as Haptics from "expo-haptics";
 
 const { width } = Dimensions.get("screen");
 
@@ -87,7 +88,11 @@ export default function Stitching() {
                     )
                 })}
             </View>
-            <Button onPress={() => router.navigate("/patterns")}>
+            <Button onPress={() => {
+                router.navigate("/patterns")
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
+            }}>
                 <Text style={[ui.h4, ui.white]}>Ver todos los patrones</Text>
             </Button>
         </View>

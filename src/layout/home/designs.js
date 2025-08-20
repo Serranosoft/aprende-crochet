@@ -7,6 +7,7 @@ import Progress from "../../components/progress";
 import { AdsContext, LangContext } from "../../utils/Context";
 import { router, useFocusEffect } from "expo-router";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
+import * as Haptics from "expo-haptics";
 
 const { width } = Dimensions.get("screen");
 const INITIAL_DATA = designs.designs[0].patterns.slice(0, 2);
@@ -75,7 +76,11 @@ export default function Designs() {
                     )
                 })}
             </View>
-            <Button>
+            <Button onPress={() => {
+                router.navigate("/designs")
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
+            }}>
                 <Text style={[ui.h4, ui.white]}>Ver todos los diseños</Text>
             </Button>
         </View>

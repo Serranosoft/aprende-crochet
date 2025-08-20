@@ -7,6 +7,7 @@ import Button from "../../components/button";
 import { router } from "expo-router";
 import handleLevelString from "../../utils/patternUtils";
 import { useRenderName } from "../../hooks/useRenderName";
+import * as Haptics from "expo-haptics";
 
 
 export default function BottomSheetElement({ openDetails, setOpenDetails, patternSelected, wools, threads }) {
@@ -29,6 +30,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
     }, [openDetails])
 
     function navigateToSteps(step) {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
         router.navigate({
             pathname: '/steps',
             params: { id: patternSelected.id, step: step, featuredImage: patternSelected.image }
