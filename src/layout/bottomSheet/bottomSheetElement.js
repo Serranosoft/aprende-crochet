@@ -85,6 +85,15 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 patternSelected.metadata?.scissors &&
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
+                                        <Image source={require("../../../assets/hook.png")} style={styles.icon} />
+                                    </View>
+                                    <Text style={ui.text}>Aguja de ganchillo</Text>
+                                </View>
+                            }
+                            {
+                                patternSelected.metadata?.scissors &&
+                                <View style={styles.row}>
+                                    <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
                                     </View>
                                     <Text style={ui.text}>Tijeras</Text>
@@ -97,20 +106,6 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                         <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
                                     </View>
                                     <Text style={ui.text}>Aguja de lana</Text>
-                                </View>
-                            }
-                            {
-                                patternSelected.metadata?.additional_info.es.length > 0 &&
-                                <View style={styles.additionalInfo}>
-                                    <Text style={[ui.h4, ui.bold]}>Necesitarás estos materiales</Text>
-                                    <Text style={ui.muted}>
-                                        {
-                                            language._locale !== "es" ?
-                                                patternSelected.metadata?.additional_info.en
-                                                :
-                                                patternSelected.metadata?.additional_info.es
-                                        }
-                                    </Text>
                                 </View>
                             }
                             {
@@ -155,6 +150,20 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                             </View>
                                         </View>
                                     }
+                                </View>
+                            }
+                            {
+                                patternSelected.metadata?.additional_info?.es.length > 0 &&
+                                <View style={styles.additionalInfo}>
+                                    <Text style={[ui.h4, ui.bold]}>Además necesitarás estos materiales</Text>
+                                    <Text style={ui.muted}>
+                                        {
+                                            language._locale !== "es" ?
+                                                patternSelected.metadata?.additional_info.en
+                                                :
+                                                patternSelected.metadata?.additional_info.es
+                                        }
+                                    </Text>
                                 </View>
                             }
                         </View>
@@ -224,7 +233,6 @@ const styles = StyleSheet.create({
     },
     metadata: {
         flexDirection: "row",
-        justifyContent: "space-around",
         flexWrap: "wrap",
         gap: 24,
     },
@@ -293,8 +301,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     woolBall: {
-        width: 32,
-        height: 32,
+        width: 24,
+        height: 24,
         borderWidth: 1,
         borderRadius: 100,
     },
