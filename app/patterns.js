@@ -2,7 +2,7 @@ import { Stack, useFocusEffect, useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useRef, useState } from "react"
-import { LangContext } from "../src/utils/Context"
+import { AdsContext, LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import stitchings from "../stitchings.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
@@ -19,6 +19,8 @@ export default function Patterns() {
 
     const params = useLocalSearchParams();
     const { pattern_id } = params;
+
+    const { setAdTrigger, adsLoaded } = useContext(AdsContext);
 
     const initialData = useRef(INITIAL_DATA);
 
@@ -74,6 +76,9 @@ export default function Patterns() {
     }
 
     function handleBottomSheet(pattern) {
+        // Ads
+        setAdTrigger((adTrigger) => adTrigger + 1);
+        
         // Recuperar el patrón completo con todos los datos antes de abrir el detalle
         const fullPattern = initialData.current.find(el => el.id === pattern.id);
         fullPattern.progress = pattern.progress;
@@ -147,7 +152,7 @@ export default function Patterns() {
                             )
                         }}
                     />
-                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
 
                 </View>
             </View>

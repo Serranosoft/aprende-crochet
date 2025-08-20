@@ -2,7 +2,7 @@ import { Stack, useFocusEffect, useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useRef, useState } from "react"
-import { LangContext } from "../src/utils/Context"
+import { AdsContext, LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import designs from "../designs.json";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
@@ -26,6 +26,7 @@ export default function Designs() {
     const [threads, setThreads] = useState(null);
 
     const { language } = useContext(LangContext);
+    const { setAdTrigger, adsLoaded } = useContext(AdsContext);
 
     // Bottom Sheet Variables
     const [openDetails, setOpenDetails] = useState(false);
@@ -90,6 +91,9 @@ export default function Designs() {
     }
 
     function handleBottomSheet(pattern) {
+        // Ads
+        setAdTrigger((adTrigger) => adTrigger + 1);
+
         // Recuperar el patrón completo con todos los datos antes de abrir el detalle
         const fullPattern = initialData.current.find(el => el.id === pattern.id);
         fullPattern.progress = pattern.progress;
@@ -163,7 +167,7 @@ export default function Designs() {
                             )
                         }}
                     />
-                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
 
                 </View>
             </View>

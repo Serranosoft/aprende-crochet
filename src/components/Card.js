@@ -33,7 +33,6 @@ export default function Card({ step, setCurrent, current, stepsLength, count, se
                     setTimeout(() => {
                         position.value = Dimensions.get("window").width;
                         position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }));
-                        setAdTrigger((adTrigger) => adTrigger + 1);
                     }, 250);
                 } else {
                     position.value = withDelay(25, withTiming(0, { duration: 300, easing: Easing.ease }));
@@ -45,7 +44,6 @@ export default function Card({ step, setCurrent, current, stepsLength, count, se
                     setTimeout(() => {
                         position.value = -Dimensions.get("window").width;
                         position.value = withDelay(10, withTiming(0, { duration: 200, easing: Easing.ease }));
-                        setAdTrigger((adTrigger) => adTrigger + 1);
                     }, 100);
                 } else {
                     position.value = withDelay(10, withTiming(0, { duration: 200, easing: Easing.ease }));

@@ -5,7 +5,7 @@ import stitchings from "../../../stitchings.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getProgressFromPattern } from "../../utils/sqlite";
-import { LangContext } from "../../utils/Context";
+import { AdsContext, LangContext } from "../../utils/Context";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 import { router, useFocusEffect } from "expo-router";
 import { useRenderName } from "../../hooks/useRenderName";
@@ -19,6 +19,7 @@ export default function Stitching() {
     const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
     const { language } = useContext(LangContext);
+    const { setAdTrigger } = useContext(AdsContext);
 
     useFocusEffect(
         useCallback(() => {
@@ -58,6 +59,7 @@ export default function Stitching() {
                             key={pattern.id}
                             style={styles.box}
                             onPress={() => {
+                                setAdTrigger((adTrigger) => adTrigger + 1);
                                 router.navigate({
                                     pathname: '/patterns',
                                     params: { pattern_id: pattern.id }

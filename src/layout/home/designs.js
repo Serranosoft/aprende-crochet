@@ -4,7 +4,7 @@ import { useCallback, useContext, useRef, useState } from "react";
 import designs from "../../../designs.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
-import { LangContext } from "../../utils/Context";
+import { AdsContext, LangContext } from "../../utils/Context";
 import { router, useFocusEffect } from "expo-router";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 
@@ -16,6 +16,7 @@ export default function Designs() {
     const initialData = useRef(INITIAL_DATA);
     const [data, setData] = useState(null);
     const { language } = useContext(LangContext);
+    const { setAdTrigger } = useContext(AdsContext);
 
     useFocusEffect(
         useCallback(() => {
@@ -44,6 +45,7 @@ export default function Designs() {
                             key={pattern.id}
                             style={styles.box}
                             onPress={() => {
+                                setAdTrigger((adTrigger) => adTrigger + 1);
                                 router.navigate({
                                     pathname: '/designs',
                                     params: { pattern_id: pattern.id }

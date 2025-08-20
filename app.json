@@ -1,74 +1,74 @@
 {
-  "expo": {
-    "name": "Crochet paso a paso",
-    "slug": "crochet",
-    "version": "1.0.1",
-    "orientation": "portrait",
-    "icon": "./assets/logo-croche.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": false,
-    "splash": {
-      "image": "./assets/splash-image.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#5193F0"
-    },
-    "scheme": "crochet",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": false,
-      "bundleIdentifier": "com.paulaymanu113.crochet",
-      "icon": "./assets/logo-croche.png",
-      "buildNumber": "4",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false,
-        "CFBundleAllowMixedLocalizations": true
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/logo-croche.png",
-        "backgroundColor": "#5193F0"
-      },
-      "versionCode": 17,
-      "package": "com.paulaymanu113.crochet"
-    },
-    "locales": {
-      "en": "./languages/english.json",
-      "de": "./languages/deutsch.json",
-      "fr": "./languages/french.json",
-      "ar": "./languages/arab.json",
-      "hi": "./languages/hindi.json"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "333c8019-02ec-446a-a364-a21a4fb283df"
-      }
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "react-native-google-mobile-ads",
-        {
-          "androidAppId": "ca-app-pub-3738413299329691~5567274990",
-          "iosAppId": "ca-app-pub-3738413299329691~6458754686",
-          "delayAppMeasurementInit": true,
-          "userTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
-        }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }"
-          }
-        }
-      ],
-      "expo-sqlite"
-    ]
-  }
+    "expo": {
+        "name": "Crochet paso a paso",
+        "slug": "crochet",
+        "version": "1.0.1",
+        "orientation": "portrait",
+        "icon": "./assets/logo-croche.png",
+        "userInterfaceStyle": "light",
+        "newArchEnabled": false,
+        "splash": {
+            "image": "./assets/splash-image.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#5193F0"
+        },
+        "scheme": "crochet",
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "supportsTablet": false,
+            "bundleIdentifier": "com.paulaymanu113.crochet",
+            "icon": "./assets/logo-croche.png",
+            "buildNumber": "4",
+            "infoPlist": {
+                "ITSAppUsesNonExemptEncryption": false,
+                "CFBundleAllowMixedLocalizations": true
+            }
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/logo-croche.png",
+                "backgroundColor": "#5193F0"
+            },
+            "versionCode": 17,
+            "package": "com.paulaymanu113.crochet"
+        },
+        "locales": {
+            "en": "./languages/english.json",
+            "de": "./languages/deutsch.json",
+            "fr": "./languages/french.json",
+            "ar": "./languages/arab.json",
+            "hi": "./languages/hindi.json"
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "333c8019-02ec-446a-a364-a21a4fb283df"
+            }
+        },
+        "plugins": [
+            "expo-router",
+            [
+                "react-native-google-mobile-ads",
+                {
+                    "androidAppId": "ca-app-pub-3738413299329691~5567274990",
+                    "iosAppId": "ca-app-pub-3738413299329691~6458754686",
+                    "delayAppMeasurementInit": true,
+                    "userTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
+                }
+            ],
+            [
+                "expo-build-properties",
+                {
+                    "android": {
+                        "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }"
+                    }
+                }
+            ],
+            "expo-sqlite"
+        ]
+    }
 }

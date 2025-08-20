@@ -2,7 +2,7 @@ import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image }
 import { Stack } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useContext, useState } from "react";
-import { LangContext } from "../src/utils/Context";
+import { AdsContext, LangContext } from "../src/utils/Context";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { colors, ui } from "../src/utils/styles";
@@ -12,6 +12,7 @@ import Animated, { SlideInLeft, SlideInRight } from "react-native-reanimated";
 export default function Settings() {
 
     const { language, setLanguage } = useContext(LangContext);
+    const { adsLoaded } = useContext(AdsContext);
 
     const [selected, setSelected] = useState(language._locale);
 
@@ -61,7 +62,7 @@ export default function Settings() {
                     </View>
                 </View>
 
-                <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
             </View>
         </>
     )

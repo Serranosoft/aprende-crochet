@@ -11,7 +11,7 @@ const AdsHandler = forwardRef((props, ref) => {
         load: loadIntersitial,
         show: showIntersitial } = useInterstitialAd(Platform.OS === "android" ? intersitialId : intersitialIdIOS);
 
-   /* CONSENT */
+    /* CONSENT */
     const isMobileAdsStartCalledRef = useRef(false);
     useEffect(() => {
         const prepare = async () => {

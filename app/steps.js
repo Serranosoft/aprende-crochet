@@ -7,7 +7,7 @@ import { colors, ui } from "../src/utils/styles";
 import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
 import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import Header from "../src/layout/header";
-import { LangContext } from "../src/utils/Context";
+import { AdsContext, LangContext } from "../src/utils/Context";
 import stitchings from "../stitchings.json";
 import designs from "../designs.json";
 import Button from "../src/components/button";
@@ -19,6 +19,7 @@ export default function Steps() {
     const params = useLocalSearchParams();
     const { id, step, featuredImage } = params;
     const { language } = useContext(LangContext);
+    const { setAdTrigger, adsLoaded } = useContext(AdsContext);
 
     const [steps, setSteps] = useState(null);
     const [title, setTitle] = useState(null);
@@ -45,6 +46,9 @@ export default function Steps() {
 
     useEffect(() => {
         updateProgress();
+        if (current % 2 === 0) {
+            setAdTrigger((adTrigger) => adTrigger + 1);
+        }
     }, [current])
 
     async function updateProgress() {
@@ -62,7 +66,7 @@ export default function Steps() {
     return (
         <View style={styles.container}>
             <Stack.Screen options={{ header: () => <Header back={true} /> }} />
-            <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+            { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
             <View style={styles.hero}>
                 <Text style={ui.h2}>{title}</Text>
             </View>

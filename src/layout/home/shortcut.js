@@ -1,16 +1,18 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors, ui } from "../../utils/styles";
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { getPatternsQtyInProgress } from "../../utils/sqlite";
 import stitchings from "../../../stitchings.json";
 import designs from "../../../designs.json";
+import { AdsContext } from "../../utils/Context";
 
 export default function Shortcut() {
 
     const [patternsQty, setPatternsQty] = useState(null);
     const [designsQty, setDesignsQty] = useState(null);
     const [patternsInProgress, setPatternsInProgress] = useState(0);
+    const { setAdTrigger } = useContext(AdsContext);
 
 
     useEffect(() => {
@@ -39,6 +41,11 @@ export default function Shortcut() {
         setPatternsInProgress(result);
     }
 
+    function navigate(urlPath) {
+        setAdTrigger((adTrigger) => adTrigger + 1);
+        router.push(urlPath);
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.hero}>
@@ -46,14 +53,14 @@ export default function Shortcut() {
                 <Image source={require("../../../assets/teddy-bear/teddy3.png")} style={styles.teddy} />
             </View>
             <View style={styles.wrapper}>
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/patterns")}>
+                <TouchableOpacity style={styles.box} onPress={() => navigate("/patterns")}>
                     <Image source={require("../../../assets/tutorials.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold]}>Aprender desde cero</Text>
                         { patternsQty && <Text style={[ui.muted, ui.lightgray]}>{patternsQty} tutoriales</Text> }
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/designs")}>
+                <TouchableOpacity style={styles.box} onPress={() => navigate("/designs")}>
                     <Image source={require("../../../assets/designs.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>
@@ -63,7 +70,7 @@ export default function Shortcut() {
             </View>
             <View style={styles.wrapper}>
 
-                <TouchableOpacity style={styles.box} onPress={() => router.push("/patternsInProgress")}>
+                <TouchableOpacity style={styles.box} onPress={() => navigate("/patternsInProgress")}>
                     <Image source={require("../../../assets/my-progress.png")} style={styles.icon} />
                     <View style={styles.info}>
                         <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>

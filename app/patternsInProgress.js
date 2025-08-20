@@ -2,7 +2,7 @@ import { router, Stack, useFocusEffect } from "expo-router"
 import { FlatList, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors, ui } from "../src/utils/styles"
 import { useCallback, useContext, useEffect, useState } from "react"
-import { LangContext } from "../src/utils/Context"
+import { AdsContext, LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import stitchings from "../stitchings.json";
 import designs from "../designs.json";
@@ -21,6 +21,7 @@ export default function PatternsInProgress() {
 
     const [patterns, setPatterns] = useState([])
     const { language } = useContext(LangContext);
+    const { setAdTrigger, adsLoaded } = useContext(AdsContext);
 
     // Bottom Sheet Variables
     const [openDetails, setOpenDetails] = useState(false);
@@ -68,6 +69,8 @@ export default function PatternsInProgress() {
     }
 
     function handleBottomSheet(pattern) {
+        // Ads
+        setAdTrigger((adTrigger) => adTrigger + 1);
         // Establecer el patrón seleccionado 
         setPatternSelected(pattern);
         // Abrir bottomsheet con los valores
@@ -158,7 +161,7 @@ export default function PatternsInProgress() {
                                 </View>
                             </View>
                     }
-                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
 
                 </View>
             </View>

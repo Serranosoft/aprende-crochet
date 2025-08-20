@@ -10,9 +10,13 @@ import Stitching from "../src/layout/home/stitching";
 import Shortcut from "../src/layout/home/shortcut";
 import Designs from "../src/layout/home/designs";
 import Animated, { SlideInRight } from "react-native-reanimated";
+import { useContext } from "react";
+import { AdsContext } from "../src/utils/Context";
 
 export default function Index() {
 
+    const { adsLoaded } = useContext(AdsContext);
+    
     return (
         <>
             <Stack.Screen options={{ header: () => <Header settings={true} /> }} />
@@ -27,7 +31,7 @@ export default function Index() {
                     />
                     <LastPattern />
                     <Shortcut />
-                    <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />
+                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
                     <Stitching />
                     <Designs />
 
