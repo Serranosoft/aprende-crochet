@@ -30,7 +30,7 @@ export default function Shortcut() {
     }
 
     async function handleDesignsQty() {
-        const result = designs.designs.length;
+        const result = designs.designs.flatMap((category) => category.patterns).length;
         setDesignsQty(result);
     }
 
