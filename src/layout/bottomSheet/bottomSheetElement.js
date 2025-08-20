@@ -268,6 +268,8 @@ const styles = StyleSheet.create({
         gap: 8,
         borderRadius: 16,
         flexDirection: "row",
+        padding: 16,
+        backgroundColor: "#f1f1f1",
     },
     stepImg: {
         width: 100,
@@ -288,7 +290,7 @@ const styles = StyleSheet.create({
         width: 24,
         height: 24,
         position: "absolute",
-        top: 0,
+        top: 8,
         right: 8,
     },
     woolsWrapper: {
