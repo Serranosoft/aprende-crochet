@@ -83,12 +83,17 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 <Text style={ui.text}>{patternSelected.qty} {language.t("_homeSteps")}</Text>
                             </View>
                             {
-                                patternSelected.metadata?.scissors &&
+                                patternSelected.metadata?.crochet_needle &&
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/hook.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={ui.text}>Aguja de ganchillo</Text>
+                                    <Text style={ui.text}>
+                                        { language._locale !== "es" ?
+                                            patternSelected.metadata?.crochet_needle.en :
+                                            patternSelected.metadata?.crochet_needle.es
+                                        }
+                                    </Text>
                                 </View>
                             }
                             {
