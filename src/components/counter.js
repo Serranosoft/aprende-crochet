@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { colors, ui } from "../utils/styles";
 import * as Haptics from "expo-haptics";
 

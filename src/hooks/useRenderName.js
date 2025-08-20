@@ -1,4 +1,3 @@
-// hooks/useRenderName.js
 import { useCallback } from "react";
 
 export function useRenderName(locale) {

@@ -1,14 +1,13 @@
 import { Dimensions, StyleSheet, Image } from "react-native";
 import Animated, { withSpring, interpolate, Extrapolation } from "react-native-reanimated";
-import { colors, ui } from "../../src/utils/styles";
-import LottieView from 'lottie-react-native';
+import { ui } from "../../src/utils/styles";
 import { useAnimatedStyle, withDelay, Easing, withTiming, useSharedValue } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import Counter from "./counter";
 import { AdsContext, LangContext } from "../utils/Context";
-import { hasNextStep, isLastStep } from "../layout/steps/stepsUtils";
+import { hasNextStep } from "../layout/steps/stepsUtils";
 
 export default function Card({ step, setCurrent, current, stepsLength, count, setCount, featuredImage }) {
     const [hasImage, setHasImage] = useState(true);

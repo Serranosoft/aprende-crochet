@@ -1,6 +1,6 @@
-import BottomSheet, { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet"
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet"
 import { useCallback, useContext, useEffect, useRef } from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors, ui } from "../../utils/styles";
 import { LangContext } from "../../utils/Context";
 import Button from "../../components/button";
@@ -18,7 +18,6 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
 
     // callbacks
     const handleSheetChanges = useCallback((index) => {
-        // console.log('handleSheetChanges', index);
     }, []);
 
     useEffect(() => {

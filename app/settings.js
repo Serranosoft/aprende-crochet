@@ -7,7 +7,7 @@ import { bannerId, bannerIdIOS } from "../src/utils/constants";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import { colors, ui } from "../src/utils/styles";
 import Header from "../src/layout/header";
-import Animated, { SlideInLeft, SlideInRight } from "react-native-reanimated";
+import Animated, { SlideInLeft } from "react-native-reanimated";
 
 export default function Settings() {
 

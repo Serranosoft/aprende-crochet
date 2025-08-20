@@ -1,10 +1,9 @@
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ui } from "../../utils/styles";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import stitchings from "../../../stitchings.json";
 import Button from "../../components/button";
 import Progress from "../../components/progress";
-import { getProgressFromPattern } from "../../utils/sqlite";
 import { AdsContext, LangContext } from "../../utils/Context";
 import handleLevelString, { handleProgress } from "../../utils/patternUtils";
 import { router, useFocusEffect } from "expo-router";
