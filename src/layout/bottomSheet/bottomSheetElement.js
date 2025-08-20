@@ -100,7 +100,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 </View>
                             }
                             {
-                                patternSelected.metadata?.additional_info &&
+                                patternSelected.metadata?.additional_info.es.length > 0 &&
                                 <View style={styles.additionalInfo}>
                                     <Text style={[ui.h4, ui.bold]}>Necesitarás estos materiales</Text>
                                     <Text style={ui.muted}>
