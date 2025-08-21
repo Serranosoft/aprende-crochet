@@ -39,6 +39,7 @@
                     },
                     "steps": [
                         {
+                            "id": "childish-pattern-1-step-1",
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-manta-bebe-oveja-2.jpg",
                             "content": {
                                 "es": "Comenzamos tejiendo 54 cadenetas más 1 cadeneta de subida para la parte de la manta. Desde la segunda cadeneta tejemos el falso punto inglés. A continuación, lo explico detalladamente.",
@@ -276,9 +277,7 @@
                         ],
                         "scissors": false,
                         "wool_needle": false,
-                        "thread": [
-                            ""
-                        ],
+                        "thread": [],
                         "additional_info": {
                             "es": "",
                             "en": ""
@@ -445,32 +444,28 @@
                     "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/granny-square-arco-iris-2.jpg",
                     "difficulty": 1,
                     "qty": 10,
-                    "metadata": [
-                        {
-                            "crochet_needle": {
-                                "es": "-",
-                                "en": "-"
-                            },
-                            "wool": [
-                                "wools-6",
-                                "wools-12",
-                                "wools-18",
-                                "wools-45",
-                                "wools-50",
-                                "wools-59",
-                                "wools-66"
-                            ],
-                            "scissors": true,
-                            "wool_needle": false,
-                            "thread": [
-                                ""
-                            ],
-                            "additional_info": {
-                                "es": "",
-                                "en": ""
-                            }
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "-",
+                            "en": "-"
+                        },
+                        "wool": [
+                            "wools-6",
+                            "wools-12",
+                            "wools-18",
+                            "wools-45",
+                            "wools-50",
+                            "wools-59",
+                            "wools-66"
+                        ],
+                        "scissors": true,
+                        "wool_needle": false,
+                        "thread": [],
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
                         }
-                    ],
+                    },
                     "steps": [
                         {
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/granny-square-arco-iris-1.jpg",
@@ -553,31 +548,27 @@
                     "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/granny-square-lineas-suaves-2.jpg",
                     "difficulty": 1,
                     "qty": 6,
-                    "metadata": [
-                        {
-                            "crochet_needle": {
-                                "es": "-",
-                                "en": "-"
-                            },
-                            "wool": [
-                                "wools-27",
-                                "wools-47",
-                                "wools-46",
-                                "wools-43",
-                                "wools-49",
-                                "wools-48"
-                            ],
-                            "scissors": false,
-                            "wool_needle": false,
-                            "thread": [
-                                ""
-                            ],
-                            "additional_info": {
-                                "es": "",
-                                "en": ""
-                            }
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "-",
+                            "en": "-"
+                        },
+                        "wool": [
+                            "wools-27",
+                            "wools-47",
+                            "wools-46",
+                            "wools-43",
+                            "wools-49",
+                            "wools-48"
+                        ],
+                        "scissors": false,
+                        "wool_needle": false,
+                        "thread": [],
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
                         }
-                    ],
+                    },
                     "steps": [
                         {
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/granny-square-lineas-suaves-1.jpg",
@@ -632,26 +623,22 @@
                     "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/gs-mosaico-9.jpg",
                     "difficulty": 1,
                     "qty": 10,
-                    "metadata": [
-                        {
-                            "crochet_needle": {
-                                "es": "4,5 mm",
-                                "en": "3/16 inch"
-                            },
-                            "wool": [
-                                "wools-66"
-                            ],
-                            "scissors": true,
-                            "wool_needle": false,
-                            "thread": [
-                                ""
-                            ],
-                            "additional_info": {
-                                "es": "",
-                                "en": ""
-                            }
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "4,5 mm",
+                            "en": "3/16 inch"
+                        },
+                        "wool": [
+                            "wools-66"
+                        ],
+                        "scissors": true,
+                        "wool_needle": false,
+                        "thread": [],
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
                         }
-                    ],
+                    },
                     "steps": [
                         {
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/gs-mosaico-1.jpg",
@@ -743,28 +730,24 @@
                     "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/bandana-16.jpg",
                     "difficulty": 1,
                     "qty": 16,
-                    "metadata": [
-                        {
-                            "crochet_needle": {
-                                "es": "3 mm",
-                                "en": "1/8 inch"
-                            },
-                            "wool": [
-                                "wools-2",
-                                "wools-16",
-                                "wools-63"
-                            ],
-                            "scissors": true,
-                            "wool_needle": false,
-                            "thread": [
-                                ""
-                            ],
-                            "additional_info": {
-                                "es": "",
-                                "en": ""
-                            }
+                    "metadata": {
+                        "crochet_needle": {
+                            "es": "3 mm",
+                            "en": "1/8 inch"
+                        },
+                        "wool": [
+                            "wools-2",
+                            "wools-16",
+                            "wools-63"
+                        ],
+                        "scissors": true,
+                        "wool_needle": false,
+                        "thread": [],
+                        "additional_info": {
+                            "es": "",
+                            "en": ""
                         }
-                    ],
+                    },
                     "steps": [
                         {
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/bandana-1.jpg",
@@ -893,12 +876,12 @@
                     "id": "amigurimis-pattern-1",
                     "name": {
                         "es": "Mini sandia",
-                        "en": "Mini watermelon"
+                        "en": "Little watermelon"
                     },
                     "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/amigurimi-mini-sandia-15.jpg",
                     "difficulty": 1,
                     "qty": 14,
-                    "metadata": [
+                    "metadata": 
                         {
                             "crochet_needle": {
                                 "es": "2,5 mm",
@@ -920,7 +903,7 @@
                                 "en": "Cotton for stuffing"
                             }
                         }
-                    ],
+                    ,
                     "steps": [
                         {
                             "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/amigurimi-mini-sandia-2.jpg",
@@ -1023,6 +1006,562 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "designs-category-5",
+            "name": {
+                "es": "Accesorios",
+                "en": "Accessories"
+            },
+            "patterns": [
+                {
+                    "id": "accessories-pattern-1",
+                    "name": {
+                        "es": "Pulsera de trapillo",
+                        "en": "Bracelet"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-8.jpg",
+                    "difficulty": 0,
+                    "qty": 8,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "",
+                                "en": ""
+                            },
+                            "wool": [
+                                ""
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "Un trapillo color rojo y otro gris (libre elección)",
+                                "en": "One red and one grey trapillo (free choice)"
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-1.jpg",
+                            "content": {
+                                "es": "Nos guiaremos por este esquema (aunque no igual). Mide tu muñeca con un metro y corta 6 trozos de trapillo del mismo largo. Que tengan 1 cm de ancho.",
+                                "en": "We will follow this pattern (though not exactly). Measure your wrist with a measuring tape and cut 6 strips of t-shirt yarn of the same length, about 1 cm wide."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-2.jpg",
+                            "content": {
+                                "es": "Coloca las 6 tiras de trapillo sobre una superficie y aguántalas con un objeto que pese en un extremo para que no se muevan. Pasa el trapillo 6 por debajo del 5 y por encima del 4.",
+                                "en": "Place the 6 strips of t-shirt yarn on a surface and hold one end down with a heavy object so they don’t move. Pass strip 6 under strip 5 and over strip 4."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-3.jpg",
+                            "content": {
+                                "es": "Coloca la tira 1 por debajo de la 2 y por encima de la 3. En el centro, pasa la tira 1 por debajo de la tira 6 que habíamos movido antes.",
+                                "en": "Place strip 1 under strip 2 and over strip 3. In the center, pass strip 1 under strip 6 that we moved earlier."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-4.jpg",
+                            "content": {
+                                "es": "Repite el proceso y ve apretando los nudos como cuando haces una trenza.",
+                                "en": "Repeat the process and keep tightening the knots as you would when braiding."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-5.jpg",
+                            "content": {
+                                "es": "Cuando quede poco para el final, haz un nudo. Antes del nudo añade un poco de silicona caliente y deja que se seque. Después corta justo entre el nudo y la silicona.",
+                                "en": "When you are close to the end, make a knot. Before the knot, add a bit of hot glue and let it dry. Then cut just between the knot and the glue."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-6.jpg",
+                            "content": {
+                                "es": "Añade silicona caliente en ambos extremos de la pulsera y únelas para que se peguen. Deja que se seque unos minutos mientras la sostienes así.",
+                                "en": "Add hot glue to both ends of the bracelet and press them together to stick. Hold them in place for a few minutes until dry."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-7.jpg",
+                            "content": {
+                                "es": "Recorta un trozo de tela del grosor de la pulsera y pégala o cósela por la parte exterior de la pulsera para que no se vea la unión.",
+                                "en": "Cut a piece of fabric as wide as the bracelet and glue or sew it over the outside of the bracelet to hide the seam."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-pulsera-trapillo-8.jpg",
+                            "content": {
+                                "es": "¡Listo! Ya tienes tu pulsera de trapillo terminada.",
+                                "en": "Done! Your t-shirt yarn bracelet is finished."
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "designs-category-6",
+            "name": {
+                "es": "Bolsos",
+                "en": "Bags"
+            },
+            "patterns": [
+                {
+                    "id": "bags-pattern-1",
+                    "name": {
+                        "es": "Bolsa de verano",
+                        "en": "Summer bag"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-bolsa-verano-1.jpg",
+                    "difficulty": 1,
+                    "qty": 3,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "4,5 mm",
+                                "en": "11/64 inch"
+                            },
+                            "wool": [
+                                "wools-64"
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "",
+                                "en": ""
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-bolsa-verano-2.jpg",
+                            "content": {
+                                "es": "Montamos 35 cadenetas y trabajamos la base como en la siguiente foto.",
+                                "en": "Make 35 chains and work the foundation as shown in the picture."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-bolsa-verano-3.jpg",
+                            "content": {
+                                "es": "Al terminar las 2 vueltas, quedarán: 74 puntos. Continuamos con puntos bajos en circular, cerrando cada vuelta con 1 punto enano y 1 cadeneta de subida (esta no cuenta como punto).",
+                                "en": "At the end of the 2 rounds, you'll have 74 stitches. Continue working single crochet in the round, closing each round with 1 slip stitch and 1 turning chain (this doesn’t count as a stitch)."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-bolsa-verano-4.jpg",
+                            "content": {
+                                "es": "A los 12 cm de largo, trabajamos en forma de red (como en la foto). Cuando ya esté hecho, a los 26 cm (desde el inicio del punto red) cortamos el hilo y rematamos.",
+                                "en": "When it reaches 12 cm in length, work in mesh pattern (as shown in the photo). Once it measures 26 cm (from the start of the mesh), cut the yarn and fasten off."
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "designs-category-7",
+            "name": {
+                "es": "Decoraciones",
+                "en": "Decorations"
+            },
+            "patterns": [
+                {
+                    "id": "decorations-pattern-1",
+                    "name": {
+                        "es": "Cesta de trapillo",
+                        "en": "Rag basket"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-cesta-trapillo-1.jpg",
+                    "difficulty": 1,
+                    "qty": 5,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "12 mm",
+                                "en": "15/32 inch"
+                            },
+                            "wool": [
+                                "wools-27"
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "",
+                                "en": ""
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2023/10/guia-cesta-trapillo-1.jpg",
+                            "content": {
+                                "es": "Necesitamos un trapillo de 4 mm (puede ser uno o varios colores)",
+                                "en": "We need 5/32 inch rag yarn (it can be one or several colors)"
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-cesta-trapillo-2.jpg",
+                            "content": {
+                                "es": "Para la base comenzamos con 15 cadenetas. En la 2 vuelta, hacemos 1 cadeneta y 15 puntos bajos.",
+                                "en": "For the base, start with 15 chains. In the 2nd row, make 1 chain and 15 single crochets."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-cesta-trapillo-3.jpg",
+                            "content": {
+                                "es": "En los laterales, trabajamos en punto bajo todas las vueltas. Terminamos con un punto raso y empezando con una cadena.",
+                                "en": "For the sides, work single crochet in every round. Finish with a slip stitch and start with a chain."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-cesta-trapillo-4.jpg",
+                            "content": {
+                                "es": "Hacemos las asas, que estarán en los 2 laterales más estrechos. En la 7 vuelta, tejemos 4 puntos bajos, 4 puntos rasos y 3 puntos bajos. Se puede ver mejor en el diagrama.",
+                                "en": "Make the handles on the 2 narrower sides. In the 7th row, crochet 4 single crochets, 4 slip stitches, and 3 single crochets. You can see this better in the diagram."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-cesta-trapillo-5.jpg",
+                            "content": {
+                                "es": "Para la vuelta 8 en las asas, hacemos 3 puntos bajos, 4 cadenetas y 3 puntos bajos.",
+                                "en": "For the 8th row on the handles, crochet 3 single crochets, 4 chains, and 3 single crochets."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "decorations-pattern-2",
+                    "name": {
+                        "es": "Funda de cojín",
+                        "en": "Cushion cover"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-3.jpg",
+                    "difficulty": 1,
+                    "qty": 12,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "3,5 mm",
+                                "en": "9/64 inch"
+                            },
+                            "wool": [
+                                "wools-29",
+                                "wools-65",
+                                "wools-80"
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "1 cojín marrón de 47 x 47 cm",
+                                "en": "1 brown cushion measuring 47 x 47 cm."
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-1.jpg",
+                            "content": {
+                                "es": "Con el color rosa, hacer un anillo mágico. 1ª vuelta: 2 cad, 2 p. altos, 2 cad, 3 p. altos -> repetir 3 veces dentro del anillo, 2 cad y cerrar con un p raso (deslizado).",
+                                "en": "With pink yarn, make a magic ring. Round 1: ch 2, 2 dc, ch 2, 3 dc → repeat 3 times inside the ring, ch 2 and close with a slip stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-1.jpg",
+                            "content": {
+                                "es": "2ª vuelta: Color marrón oscuro: 3 cad, 2 p. altos, 2 cad, 3 p. altos en el espacio de 2 cad de la vuelta anterior, 1 cad, 3 p. altos, 2 cad y 3 p. altos (1 abanico) en las 2 cad siguientes x 3 veces, 1 cad.",
+                                "en": "Round 2: Dark brown: ch 3, 2 dc, ch 2, 3 dc in the 2-ch space from the previous round, ch 1, 3 dc, ch 2 and 3 dc (1 shell) in the next 2-ch spaces × 3 times, ch 1."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-1.jpg",
+                            "content": {
+                                "es": "Hacer 25 veces de la 1ª vuelta. 6 en uno de los colores vivos (fucsia o celeste) y 24 en el otro. Unirlos con p. bajo en la última vuelta del diagrama para la parte delantera.",
+                                "en": "Make Round 1 twenty-five times: 6 in one bright color (fuchsia or sky blue) and 24 in the other. Join them with sc in the last round of the diagram for the front part."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-1.jpg",
+                            "content": {
+                                "es": "Para la parte trasera: Con el color marrón oscuro, hacer un anillo mágico. 1ª vuelta: 3 cad, 2 p. altos, 2 cad, 3 p. altos -> repetir 3 veces dentro del anillo, 2 cad y cerrar con un p. raso (deslizado).",
+                                "en": "For the back: With dark brown yarn, make a magic ring. Round 1: ch 3, 2 dc, ch 2, 3 dc → repeat 3 times inside the ring, ch 2 and close with a slip stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-2.jpg",
+                            "content": {
+                                "es": "2ª vuelta: P. raso hasta la 1ª de las 2 cad, 3 cad, 2 p. altos, 2 cad y 3 p. altos en el espacio de 2 cad de la vuelta anterior. Continua con 1 cad, 3 p. altos (1 abanico) en las 2 cad siguientes x 3 veces, 1 cad.",
+                                "en": "Round 2: Slip stitch to the first ch-2, ch 3, 2 dc, ch 2 and 3 dc in the 2-ch space of the previous round. Continue with ch 1, 3 dc (1 shell) in the next 2-ch spaces × 3 times, ch 1."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-2.jpg",
+                            "content": {
+                                "es": "3ª vuelta: P. raso hasta la 1ª de las 2 cad, 3 cad, 2 p. altos, 2 cad y 3 p. altos en el abanico de la vuelta anterior. Continua con 1 cad, 3 p. altos en la cad siguiente, 1 cad, 1 abanico en el abanico de la vuelta anterior x 3 veces, 1 cad, 3 p. altos en la cad siguiente y 1 cad.",
+                                "en": "Round 3: Slip stitch to the first ch-2, ch 3, 2 dc, ch 2 and 3 dc in the shell from the previous round. Continue with ch 1, 3 dc in the next ch, ch 1, 1 shell in the shell from the previous round × 3 times, ch 1, 3 dc in the next ch and ch 1."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-2.jpg",
+                            "content": {
+                                "es": "4ª vuelta (1ª parte): P. raso hasta la 1ª de las 2 cad, 3 cad, 2 p. altos, 2 cad y 3 p. altos en el abanico de la vuelta anterior.",
+                                "en": "Round 4 (first part): Slip stitch to the first ch-2, ch 3, 2 dc, ch 2 and 3 dc in the shell from the previous round."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-2.jpg",
+                            "content": {
+                                "es": "Continua con 1 cad, 3 p. altos en la cad siguiente x 2 veces, 1 cad, 1 abanico en el abanico de la vuelta anterior x 3 veces, 1 cad, 3 p. altos en la cad siguiente x 2 veces y 1 cad.",
+                                "en": "Continue with ch 1, 3 dc in the next ch × 2 times, ch 1, 1 shell in the shell from the previous round × 3 times, ch 1, 3 dc in the next ch × 2 times, and ch 1."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-3.jpg",
+                            "content": {
+                                "es": "Con el color marrón, unir la parte delantera y trasera con 1 vuelta de p. bajos, dejando una abertura de 30 cm en uno de los lados sin coser. Introducir el cojín en el interior.",
+                                "en": "With brown yarn, join the front and back with 1 round of single crochet, leaving a 30 cm opening on one side unsewn. Insert the cushion inside."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-3.jpg",
+                            "content": {
+                                "es": "En la abertura, trabajar ambos lados con el color marrón: 3 p. bajos, 4 cad, saltar 2 p. de base, 3 p. bajos.",
+                                "en": "On the opening, work both sides with brown yarn: 3 sc, ch 4, skip 2 base stitches, 3 sc."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-3.jpg",
+                            "content": {
+                                "es": "Unir el hilo en el último p. bajo de la abertura y hacer un cordón de cadeneta, pasándolo por los arcos de 4 cad, con la última vuelta de la parte trasera, dejando la punta del cordón en el centro.",
+                                "en": "Join the yarn in the last sc of the opening and make a chain cord, passing it through the 4-ch loops with the last round of the back, leaving the end of the cord in the center."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/decoracion-funda-cojin-3.jpg",
+                            "content": {
+                                "es": "Hacer otro cordón en el lado opuesto y atarlos en el centro con un nudo.",
+                                "en": "Make another cord on the opposite side and tie them together in the center with a knot."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "decorations-pattern-3",
+                    "name": {
+                        "es": "Bola de Navidad",
+                        "en": "Christmas ball"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-bola-navidad-1-1.jpg",
+                    "difficulty": 1,
+                    "qty": 10,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "2,5 mm",
+                                "en": "3/32 inch"
+                            },
+                            "wool": [
+                                "wools-1",
+                                "wools-47",
+                                "wools-63"
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "Relleno sintético",
+                                "en": "Synthetic filling"
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Los colores serán turquesa pálido (A), malva (B) y blanco (C). Utilizaremos punto bajo (Pb), disminución (D), aumento (A). Indicaremos los puntos de cada vuelta con P.",
+                                "en": "The colors will be pale turquoise (A), mauve (B) and white (C). We'll use single crochet (Sc), decrease (Dec), increase (Inc). Stitches for each round will be indicated with P."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Las piezas se van a tejer en puntos bajos, en redondo. Voy a usar un marcador de puntos en el último punto de cada vuelta.",
+                                "en": "The pieces will be worked in single crochet in rounds. A stitch marker will be used at the last stitch of each round."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Color A: Comenzamos con un anillo mágico de 6 Pb (6P).",
+                                "en": "Color A: Start with a magic ring of 6 single crochets (6P)."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Hacemos un A en cada punto (12P).",
+                                "en": "Make an increase in each stitch (12P)."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Seguimos con 4 Pb, 1 A (36P).",
+                                "en": "Continue with 4 single crochets, 1 increase (36P)."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Continuamos con 5 Pb, 1 A (42P).",
+                                "en": "Continue with 5 single crochets, 1 increase (42P)."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Hacemos 1 Pb en cada punto por dos vueltas (42P).",
+                                "en": "Work 1 single crochet in each stitch for 2 rounds (42P)."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Con el color B: Hacemos 1 Pb en cada punto. Con el color A: Hacemos 1 Pb en cada punto por dos vueltas.",
+                                "en": "With color B: Work 1 single crochet in each stitch. With color A: Work 1 single crochet in each stitch for 2 rounds."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Con el color B: Hacemos 1 Pb en cada punto. Con el color A: Hacemos 1 Pb en cada punto por dos vueltas",
+                                "en": "With color B: Work 1 single crochet in each stitch. With color A: Work 1 single crochet in each stitch for 2 rounds."
+                            }
+                        },
+                        {
+                            "image": "",
+                            "content": {
+                                "es": "Para colgar el adorno, puedes tejer una cadeneta y coserla en el extremo de la bola navideña.",
+                                "en": "To hang the ornament, you can crochet a chain and sew it to the end of the Christmas ball."
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "designs-category-8",
+            "name": {
+                "es": "Gorros",
+                "en": "Hats"
+            },
+            "patterns": [
+                {
+                    "id": "hats-pattern-1",
+                    "name": {
+                        "es": "Boina",
+                        "en": "Beret"
+                    },
+                    "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                    "difficulty": 1,
+                    "qty": 10,
+                    "metadata": 
+                        {
+                            "crochet_needle": {
+                                "es": "12 mm",
+                                "en": "15/32 inch"
+                            },
+                            "wool": [
+                                "wools-18"
+                            ],
+                            "scissors": true,
+                            "wool_needle": false,
+                            "thread": [],
+                            "additional_info": {
+                                "es": "",
+                                "en": ""
+                            }
+                        }
+                    ,
+                    "steps": [
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-1.jpg",
+                            "content": {
+                                "es": "La boina se teje en espiral. Utilizaremos punto alto (Pa), punto bajo (Pb), disminución (Dism) y punto enanos (P.e)",
+                                "en": "The beret is worked in spiral. We will use double crochet (Dc), single crochet (Sc), decrease (Dec), and slip stitch (Sl st)."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-2.jpg",
+                            "content": {
+                                "es": "Comenzamos con un anillo mágico de 6 puntos bajos.",
+                                "en": "We start with a magic ring of 6 single crochets."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-3.jpg",
+                            "content": {
+                                "es": "En la 1 vuelta: Repetimos 6 veces un Pb y Pa en el mismo punto.",
+                                "en": "In the 1st round: Repeat 6 times a single crochet and a double crochet in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En la vuelta 2: Repetimos 12 veces un Pb y Pa en el mismo punto.",
+                                "en": "In round 2: Repeat 12 times a single crochet and a double crochet in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En la vuelta 3: Repetimos 12 veces un Pb y Pa en el mismo punto.",
+                                "en": "In round 3: Repeat 12 times a single crochet and a double crochet in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En la vuelta 4: Repetimos 24 veces un Pb y Pa en el mismo punto.",
+                                "en": "In round 4: Repeat 24 times a single crochet and a double crochet in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En las vueltas desde la 5 hasta la 9: Repetimos 12 veces un Pb y Pa en el mismo punto.",
+                                "en": "From rounds 5 to 9: Repeat 12 times a single crochet and a double crochet in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En la vuelta 10: Repetimos 12 veces 2 puntos bajos y 1 disminución en el mismo punto.",
+                                "en": "In round 10: Repeat 12 times 2 single crochets and 1 decrease in the same stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "En la vuelta 11: Hacemos un punto enano en cada punto.",
+                                "en": "In round 11: Make a slip stitch in each stitch."
+                            }
+                        },
+                        {
+                            "image": "https://mollydigital.manu-scholz.com/wp-content/uploads/2025/08/guia-boina-4.jpg",
+                            "content": {
+                                "es": "Quedaría recortar y ya estaría la boina lista. Quedaría con un diámetro de 58 cm. Para un diámetro menor, puedes usar unas agujas de 9 mm.",
+                                "en": "Trim the yarn and the beret is ready. It will have a diameter of 58 cm. For a smaller diameter, you can use 23/64 inch needles."
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "wools": [
@@ -1083,6 +1622,14 @@
             "color": "#ce787b"
         },
         {
+            "id": "wools-29",
+            "name": {
+                "es": "Fucsia",
+                "en": "Fuchsia"
+            },
+            "color": "#a7345b"
+        },
+        {
             "id": "wools-43",
             "name": {
                 "es": "Amatista",
@@ -1139,6 +1686,14 @@
             "color": "#4d3949"
         },
         {
+            "id": "wools-53",
+            "name": {
+                "es": "Azul celeste",
+                "en": "Sky Blue"
+            },
+            "color": "#8cb7ce"
+        },
+        {
             "id": "wools-59",
             "name": {
                 "es": "Azul rey",
@@ -1163,6 +1718,14 @@
             "color": "#5dc1b9"
         },
         {
+            "id": "wools-65",
+            "name": {
+                "es": "Jade brillante",
+                "en": "Bright Jade"
+            },
+            "color": "#3a8d75"
+        },
+        {
             "id": "wools-66",
             "name": {
                 "es": "Esmeralda",
@@ -1177,6 +1740,14 @@
                 "en": "Pea Green"
             },
             "color": "#6a7532"
+        },
+        {
+            "id": "wools-80",
+            "name": {
+                "es": "Cacao",
+                "en": "Cocoa"
+            },
+            "color": "#4b352c"
         }
     ],
     "threads": [
