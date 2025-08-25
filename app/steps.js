@@ -83,12 +83,12 @@ export default function Steps() {
                 <View style={styles.footer}>
                     <Image source={require("../assets/teddy-bear/teddy9.png")} style={styles.footerImg} />
                     <Button showIcon={false} onPress={() => router.back() }>
-                        <Text style={[ui.muted, ui.white]}>He terminado</Text>
+                        <Text style={[ui.muted, ui.white]}>{language.t("_progressDone")}</Text>
                     </Button>
                 </View>
             }
             <View style={styles.progressWrapper}>
-                {steps && hasNextStep(current, steps.length) && <Text style={ui.muted}>Desliza para ver el siguiente paso</Text>}
+                {steps && hasNextStep(current, steps.length) && <Text style={ui.muted}>{language.t("_progressSwipe")}</Text>}
                 { steps && <Progress current={current} qty={steps.length} large /> }
             </View>
         </View>

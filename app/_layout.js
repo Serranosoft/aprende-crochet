@@ -1,7 +1,7 @@
 import { SplashScreen, Stack } from "expo-router";
 import { View, StatusBar, StyleSheet, Image, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { createRef, useEffect, useState } from "react";
+import { createRef, useContext, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import { I18n } from "i18n-js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -16,7 +16,7 @@ import UpdatesModal from "../src/layout/updates-modal";
 
 SplashScreen.preventAutoHideAsync();
 export default function Layout() {
-
+    
     // Carga de fuentes.
     const [fontsLoaded] = useFonts({
         "ancizar-regular": require("../assets/fonts/AncizarSans-Regular.ttf"),
@@ -102,7 +102,7 @@ export default function Layout() {
                     :
                     <View style={styles.loading}>
                         <Image source={require("../assets/teddy-bear/teddy10.png")} style={styles.loadingImg} /> 
-                        <Text style={ui.h2}>Cargando...</Text>
+                        <Text style={ui.h2}>{i18n.t("_splashLoading")}</Text>
                     </View>
             }
             <StatusBar style="light" backgroundColor={"#fff"} />

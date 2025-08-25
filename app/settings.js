@@ -18,11 +18,7 @@ export default function Settings() {
 
     const languages = [
         { title: language.t("_langListSpanish"), acronym: "es" },
-        { title: language.t("_langListEnglish"), acronym: "en" },
-        { title: language.t("_langListArabic"), acronym: "ar" },
-        { title: language.t("_langListGerman"), acronym: "de" },
-        { title: language.t("_langListFrench"), acronym: "fr" },
-        { title: language.t("_langListHindi"), acronym: "hi" },
+        { title: language.t("_langListEnglish"), acronym: "en" }
     ]
 
     async function updateLanguage(acronym) {

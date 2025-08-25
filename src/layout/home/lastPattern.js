@@ -1,5 +1,5 @@
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import stitchings from "../../../stitchings.json";
 import designs from "../../../designs.json";
@@ -8,6 +8,8 @@ import Button from "../../components/button";
 import Progress from "../../components/progress";
 import { getLastPattern, getProgressFromPattern } from "../../utils/sqlite";
 import * as Haptics from "expo-haptics";
+import { LangContext } from "../../utils/Context";
+
 
 const INITIAL_PATTERN = "stitching-3";
 
@@ -15,6 +17,7 @@ export default function LastPattern() {
 
     const [pattern, setPattern] = useState(null);
     const [hasLastPattern, setHasLastPattern] = useState(false);
+    const { language } = useContext(LangContext); 
 
 
     async function getPattern() {
@@ -57,7 +60,7 @@ export default function LastPattern() {
                         </View>
                     </View>
                     <View style={styles.content}>
-                        <Text style={[ui.h4, ui.center]}>{hasLastPattern ? "¿Quieres seguir con el último patrón?" : "¿Quieres comenzar con lo básico?"}</Text>
+                        <Text style={[ui.h4, ui.center]}>{hasLastPattern ? language.t("_homeLastPattern") : language.t("_homeText")}</Text>
                         {hasLastPattern && <Progress current={pattern.progress} qty={pattern.steps.length} />}
                         <Button showIcon={false} onPress={() => {
                             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -66,7 +69,7 @@ export default function LastPattern() {
                                 params: { id: pattern.id, step: pattern.progress, featuredImage: pattern.image }
                             })
                         }}>
-                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? "Reanudar patrón" : "Ver punto bajo"}</Text>
+                            <Text style={[ui.text, ui.white]}>{hasLastPattern ? language.t("_homeLastPatternButton") : language.t("_homeTextButton")}</Text>
                         </Button>
                     </View>
                 </View>

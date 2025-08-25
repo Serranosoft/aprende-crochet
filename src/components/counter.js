@@ -1,8 +1,13 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { colors, ui } from "../utils/styles";
 import * as Haptics from "expo-haptics";
+import { useContext } from "react";
+import { LangContext } from "../utils/Context";
 
 export default function Counter({ count, setCount }) {
+
+    const { language } = useContext(LangContext);
+
 
     function handleIncrement() {
         setCount((count) => count + 1)
@@ -15,7 +20,7 @@ export default function Counter({ count, setCount }) {
     }
     return (
         <View style={styles.container}>
-            <Text style={ui.muted}>Número de hilos</Text>
+            <Text style={ui.muted}>{language.t("_counterTitle")}</Text>
             <View style={styles.wrapper}>
                 <Pressable style={styles.actionWrapper} onPress={() => handleDecrement()}>
                     <Image source={require("../../assets/minus.png")} style={styles.action} />

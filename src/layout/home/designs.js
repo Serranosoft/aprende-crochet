@@ -35,7 +35,7 @@ export default function Designs() {
         <View style={styles.container}>
             <Image source={require("../../../assets/teddy-bear/teddy7.png")} style={styles.bigTeddy} />
             <View style={styles.hero}>
-                <Text style={ui.h3}>Patrones y diseños de crochet</Text>
+                <Text style={ui.h3}>{language.t("_homeDesignsTitle")}</Text>
                 <Image source={require("../../../assets/teddy-bear/teddy6.png")} style={styles.teddy} />
 
             </View>
@@ -69,7 +69,7 @@ export default function Designs() {
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/clock.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={[ui.muted, ui.white]}>{pattern.qty} pasos</Text>
+                                    <Text style={[ui.muted, ui.white]}>{pattern.qty} {language.t("_homeSteps")}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
@@ -81,7 +81,7 @@ export default function Designs() {
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 
             }}>
-                <Text style={[ui.h4, ui.white]}>Ver todos los diseños</Text>
+                <Text style={[ui.h4, ui.white]}>{language.t("_homeDesignsButton")}</Text>
             </Button>
         </View>
     )

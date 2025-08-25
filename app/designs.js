@@ -113,7 +113,7 @@ export default function Designs() {
 
             <View style={styles.container}>
                 <View style={styles.hero}>
-                    <Text style={ui.h1}>Diseños</Text>
+                    <Text style={ui.h1}>{language.t("_designsTitle")}</Text>
                 </View>
                 <Animated.Image
                     key={Date.now()}

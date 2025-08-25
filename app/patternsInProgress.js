@@ -146,17 +146,17 @@ export default function PatternsInProgress() {
                             :
                             <View style={styles.empty}>
                                 <Image source={require("../assets/teddy-bear/teddy13.png")} style={{ width: 100, height: 100 }} />
-                                <Text style={ui.h4}>No tienes patrones en progreso</Text>
+                                <Text style={ui.h4}>{language.t("_myPatternsEmpty")}</Text>
                                 <View style={styles.emptyActions}>
                                     <Button showIcon={false} onPress={() => {
                                         router.navigate("patterns")
                                     }}>
-                                        <Text style={[ui.text, ui.bold, ui.white]}>Ver tutoriales</Text>
+                                        <Text style={[ui.text, ui.bold, ui.white]}>{language.t("_myPatternsTutorialsButton")}</Text>
                                     </Button>
                                     <Button showIcon={false} onPress={() => {
                                         router.navigate("designs")
                                     }}>
-                                        <Text style={[ui.text, ui.bold, ui.white]}>Ver diseños</Text>
+                                        <Text style={[ui.text, ui.bold, ui.white]}>{language.t("_myPatternsDesignsButton")}</Text>
                                     </Button>
                                 </View>
                             </View>

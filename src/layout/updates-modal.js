@@ -35,7 +35,7 @@ export default function UpdatesModal() {
                     <Text style={ui.text}>{language.t("_updateList2")}</Text>
                     <Text style={ui.text}>{language.t("_updateList3")}</Text>
                     <Button onPress={closeModal}>
-                        <Text style={[ui.text, ui.white]}>Cerrar este aviso</Text>    
+                        <Text style={[ui.text, ui.white]}>{language.t("_updateButton")}</Text>    
                     </Button>
                 </View>
             </View>

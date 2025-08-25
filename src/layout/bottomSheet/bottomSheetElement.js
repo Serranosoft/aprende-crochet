@@ -102,7 +102,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/scissor.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={ui.text}>Tijeras</Text>
+                                    <Text style={ui.text}>{language.t("_metadataScissors")}</Text>
                                 </View>
                             }
                             {
@@ -111,17 +111,17 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/wool-needle.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={ui.text}>Aguja de lana</Text>
+                                    <Text style={ui.text}>{language.t("_metadataWoolNeedle")}</Text>
                                 </View>
                             }
                             {
                                 (patternSelected.metadata?.wool?.length > 0 || patternSelected.metadata?.thread?.length > 0) &&
                                 <View style={styles.woolsWrapper}>
-                                    <Text style={[ui.h4, ui.bold]}>Necesitarás estos colores</Text>
+                                    <Text style={[ui.h4, ui.bold]}>{language.t("_metadataColorText")}</Text>
                                     {
                                         patternSelected.metadata?.wool.length > 0 &&
                                         <View style={styles.woolsGroup}>
-                                            <Text style={[ui.text, ui.bold]}>Lana</Text>
+                                            <Text style={[ui.text, ui.bold]}>{language.t("_metadataWool")}</Text>
                                             <View style={styles.wools}>
                                                 {patternSelected.metadata?.wool.map((woolEl) => {
                                                     const wool = wools[woolEl];
@@ -140,7 +140,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                     {
                                         patternSelected.metadata?.thread?.length > 0 &&
                                         <View style={styles.woolsGroup}>
-                                            <Text style={[ui.text, ui.bold]}>Hilo</Text>
+                                            <Text style={[ui.text, ui.bold]}>{language.t("_metadataThread")}</Text>
                                             <View style={styles.wools}>
                                                 {patternSelected.metadata?.thread.map((threadEl) => {
                                                     const thread = threads[threadEl];
@@ -161,7 +161,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             {
                                 patternSelected.metadata?.additional_info?.es.length > 0 &&
                                 <View style={styles.additionalInfo}>
-                                    <Text style={[ui.h4, ui.bold]}>Además necesitarás estos materiales</Text>
+                                    <Text style={[ui.h4, ui.bold]}>{language.t("_metadataAdditionalInfo")}</Text>
                                     <Text style={ui.muted}>
                                         {
                                             language._locale !== "es" ?
@@ -177,7 +177,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                             patternSelected.progress !== null &&
                             <Button onPress={() => navigateToSteps(getNextStepIndex())}>
                                 <Text style={[ui.text, ui.white]}>
-                                    Continuar con el paso {getNextStepNumber()}
+                                    {language.t("_nextSteps")} {getNextStepNumber()}
                                 </Text>
                             </Button>
                         }
@@ -188,7 +188,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                         {patternSelected.progress && parseInt(patternSelected.progress) >= index && <Image source={require("../../../assets/tick.png")} style={styles.tickImg} />}
                                         {step.image && <Image source={{ uri: step.image }} style={styles.stepImg} />}
                                         <View style={styles.stepInfo}>
-                                            <Text style={ui.h3}>Paso {index + 1}</Text>
+                                            <Text style={ui.h3}>{language.t("_step")} {index + 1}</Text>
                                             <View style={styles.separator}></View>
                                             <Text style={ui.muted} numberOfLines={2}>
                                                 {language.locale !== "es" ?

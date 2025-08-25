@@ -48,7 +48,7 @@ export default function Stitching() {
     return (
         <View style={styles.container}>
             <View style={styles.hero}>
-                <Text style={ui.h3}>Tutoriales básicos de crochet</Text>
+                <Text style={ui.h3}>{language.t("_homeStitchingTitle")}</Text>
                 <Image source={require("../../../assets/teddy-bear/teddy4.png")} style={styles.teddy} />
 
             </View>
@@ -80,7 +80,7 @@ export default function Stitching() {
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/clock.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={[ui.muted, ui.white]}>{pattern.qty} pasos</Text>
+                                    <Text style={[ui.muted, ui.white]}>{pattern.qty} {language.t("_homeSteps")}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
@@ -92,7 +92,7 @@ export default function Stitching() {
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 
             }}>
-                <Text style={[ui.h4, ui.white]}>Ver todos los patrones</Text>
+                <Text style={[ui.h4, ui.white]}>{language.t("_homeStitchingButton")}</Text>
             </Button>
         </View>
     )

@@ -97,7 +97,7 @@ export default function Patterns() {
 
             <View style={styles.container}>
                 <View style={styles.hero}>
-                    <Text style={ui.h1}>Patrones</Text>
+                    <Text style={ui.h1}>{language.t("_tutorialsTitle")}</Text>
                 </View>
                 <Animated.Image
                     key={Date.now()}

@@ -5,7 +5,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { getPatternsQtyInProgress } from "../../utils/sqlite";
 import stitchings from "../../../stitchings.json";
 import designs from "../../../designs.json";
-import { AdsContext } from "../../utils/Context";
+import { AdsContext, LangContext } from "../../utils/Context";
 
 export default function Shortcut() {
 
@@ -13,6 +13,7 @@ export default function Shortcut() {
     const [designsQty, setDesignsQty] = useState(null);
     const [patternsInProgress, setPatternsInProgress] = useState(0);
     const { setAdTrigger } = useContext(AdsContext);
+    const { language } = useContext(LangContext); 
 
 
     useEffect(() => {
@@ -49,22 +50,22 @@ export default function Shortcut() {
     return (
         <View style={styles.container}>
             <View style={styles.hero}>
-                <Text style={ui.h3}>Acceso rápido</Text>
+                <Text style={ui.h3}>{language.t("_homeQuickAccess")}</Text>
                 <Image source={require("../../../assets/teddy-bear/teddy3.png")} style={styles.teddy} />
             </View>
             <View style={styles.wrapper}>
                 <TouchableOpacity style={styles.box} onPress={() => navigate("/patterns")}>
                     <Image source={require("../../../assets/tutorials.png")} style={styles.icon} />
                     <View style={styles.info}>
-                        <Text style={[ui.text, ui.white, ui.bold]}>Aprender desde cero</Text>
-                        { patternsQty && <Text style={[ui.muted, ui.lightgray]}>{patternsQty} tutoriales</Text> }
+                        <Text style={[ui.text, ui.white, ui.bold]}>{language.t("_homeBox1")}</Text>
+                        { patternsQty && <Text style={[ui.muted, ui.lightgray]}>{patternsQty} {language.t("_homeTextBox1")}</Text> }
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.box} onPress={() => navigate("/designs")}>
                     <Image source={require("../../../assets/designs.png")} style={styles.icon} />
                     <View style={styles.info}>
-                        <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Comenzar a diseñar</Text>
-                        { designsQty && <Text style={[ui.muted, ui.lightgray]}>{designsQty} diseños</Text> }
+                        <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>{language.t("_homeBox2")}</Text>
+                        { designsQty && <Text style={[ui.muted, ui.lightgray]}>{designsQty} {language.t("_homeTextBox2")}</Text> }
                     </View>
                 </TouchableOpacity>
             </View>
@@ -73,8 +74,8 @@ export default function Shortcut() {
                 <TouchableOpacity style={styles.box} onPress={() => navigate("/patternsInProgress")}>
                     <Image source={require("../../../assets/my-progress.png")} style={styles.icon} />
                     <View style={styles.info}>
-                        <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>Ver mis patrones en curso</Text>
-                        <Text style={[ui.muted, ui.lightgray]}>{ patternsInProgress > 0 ? `${patternsInProgress} diseños` : "No has comenzado ningún patrón" }</Text>
+                        <Text style={[ui.text, ui.white, ui.bold, { flex: 1, flexWrap: "wrap" }]}>{language.t("_homeBox3")}</Text>
+                        <Text style={[ui.muted, ui.lightgray]}>{ patternsInProgress > 0 ? `${patternsInProgress} diseños` : language.t("_homeTextBox3") }</Text>
                     </View>
                 </TouchableOpacity>
             </View>
