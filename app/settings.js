@@ -18,8 +18,20 @@ export default function Settings() {
 
     const languages = [
         { title: language.t("_langListSpanish"), acronym: "es" },
-        { title: language.t("_langListEnglish"), acronym: "en" }
-    ]
+        { title: language.t("_langListEnglish"), acronym: "en" },
+        { title: language.t("_langListArabic"), acronym: "ar" },
+        { title: language.t("_langListGerman"), acronym: "de" },
+        { title: language.t("_langListFrench"), acronym: "fr" },
+        { title: language.t("_langListHindi"), acronym: "hi" },
+        { title: language.t("_langListIndonesian"), acronym: "id" },
+        { title: language.t("_langListVietnamese"), acronym: "vi" },
+        { title: language.t("_langListPortuguese"), acronym: "pt" },
+        { title: language.t("_langListPolish"), acronym: "pl" },
+        { title: language.t("_langListTurkish"), acronym: "tr" },
+        { title: language.t("_langListRussian"), acronym: "ru" },
+        { title: language.t("_langListItalian"), acronym: "it" },
+    ];
+
 
     async function updateLanguage(acronym) {
         setLanguage(acronym);
@@ -58,7 +70,7 @@ export default function Settings() {
                     </View>
                 </View>
 
-                { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
+                {adsLoaded && <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />}
             </View>
         </>
     )
