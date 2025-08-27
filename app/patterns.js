@@ -137,7 +137,7 @@ export default function Patterns() {
                                                     <View style={styles.iconWrapper}>
                                                         <Image source={require("../assets/level.png")} style={styles.icon} />
                                                     </View>
-                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
+                                                    <Text style={ui.muted}>{handleLevelString(item.difficulty, language)}</Text>
                                                 </View>
                                                 <View style={styles.row}>
                                                     <View style={styles.iconWrapper}>

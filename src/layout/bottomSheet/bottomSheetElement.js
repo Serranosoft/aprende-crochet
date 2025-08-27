@@ -74,7 +74,7 @@ export default function BottomSheetElement({ openDetails, setOpenDetails, patter
                                 <View style={styles.iconWrapper}>
                                     <Image source={require("../../../assets/level.png")} style={styles.icon} />
                                 </View>
-                                <Text style={ui.text}>{handleLevelString(patternSelected.difficulty)}</Text>
+                                <Text style={ui.text}>{handleLevelString(patternSelected.difficulty, language)}</Text>
                             </View>
                             <View style={styles.row}>
                                 <View style={styles.iconWrapper}>

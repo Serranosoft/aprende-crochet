@@ -74,7 +74,7 @@ export default function Stitching() {
                                     <View style={styles.iconWrapper}>
                                         <Image source={require("../../../assets/level.png")} style={styles.icon} />
                                     </View>
-                                    <Text style={[ui.muted, ui.white]}>{handleLevelString(pattern.difficulty)}</Text>
+                                    <Text style={[ui.muted, ui.white]}>{handleLevelString(pattern.difficulty, language)}</Text>
                                 </View>
                                 <View style={styles.row}>
                                     <View style={styles.iconWrapper}>
