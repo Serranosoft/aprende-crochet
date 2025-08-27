@@ -7,14 +7,14 @@ export const translations = {
         _homeText: "¿No sabes por donde empezar?",
         _homeLastPatternButton: "Reanudar patrón",
         _homeTextButton: "Ver punto bajo",
-        
+
         // Genéricos
         _homeSteps: "pasos",
         _settingsLabel: "Ajustes",
         _nextSteps: "Continuar con el paso",
         _progressSwipe: "Desliza para ver el siguiente paso",
         _progressDone: "He terminado",
-        _step: "Paso", 
+        _step: "Paso",
         _splashLoading: "Cargando...",
 
         // Home - Sección 1
@@ -41,6 +41,9 @@ export const translations = {
         _metadataWool: "Lana",
         _metadataThread: "Hilo",
         _metadataAdditionalInfo: "Además necesitarás estos materiales",
+        _metadataBeginner: "Principiante",
+        _metadataIntermediate: "Intermedio",
+        _metadataAdvanced: "Avanzado",
 
         // Contador
         _counterTitle: "Contador de vueltas",
@@ -51,8 +54,8 @@ export const translations = {
         _myPatternsEmpty: "No tienes patrones en progreso",
 
         // Diseños
-        _designsTitle: "Diseños",        
-        
+        _designsTitle: "Diseños",
+
         // Tutoriales básicos
         _tutorialsTitle: "Patrones",
 
@@ -69,6 +72,7 @@ export const translations = {
         _langListPolish: "Polaco",
         _langListTurkish: "Turco",
         _langListRussian: "Ruso",
+        _langListItalian: "Italiano",
 
         // Pantalla de settings
         _settingsApp: "Ajustes de la aplicación",
@@ -81,5 +85,5 @@ export const translations = {
         _updateList3: "• Cada patrón incluye un contador de vueltas para que te resulte fácil seguir tu trabajo.",
         _updateButton: "Cerrar",
 
-         }
+    }
 }

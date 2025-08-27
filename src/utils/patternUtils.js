@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import { getProgressFromPattern } from "./sqlite";
+import { LangContext } from "./Context";
 
-export default function handleLevelString(difficulty) {
+export default function handleLevelString(difficulty, language) {
+
     switch (difficulty) {
         case 0:
-            return "Principiante";
+            return language.t("_metadataBeginner");
         case 1:
-            return "Intermedio";
+            return language.t("_metadataIntermediate");
         case 2:
-            return "Avanzado"
+            return language.t("_metadataAdvanced");
     }
 }
 
