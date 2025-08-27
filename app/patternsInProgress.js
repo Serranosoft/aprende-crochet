@@ -85,7 +85,7 @@ export default function PatternsInProgress() {
 
             <View style={styles.container}>
                 <View style={styles.hero}>
-                    <Text style={ui.h1}>Mis patrones</Text>
+                    <Text style={ui.h1}>{language.t("_myPatternsTitle")}</Text>
                 </View>
                 {patterns.length > 0 &&
                     <Animated.Image
