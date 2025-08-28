@@ -225,6 +225,7 @@ export const translations = {
         _counterTitle: "Runden-Zähler",
 
         // Patterns in progress
+        _myPatternsTitle: "Begonnene Muster",
         _myPatternsTutorialsButton: "Tutorials ansehen",
         _myPatternsDesignsButton: "Designs ansehen",
         _myPatternsEmpty: "Du hast keine Muster in Arbeit",
@@ -312,6 +313,7 @@ export const translations = {
         _counterTitle: "Compteur de tours",
 
         // Patterns in progress
+        _myPatternsTitle: "Patrons commencés",
         _myPatternsTutorialsButton: "Voir tutoriels",
         _myPatternsDesignsButton: "Voir créations",
         _myPatternsEmpty: "Tu n’as aucun modèle en cours",
@@ -399,6 +401,7 @@ export const translations = {
         _counterTitle: "राउंड काउंटर",
 
         // Patterns in progress
+        _myPatternsTitle: "शुरू किए गए पैटर्न",
         _myPatternsTutorialsButton: "ट्यूटोरियल्स देखें",
         _myPatternsDesignsButton: "डिज़ाइन्स देखें",
         _myPatternsEmpty: "आपके पास कोई पैटर्न प्रगति पर नहीं है",
@@ -486,6 +489,7 @@ export const translations = {
         _counterTitle: "عداد الدورات",
 
         // Patterns in progress
+        _myPatternsTitle: "الأنماط التي بدأت",
         _myPatternsTutorialsButton: "عرض الدروس",
         _myPatternsDesignsButton: "عرض التصاميم",
         _myPatternsEmpty: "لا توجد أنماط قيد التقدم",
@@ -573,6 +577,7 @@ export const translations = {
         _counterTitle: "Penghitung putaran",
 
         // Patterns in progress
+        _myPatternsTitle: "Pola yang sudah dimulai",
         _myPatternsTutorialsButton: "Lihat tutorial",
         _myPatternsDesignsButton: "Lihat desain",
         _myPatternsEmpty: "Anda tidak memiliki pola yang sedang berlangsung",
@@ -660,6 +665,7 @@ export const translations = {
         _counterTitle: "Bộ đếm vòng",
 
         // Patterns in progress
+        _myPatternsTitle: "Mẫu đã bắt đầu",
         _myPatternsTutorialsButton: "Xem hướng dẫn",
         _myPatternsDesignsButton: "Xem thiết kế",
         _myPatternsEmpty: "Bạn không có mẫu nào đang làm",
@@ -747,6 +753,7 @@ export const translations = {
         _counterTitle: "Contatore di giri",
 
         // Patterns in progress
+        _myPatternsTitle: "Modelli iniziati",
         _myPatternsTutorialsButton: "Vedi tutorial",
         _myPatternsDesignsButton: "Vedi design",
         _myPatternsEmpty: "Non hai modelli in corso",
@@ -834,6 +841,7 @@ export const translations = {
         _counterTitle: "Contador de voltas",
 
         // Patterns in progress
+        _myPatternsTitle: "Padrões iniciados",
         _myPatternsTutorialsButton: "Ver tutoriais",
         _myPatternsDesignsButton: "Ver designs",
         _myPatternsEmpty: "Você não tem padrões em andamento",
@@ -921,6 +929,7 @@ export const translations = {
         _counterTitle: "Licznik okrążeń",
 
         // Patterns in progress
+        _myPatternsTitle: "Rozpoczęte wzory",
         _myPatternsTutorialsButton: "Zobacz tutoriale",
         _myPatternsDesignsButton: "Zobacz projekty",
         _myPatternsEmpty: "Nie masz wzorów w trakcie",
@@ -1008,6 +1017,7 @@ export const translations = {
         _counterTitle: "Счётчик рядов",
 
         // Patterns in progress
+        _myPatternsTitle: "Начатые узоры",
         _myPatternsTutorialsButton: "Посмотреть уроки",
         _myPatternsDesignsButton: "Посмотреть дизайны",
         _myPatternsEmpty: "У вас нет узоров в процессе",
@@ -1095,6 +1105,7 @@ export const translations = {
         _counterTitle: "Tur sayacı",
 
         // Devam eden desenler
+        _myPatternsTitle: "Başlanmış desenler",
         _myPatternsTutorialsButton: "Eğitimleri gör",
         _myPatternsDesignsButton: "Tasarımları gör",
         _myPatternsEmpty: "Devam eden deseniniz yok",
