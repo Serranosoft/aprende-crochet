@@ -128,7 +128,7 @@ export default function PatternsInProgress() {
                                                             <View style={styles.iconWrapper}>
                                                                 <Image source={require("../assets/level.png")} style={styles.icon} />
                                                             </View>
-                                                            <Text style={ui.muted}>{handleLevelString(item.difficulty)}</Text>
+                                                            <Text style={ui.muted}>{handleLevelString(item.difficulty, language)}</Text>
                                                         </View>
                                                         <View style={styles.row}>
                                                             <View style={styles.iconWrapper}>
@@ -161,7 +161,7 @@ export default function PatternsInProgress() {
                                 </View>
                             </View>
                     }
-                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
+                    {adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} />}
 
                 </View>
             </View>
