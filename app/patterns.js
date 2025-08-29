@@ -5,13 +5,14 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { AdsContext, LangContext } from "../src/utils/Context"
 import Header from "../src/layout/header"
 import stitchings from "../stitchings.json";
-import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads"
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads"
 import BottomSheetElement from "../src/layout/bottomSheet/bottomSheetElement"
 import Progress from "../src/components/progress"
 import useBackHandler from "../src/components/use-back-handler"
 import Animated, { FadeInDown, SlideInRight } from "react-native-reanimated"
 import handleLevelString, { handleProgress } from "../src/utils/patternUtils"
 import { useRenderName } from "../src/hooks/useRenderName"
+import { bannerId, bannerIdIOS } from "../src/utils/constants"
 
 const INITIAL_DATA = stitchings.stitching;
 
@@ -152,7 +153,7 @@ export default function Patterns() {
                             )
                         }}
                     />
-                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
+                    { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
 
                 </View>
             </View>

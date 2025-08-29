@@ -4,8 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Progress from "../src/components/progress";
 import Card from "../src/components/Card";
 import { colors, ui } from "../src/utils/styles";
-import { BannerAd, BannerAdSize, TestIds } from "react-native-google-mobile-ads";
-import { bannerId, bannerIdIOS } from "../src/utils/constants";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 import Header from "../src/layout/header";
 import { AdsContext, LangContext } from "../src/utils/Context";
 import stitchings from "../stitchings.json";
@@ -13,6 +12,7 @@ import designs from "../designs.json";
 import Button from "../src/components/button";
 import { handleCounter, handleProgress, updateCounter } from "../src/utils/sqlite";
 import { hasNextStep, isLastStep } from "../src/layout/steps/stepsUtils";
+import { bannerId, bannerIdIOS } from "../src/utils/constants";
 
 export default function Steps() {
 
@@ -66,7 +66,7 @@ export default function Steps() {
     return (
         <View style={styles.container}>
             <Stack.Screen options={{ header: () => <Header back={true} /> }} />
-            { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? TestIds.BANNER : TestIds.BANNER} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
+            { adsLoaded && <BannerAd unitId={Platform.OS === "android" ? bannerId : bannerIdIOS} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} requestOptions={{}} /> }
             <View style={styles.hero}>
                 <Text style={ui.h2}>{title}</Text>
             </View>
